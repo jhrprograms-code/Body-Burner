@@ -1,0 +1,3523 @@
+[
+  {
+    "id": "E001",
+    "name": "Barbell Bench Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the bench in a rack with correctly positioned safety bars or a competent spotter.",
+      "Keep the feet supported and wrists stacked; lower the bar with control.",
+      "Press up without bouncing the bar or lifting the hips."
+    ]
+  },
+  {
+    "id": "E002",
+    "name": "Dumbbell Bench Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E003",
+    "name": "Dumbbell Incline Bench Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E004",
+    "name": "Barbell Incline Bench Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E005",
+    "name": "Dumbbell Floor Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E006",
+    "name": "Push-up",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Place the hands on a stable surface and brace the trunk.",
+      "Lower the chest while the body moves as one unit.",
+      "Press back up; elevate the hands if you cannot maintain the position."
+    ]
+  },
+  {
+    "id": "E007",
+    "name": "Incline Push-up",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E008",
+    "name": "Knee Push-up",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E009",
+    "name": "Decline Push-up",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E010",
+    "name": "Close-grip Push-up",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E011",
+    "name": "Close-grip Barbell Bench Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E012",
+    "name": "Machine Chest Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E013",
+    "name": "Cable Chest Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E014",
+    "name": "Standing Resistance Band Chest Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "resistance_band"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E015",
+    "name": "Dumbbell Chest Fly",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E016",
+    "name": "Cable Chest Fly",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E017",
+    "name": "Pec Deck Fly",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "pec_deck"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E018",
+    "name": "Assisted Chest Dip",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E019",
+    "name": "Chest Dip",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E020",
+    "name": "Single-arm Dumbbell Bench Press",
+    "group": "horizontal_push",
+    "muscles": [
+      "chest",
+      "triceps",
+      "front_deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set a stable position and keep the wrists stacked over the forearms.",
+      "Lower under control through a comfortable range.",
+      "Press smoothly without losing shoulder or trunk control."
+    ]
+  },
+  {
+    "id": "E021",
+    "name": "Lat Pulldown",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E022",
+    "name": "Neutral-grip Lat Pulldown",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E023",
+    "name": "Reverse-grip Lat Pulldown",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E024",
+    "name": "Single-arm Cable Lat Pulldown",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E025",
+    "name": "Assisted Pull-up",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "pullup_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E026",
+    "name": "Pull-up",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "pullup_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E027",
+    "name": "Chin-up",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "pullup_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E028",
+    "name": "Assisted Chin-up",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "pullup_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E029",
+    "name": "Seated Cable Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E030",
+    "name": "Chest-supported Dumbbell Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E031",
+    "name": "One-arm Dumbbell Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E032",
+    "name": "Barbell Bent-over Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E033",
+    "name": "Inverted Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E034",
+    "name": "T-bar Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E035",
+    "name": "Machine Seated Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E036",
+    "name": "Resistance Band Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "resistance_band"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E037",
+    "name": "Straight-arm Cable Pulldown",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E038",
+    "name": "Dumbbell Pullover",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E039",
+    "name": "Cable Face Pull",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E040",
+    "name": "Single-arm Cable Row",
+    "group": "pull",
+    "muscles": [
+      "back",
+      "biceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk before starting the pull.",
+      "Move the elbows toward the intended direction without jerking the torso.",
+      "Return under control rather than dropping the resistance."
+    ]
+  },
+  {
+    "id": "E041",
+    "name": "Bodyweight Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E042",
+    "name": "Dumbbell Goblet Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Hold the dumbbell near the chest and plant the whole foot.",
+      "Sit between the hips with the knees following the toes.",
+      "Stand up without allowing the heels to lift."
+    ]
+  },
+  {
+    "id": "E043",
+    "name": "Barbell Back Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E044",
+    "name": "Barbell Front Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E045",
+    "name": "Dumbbell Front Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E046",
+    "name": "Box Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "barbell",
+      "rack"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E047",
+    "name": "Smith Machine Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "smith_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E048",
+    "name": "Hack Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "dedicated_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E049",
+    "name": "Leg Press",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "leg_press"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E050",
+    "name": "Single-leg Leg Press",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "leg_press"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E051",
+    "name": "Bodyweight Split Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E052",
+    "name": "Dumbbell Split Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E053",
+    "name": "Bulgarian Split Squat",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E054",
+    "name": "Reverse Lunge",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E055",
+    "name": "Dumbbell Reverse Lunge",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E056",
+    "name": "Forward Lunge",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E057",
+    "name": "Walking Lunge",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E058",
+    "name": "Lateral Lunge",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E059",
+    "name": "Step-up",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stance that lets the whole foot stay supported.",
+      "Bend the hips and knees together through a comfortable range.",
+      "Rise smoothly with the knees following the direction of the feet."
+    ]
+  },
+  {
+    "id": "E060",
+    "name": "Wall Sit",
+    "group": "squat_lunge",
+    "muscles": [
+      "quadriceps",
+      "glutes"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Lean the back against a stable wall.",
+      "Choose a knee angle you can hold comfortably with feet planted.",
+      "Breathe during the hold and rise before control is lost."
+    ]
+  },
+  {
+    "id": "E061",
+    "name": "Barbell Romanian Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E062",
+    "name": "Dumbbell Romanian Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E063",
+    "name": "Kettlebell Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "kettlebell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E064",
+    "name": "Barbell Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E065",
+    "name": "Trap Bar Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "trap_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E066",
+    "name": "Sumo Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E067",
+    "name": "Single-leg Romanian Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E068",
+    "name": "B-stance Romanian Deadlift",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E069",
+    "name": "Cable Pull-through",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E070",
+    "name": "Barbell Hip Thrust",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E071",
+    "name": "Dumbbell Hip Thrust",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E072",
+    "name": "Bodyweight Glute Bridge",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E073",
+    "name": "Single-leg Glute Bridge",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E074",
+    "name": "Barbell Glute Bridge",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E075",
+    "name": "45-degree Back Extension",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E076",
+    "name": "Reverse Hyperextension",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "dedicated_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E077",
+    "name": "Kettlebell Swing",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "kettlebell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Learn the unloaded hinge and deadlift before adding speed.",
+      "Drive the hips to move the bell; do not lift it mainly with the arms.",
+      "Keep a clear space and stop before fatigue changes the hinge."
+    ]
+  },
+  {
+    "id": "E078",
+    "name": "Barbell Good Morning",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E079",
+    "name": "Dumbbell Good Morning",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E080",
+    "name": "Stability Ball Glute Bridge",
+    "group": "hinge",
+    "muscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "equipment": [
+      "stability_ball"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Brace the trunk and move the hips backward.",
+      "Keep the resistance close while maintaining a controlled back position.",
+      "Finish by standing tall without leaning backward."
+    ]
+  },
+  {
+    "id": "E081",
+    "name": "Standing Barbell Overhead Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E082",
+    "name": "Seated Dumbbell Shoulder Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E083",
+    "name": "Standing Dumbbell Shoulder Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E084",
+    "name": "Machine Shoulder Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E085",
+    "name": "Arnold Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E086",
+    "name": "Single-arm Landmine Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "landmine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E087",
+    "name": "Half-kneeling Dumbbell Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E088",
+    "name": "Push Press",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E089",
+    "name": "Pike Push-up",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E090",
+    "name": "Dumbbell Lateral Raise",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Hold light dumbbells and keep a stable trunk.",
+      "Raise the arms to a comfortable height without shrugging or swinging.",
+      "Lower slowly while keeping a slight elbow bend."
+    ]
+  },
+  {
+    "id": "E091",
+    "name": "Cable Lateral Raise",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E092",
+    "name": "Machine Lateral Raise",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E093",
+    "name": "Resistance Band Lateral Raise",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "resistance_band"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E094",
+    "name": "Dumbbell Front Raise",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E095",
+    "name": "Cable Front Raise",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E096",
+    "name": "Dumbbell Reverse Fly",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E097",
+    "name": "Reverse Pec Deck Fly",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "pec_deck"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E098",
+    "name": "Cable Reverse Fly",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E099",
+    "name": "Dumbbell Shrug",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E100",
+    "name": "Barbell Shrug",
+    "group": "shoulders",
+    "muscles": [
+      "deltoids"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Choose a grip and range that feel comfortable at the shoulder.",
+      "Keep the trunk steady while moving the arms.",
+      "Return slowly; reduce the load if momentum takes over."
+    ]
+  },
+  {
+    "id": "E101",
+    "name": "Dumbbell Biceps Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E102",
+    "name": "Barbell Biceps Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E103",
+    "name": "EZ-bar Biceps Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "ez_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E104",
+    "name": "Dumbbell Hammer Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E105",
+    "name": "Incline Dumbbell Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E106",
+    "name": "Preacher Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "choose_variant_before_prescription"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E107",
+    "name": "Cable Biceps Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E108",
+    "name": "Resistance Band Biceps Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "resistance_band"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E109",
+    "name": "Concentration Curl",
+    "group": "arms",
+    "muscles": [
+      "biceps"
+    ],
+    "equipment": [
+      "choose_variant_before_prescription"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E110",
+    "name": "Reverse Barbell Curl",
+    "group": "arms",
+    "muscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "barbell"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E111",
+    "name": "Cable Triceps Pushdown",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E112",
+    "name": "Rope Triceps Pushdown",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "choose_variant_before_prescription"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E113",
+    "name": "Overhead Cable Triceps Extension",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E114",
+    "name": "Overhead Dumbbell Triceps Extension",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E115",
+    "name": "Dumbbell Skull Crusher",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E116",
+    "name": "EZ-bar Skull Crusher",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "ez_bar"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E117",
+    "name": "Dumbbell Triceps Kickback",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E118",
+    "name": "Resistance Band Triceps Pushdown",
+    "group": "arms",
+    "muscles": [
+      "triceps"
+    ],
+    "equipment": [
+      "resistance_band"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E119",
+    "name": "Wrist Curl",
+    "group": "arms",
+    "muscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "choose_variant_before_prescription"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E120",
+    "name": "Reverse Wrist Curl",
+    "group": "arms",
+    "muscles": [
+      "forearms"
+    ],
+    "equipment": [
+      "choose_variant_before_prescription"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Keep the upper arm steady for curls or extensions.",
+      "Move through a controlled, comfortable elbow range.",
+      "Avoid swinging the torso to complete the repetition."
+    ]
+  },
+  {
+    "id": "E121",
+    "name": "Forearm Plank",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Support the body on the forearms and toes; use knees if needed.",
+      "Keep the ribs and pelvis controlled without letting the hips sag.",
+      "Breathe normally; end the hold when the position changes."
+    ]
+  },
+  {
+    "id": "E122",
+    "name": "Side Plank",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E123",
+    "name": "Knee Side Plank",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E124",
+    "name": "Dead Bug",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Lie on the back with the arms up and hips and knees bent.",
+      "Slowly reach the opposite arm and leg while keeping the trunk steady.",
+      "Shorten the reach if the lower back position changes."
+    ]
+  },
+  {
+    "id": "E125",
+    "name": "Bird Dog",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Begin on hands and knees with a steady trunk.",
+      "Reach one arm and the opposite leg without rotating the pelvis.",
+      "Return with control and alternate sides."
+    ]
+  },
+  {
+    "id": "E126",
+    "name": "Pallof Press",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Stand side-on to a band or cable with a stable stance.",
+      "Press the hands forward while resisting trunk rotation.",
+      "Return the hands to the chest and repeat on both sides."
+    ]
+  },
+  {
+    "id": "E127",
+    "name": "Cable Wood Chop",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E128",
+    "name": "Cable Crunch",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Kneel securely with the rope held near the head.",
+      "Curl the trunk gradually rather than pulling only with the arms.",
+      "Return under control and avoid forcing the neck."
+    ]
+  },
+  {
+    "id": "E129",
+    "name": "Crunch",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E130",
+    "name": "Reverse Crunch",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E131",
+    "name": "Hanging Knee Raise",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E132",
+    "name": "Captain's Chair Knee Raise",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "dedicated_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E133",
+    "name": "Ab Wheel Rollout",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "ab_wheel"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Start from the knees and brace the trunk.",
+      "Roll only as far as you can keep the ribs and pelvis controlled.",
+      "Return smoothly; shorten the range if the lower back arches."
+    ]
+  },
+  {
+    "id": "E134",
+    "name": "Stability Ball Rollout",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "stability_ball"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E135",
+    "name": "Hollow Body Hold",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E136",
+    "name": "Heel Touch",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E137",
+    "name": "Farmer's Walk",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "dumbbells_or_kettlebells"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Pick up balanced loads using a controlled hinge.",
+      "Walk steadily with a tall trunk and clear path.",
+      "Set the weights down with control rather than dropping them."
+    ]
+  },
+  {
+    "id": "E138",
+    "name": "Suitcase Carry",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "dumbbells_or_kettlebells"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Hold one load at the side with the shoulders level.",
+      "Walk without leaning sideways or twisting.",
+      "Change sides and use a load that allows steady breathing."
+    ]
+  },
+  {
+    "id": "E139",
+    "name": "Front Rack Carry",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "dumbbells_or_kettlebells"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E140",
+    "name": "Bear Crawl",
+    "group": "core_carry",
+    "muscles": [
+      "abdominals",
+      "trunk"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Set the trunk position before moving or lifting.",
+      "Breathe while keeping the intended trunk position.",
+      "Stop the set when you can no longer control the position."
+    ]
+  },
+  {
+    "id": "E141",
+    "name": "Leg Extension",
+    "group": "lower_accessory",
+    "muscles": [
+      "quadriceps"
+    ],
+    "equipment": [
+      "leg_extension_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E142",
+    "name": "Seated Leg Curl",
+    "group": "lower_accessory",
+    "muscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "leg_curl_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E143",
+    "name": "Lying Leg Curl",
+    "group": "lower_accessory",
+    "muscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "leg_curl_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E144",
+    "name": "Standing Single-leg Curl",
+    "group": "lower_accessory",
+    "muscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "leg_curl_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E145",
+    "name": "Stability Ball Leg Curl",
+    "group": "lower_accessory",
+    "muscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "stability_ball"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E146",
+    "name": "Sliding Leg Curl",
+    "group": "lower_accessory",
+    "muscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "leg_curl_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E147",
+    "name": "Assisted Nordic Hamstring Curl",
+    "group": "lower_accessory",
+    "muscles": [
+      "hamstrings"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a padded surface and a secure ankle support checked by a coach.",
+      "Lower the body slowly while maintaining a straight line from knees to shoulders.",
+      "Use sufficient assistance and the hands to control the descent and return."
+    ]
+  },
+  {
+    "id": "E148",
+    "name": "Standing Calf Raise",
+    "group": "lower_accessory",
+    "muscles": [
+      "calves"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a stable support and a comfortable foot position.",
+      "Lift the heels without rolling the ankles outward.",
+      "Lower slowly through a comfortable ankle range."
+    ]
+  },
+  {
+    "id": "E149",
+    "name": "Seated Calf Raise",
+    "group": "lower_accessory",
+    "muscles": [
+      "calves"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E150",
+    "name": "Single-leg Calf Raise",
+    "group": "lower_accessory",
+    "muscles": [
+      "calves"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E151",
+    "name": "Leg Press Calf Raise",
+    "group": "lower_accessory",
+    "muscles": [
+      "calves"
+    ],
+    "equipment": [
+      "leg_press"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E152",
+    "name": "Dumbbell Calf Raise",
+    "group": "lower_accessory",
+    "muscles": [
+      "calves"
+    ],
+    "equipment": [
+      "dumbbells"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E153",
+    "name": "Tibialis Raise",
+    "group": "lower_accessory",
+    "muscles": [
+      "tibialis_anterior"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Use a wall or stable support and plant the heels.",
+      "Lift the front of the feet toward the shins.",
+      "Lower slowly without rocking the body."
+    ]
+  },
+  {
+    "id": "E154",
+    "name": "Machine Hip Abduction",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_abductors"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E155",
+    "name": "Machine Hip Adduction",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_adductors"
+    ],
+    "equipment": [
+      "machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E156",
+    "name": "Side-lying Hip Abduction",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_abductors"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E157",
+    "name": "Clamshell",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_abductors"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Lie on the side with the knees bent and feet together.",
+      "Open the top knee without rolling the pelvis backward.",
+      "Close slowly; reduce range if the trunk rotates."
+    ]
+  },
+  {
+    "id": "E158",
+    "name": "Resistance Band Lateral Walk",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_abductors"
+    ],
+    "equipment": [
+      "resistance_band"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Adjust the support or machine to fit your body.",
+      "Move at the intended joint without shifting the trunk.",
+      "Return under control through a comfortable range."
+    ]
+  },
+  {
+    "id": "E159",
+    "name": "Cable Hip Abduction",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_abductors"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Attach an ankle cuff to a low pulley and hold a stable support.",
+      "Move the working leg away from the body without leaning sideways.",
+      "Return slowly while keeping the pelvis level."
+    ]
+  },
+  {
+    "id": "E160",
+    "name": "Cable Hip Adduction",
+    "group": "lower_accessory",
+    "muscles": [
+      "hip_adductors"
+    ],
+    "equipment": [
+      "cable_machine"
+    ],
+    "tracking": "repetitions",
+    "cues": [
+      "Attach an ankle cuff to a low pulley and hold a stable support.",
+      "Bring the working leg inward across the body without twisting the pelvis.",
+      "Return slowly and use a small range that remains controlled."
+    ]
+  },
+  {
+    "id": "E161",
+    "name": "Brisk Walking",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E162",
+    "name": "Treadmill Walking",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "treadmill"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E163",
+    "name": "Incline Treadmill Walking",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "treadmill"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E164",
+    "name": "Stationary Cycling",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "stationary_bike"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E165",
+    "name": "Recumbent Cycling",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "stationary_bike"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E166",
+    "name": "Elliptical Trainer",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "elliptical"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E167",
+    "name": "Rowing Ergometer",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "rower"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E168",
+    "name": "Stair Climber",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "stair_climber"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E169",
+    "name": "Swimming Freestyle",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "pool"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Use a supervised pool appropriate to your swimming ability.",
+      "Swim at an easy sustainable pace and breathe regularly.",
+      "Rest at the wall when technique or breathing becomes difficult."
+    ]
+  },
+  {
+    "id": "E170",
+    "name": "Jogging",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E171",
+    "name": "Jump Rope",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "jump_rope"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E172",
+    "name": "Marching in Place",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E173",
+    "name": "Low-impact Step Jack",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E174",
+    "name": "Jumping Jack",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E175",
+    "name": "Mountain Climber",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E176",
+    "name": "Sled Push",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "sled"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E177",
+    "name": "Sled Drag",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "sled"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E178",
+    "name": "Battle Rope Alternating Waves",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "battle_rope"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E179",
+    "name": "Shadow Boxing",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E180",
+    "name": "Air Bike",
+    "group": "conditioning",
+    "muscles": [
+      "whole_body"
+    ],
+    "equipment": [
+      "air_bike"
+    ],
+    "tracking": "minutes",
+    "cues": [
+      "Start with an easy warm-up at your current ability.",
+      "Use a pace you can sustain with controlled movement.",
+      "Reduce pace or stop if symptoms or movement quality deteriorate."
+    ]
+  },
+  {
+    "id": "E181",
+    "name": "Half-kneeling Hip Flexor Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E182",
+    "name": "Standing Quadriceps Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E183",
+    "name": "Seated Hamstring Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E184",
+    "name": "Supine Hamstring Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E185",
+    "name": "Standing Calf Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E186",
+    "name": "Bent-knee Calf Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E187",
+    "name": "Figure-four Glute Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E188",
+    "name": "Adductor Rock Back",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E189",
+    "name": "90/90 Hip Rotation",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E190",
+    "name": "World's Greatest Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E191",
+    "name": "Cat Cow",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E192",
+    "name": "Child's Pose",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E193",
+    "name": "Open Book Thoracic Rotation",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E194",
+    "name": "Thoracic Extension on Foam Roller",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "foam_roller"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E195",
+    "name": "Doorway Chest Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E196",
+    "name": "Lat Stretch on Bench",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E197",
+    "name": "Cross-body Shoulder Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E198",
+    "name": "Overhead Triceps Stretch",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Move slowly into a mild stretch or comfortable movement range.",
+      "Breathe normally without forcing the position.",
+      "Use a smaller range if you feel pinching or pain."
+    ]
+  },
+  {
+    "id": "E199",
+    "name": "Wall Slide",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Place the arms against a wall in a comfortable position.",
+      "Slide upward while keeping the ribs controlled.",
+      "Use a smaller range if shoulder discomfort or back arching develops."
+    ]
+  },
+  {
+    "id": "E200",
+    "name": "Knee-to-wall Ankle Mobilization",
+    "group": "mobility",
+    "muscles": [
+      "varies"
+    ],
+    "equipment": [
+      "bodyweight_or_variant_to_confirm"
+    ],
+    "tracking": "seconds_or_repetitions",
+    "cues": [
+      "Face a wall with the working foot flat.",
+      "Bring the knee toward the wall while the heel stays down.",
+      "Adjust the distance to keep movement smooth and comfortable."
+    ]
+  }
+]

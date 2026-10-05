@@ -1,0 +1,9 @@
+{
+  "provider": "YOUR_LICENSED_PROVIDER",
+  "licenseReference": "Your licence name/reference (no personal billing information)",
+  "licenseConfirmed": false,
+  "items": [
+    {"exerciseId": "E002", "file": "dumbbell-bench-press.gif", "visuallyVerified": false},
+    {"exerciseId": "E021", "file": "lat-pulldown.gif", "visuallyVerified": false}
+  ]
+}
