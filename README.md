@@ -13,7 +13,7 @@ A private, mobile-friendly fitness web app for you and friends. Black-and-white 
 - **Coach:** optional AI guidance using selected recent account logs, plus a deterministic weekly snapshot that needs no AI. Progress photos are never submitted to the coach.
 - **Accounts:** email-link authentication, invite-only membership, owner-scoped database/storage policies, private expiring photo URLs, state version checks, export and journal erasure.
 - **Local mode:** manual tracking and progress photos work without keys. Cloud journals are separate from the local browser journal. Online food lookup and AI require an invited account.
-- **Licensed media:** validated GIF importer. **No paid GIFs have been acquired or bundled.**
+- **Licensed media:** MP4 demonstration playback and a validated GIF importer. The owner supplied a purchased Vital Animations pack; private asset upload and reviewed exercise matching are pending. See [Vital integration status](docs/VITAL-INTEGRATION.md).
 
 ## Run locally
 
@@ -41,7 +41,7 @@ npm start
 3. Configure invited users, email delivery and redirect URLs as described in the deployment guide.
 4. Import the GitHub repository into Vercel; configure environment variables in its dashboard and redeploy.
 5. Add your Google Gemini key and enable AI only after reviewing provider privacy/billing settings. USDA needs a separate free API key; Open Food Facts needs an app contact email.
-6. Purchase an appropriate GIF licence and import only visually checked matches. See [MEDIA.md](docs/MEDIA.md).
+6. Install the purchased Vital animations using reviewed exercise matches. See [VITAL-INTEGRATION.md](docs/VITAL-INTEGRATION.md). The separate GIF importer is documented in [MEDIA.md](docs/MEDIA.md).
 
 **No account passwords or private API keys need to be sent in chat.**
 
@@ -51,6 +51,6 @@ This is a first release, not a clinically validated coaching service. A photo is
 
 Food databases are broad but not exhaustive, and Costco stock/Canadian package formulations vary. Missing required nutrients are omitted from search results rather than assumed to be zero. Always check the label and portion basis.
 
-Online services are implemented but require credentials and live acceptance testing. No deployment, live account, provider charge or GIF purchase has been performed. The installable web manifest supplies a home-screen app shell; there is no background service worker or guaranteed offline reload.
+The app has been deployed on Vercel. Online services still require completed backend setup, credentials and live acceptance testing. Purchased animation files remain outside this public repository. The installable web manifest supplies a home-screen app shell; there is no background service worker or guaranteed offline reload.
 
 See [VALIDATION.md](docs/VALIDATION.md), [ARCHITECTURE.md](docs/ARCHITECTURE.md), [COSTS.md](docs/COSTS.md) and [RESEARCH-NOTES.md](docs/RESEARCH-NOTES.md).

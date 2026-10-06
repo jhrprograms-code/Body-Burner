@@ -33,6 +33,7 @@ import {
   type WorkoutExercise,
 } from "@/lib/domain";
 import mediaManifest from "@/data/media.json";
+import ExerciseMedia from "./ExerciseMedia";
 import type { StoreProps } from "./BodyBurner";
 import { Empty, Field, Heading, Modal, Section } from "./ui";
 const media = mediaManifest as Record<
@@ -161,7 +162,11 @@ export default function Training({ state, setState, notify }: StoreProps) {
                     aria-label={`View ${exercise.name} technique`}
                   >
                     {media[exercise.id] ? (
-                      <img src={media[exercise.id].url} alt={exercise.name} />
+                      <ExerciseMedia
+                        key={media[exercise.id].url}
+                        url={media[exercise.id].url}
+                        name={exercise.name}
+                      />
                     ) : (
                       <Dumbbell size={29} strokeWidth={1.25} />
                     )}
@@ -513,7 +518,11 @@ export default function Training({ state, setState, notify }: StoreProps) {
                       </span>
                       <span className="exercise-art">
                         {media[id] ? (
-                          <img src={media[id].url} alt="" />
+                          <ExerciseMedia
+                            key={media[id].url}
+                            url={media[id].url}
+                            name={e.name}
+                          />
                         ) : (
                           <Dumbbell size={25} strokeWidth={1.3} />
                         )}
@@ -648,9 +657,11 @@ export default function Training({ state, setState, notify }: StoreProps) {
         <Modal title={detail.name} onClose={() => setDetail(null)}>
           <div className="detail-media">
             {media[detail.id] ? (
-              <img
-                src={media[detail.id].url}
-                alt={`${detail.name} demonstration`}
+              <ExerciseMedia
+                key={media[detail.id].url}
+                url={media[detail.id].url}
+                name={detail.name}
+                expanded
               />
             ) : (
               <>
@@ -834,8 +845,8 @@ function ExerciseLibrary({
         ))}
       </div>
       <p className="muted small">
-        {list.length} movements · GIFs require a licensed pack. Exercise
-        descriptions are draft content.
+        {list.length} movements · Animations appear after licensed media is
+        installed. Exercise descriptions are draft content.
       </p>
     </Modal>
   );
