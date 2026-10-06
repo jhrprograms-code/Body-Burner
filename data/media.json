@@ -1,1 +1,608 @@
-{}
+{
+  "E001": {
+    "url": "supabase://exercise-media/0042.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E002": {
+    "url": "supabase://exercise-media/0046.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E003": {
+    "url": "supabase://exercise-media/0048.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E004": {
+    "url": "supabase://exercise-media/0043.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E007": {
+    "url": "supabase://exercise-media/0231.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E009": {
+    "url": "supabase://exercise-media/0224.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E010": {
+    "url": "supabase://exercise-media/1120.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E011": {
+    "url": "supabase://exercise-media/0013.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E012": {
+    "url": "supabase://exercise-media/0237.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E015": {
+    "url": "supabase://exercise-media/0049.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E017": {
+    "url": "supabase://exercise-media/0051.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E019": {
+    "url": "supabase://exercise-media/0045.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E021": {
+    "url": "supabase://exercise-media/0037.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E025": {
+    "url": "supabase://exercise-media/0102.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E026": {
+    "url": "supabase://exercise-media/0038.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E027": {
+    "url": "supabase://exercise-media/0031.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E029": {
+    "url": "supabase://exercise-media/0163.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E031": {
+    "url": "supabase://exercise-media/0203.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E032": {
+    "url": "supabase://exercise-media/0028.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E033": {
+    "url": "supabase://exercise-media/0194.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E034": {
+    "url": "supabase://exercise-media/0041.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E035": {
+    "url": "supabase://exercise-media/0157.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E039": {
+    "url": "supabase://exercise-media/0030.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E041": {
+    "url": "supabase://exercise-media/0240.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E042": {
+    "url": "supabase://exercise-media/0064.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E043": {
+    "url": "supabase://exercise-media/0054.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E044": {
+    "url": "supabase://exercise-media/0056.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E047": {
+    "url": "supabase://exercise-media/0279.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E048": {
+    "url": "supabase://exercise-media/0068.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E049": {
+    "url": "supabase://exercise-media/0074.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E056": {
+    "url": "supabase://exercise-media/1136.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E057": {
+    "url": "supabase://exercise-media/0283.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E058": {
+    "url": "supabase://exercise-media/0216.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E061": {
+    "url": "supabase://exercise-media/0060.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E062": {
+    "url": "supabase://exercise-media/0256.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E064": {
+    "url": "supabase://exercise-media/0032.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E066": {
+    "url": "supabase://exercise-media/0033.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E070": {
+    "url": "supabase://exercise-media/0057.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E072": {
+    "url": "supabase://exercise-media/0111.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E073": {
+    "url": "supabase://exercise-media/0124.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E075": {
+    "url": "supabase://exercise-media/0036.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E077": {
+    "url": "supabase://exercise-media/0072.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E078": {
+    "url": "supabase://exercise-media/0035.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E081": {
+    "url": "supabase://exercise-media/0088.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E082": {
+    "url": "supabase://exercise-media/0080.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E083": {
+    "url": "supabase://exercise-media/0090.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E084": {
+    "url": "supabase://exercise-media/0166.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E085": {
+    "url": "supabase://exercise-media/0087.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E086": {
+    "url": "supabase://exercise-media/0020.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E089": {
+    "url": "supabase://exercise-media/1172.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E090": {
+    "url": "supabase://exercise-media/0096.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E094": {
+    "url": "supabase://exercise-media/0092.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E096": {
+    "url": "supabase://exercise-media/0039.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E097": {
+    "url": "supabase://exercise-media/0099.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E098": {
+    "url": "supabase://exercise-media/0100.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E099": {
+    "url": "supabase://exercise-media/0034.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E100": {
+    "url": "supabase://exercise-media/0029.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E101": {
+    "url": "supabase://exercise-media/0015.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E102": {
+    "url": "supabase://exercise-media/0009.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E103": {
+    "url": "supabase://exercise-media/0154.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E104": {
+    "url": "supabase://exercise-media/0016.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E105": {
+    "url": "supabase://exercise-media/0019.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E106": {
+    "url": "supabase://exercise-media/0022.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E107": {
+    "url": "supabase://exercise-media/0011.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E108": {
+    "url": "supabase://exercise-media/0161.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E109": {
+    "url": "supabase://exercise-media/0014.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E111": {
+    "url": "supabase://exercise-media/0025.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E112": {
+    "url": "supabase://exercise-media/0085.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E113": {
+    "url": "supabase://exercise-media/0140.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E114": {
+    "url": "supabase://exercise-media/0021.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E115": {
+    "url": "supabase://exercise-media/0150.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E116": {
+    "url": "supabase://exercise-media/0024.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E117": {
+    "url": "supabase://exercise-media/0146.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E121": {
+    "url": "supabase://exercise-media/0126.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E124": {
+    "url": "supabase://exercise-media/0105.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E127": {
+    "url": "supabase://exercise-media/0012.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E128": {
+    "url": "supabase://exercise-media/0002.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E133": {
+    "url": "supabase://exercise-media/0101.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E135": {
+    "url": "supabase://exercise-media/0116.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E140": {
+    "url": "supabase://exercise-media/0209.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E141": {
+    "url": "supabase://exercise-media/0073.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E142": {
+    "url": "supabase://exercise-media/0079.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E143": {
+    "url": "supabase://exercise-media/0075.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E148": {
+    "url": "supabase://exercise-media/0281.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E152": {
+    "url": "supabase://exercise-media/0254.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E154": {
+    "url": "supabase://exercise-media/0069.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E159": {
+    "url": "supabase://exercise-media/0251.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E162": {
+    "url": "supabase://exercise-media/0086.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E164": {
+    "url": "supabase://exercise-media/0062.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E166": {
+    "url": "supabase://exercise-media/0067.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E167": {
+    "url": "supabase://exercise-media/0077.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E168": {
+    "url": "supabase://exercise-media/0083.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E171": {
+    "url": "supabase://exercise-media/0214.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E174": {
+    "url": "supabase://exercise-media/0117.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E175": {
+    "url": "supabase://exercise-media/0119.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E180": {
+    "url": "supabase://exercise-media/0053.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E181": {
+    "url": "supabase://exercise-media/1146.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E182": {
+    "url": "supabase://exercise-media/1196.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E191": {
+    "url": "supabase://exercise-media/0190.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E192": {
+    "url": "supabase://exercise-media/1118.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  },
+  "E197": {
+    "url": "supabase://exercise-media/1124.mp4",
+    "provider": "Vital Animations",
+    "license": "Owner-purchased licence; private in-app display",
+    "review": "Movement identity checked from sampled frames; not a coaching certification"
+  }
+}

@@ -13,7 +13,7 @@ A private, mobile-friendly fitness web app for you and friends. Black-and-white 
 - **Coach:** optional AI guidance using selected recent account logs, plus a deterministic weekly snapshot that needs no AI. Progress photos are never submitted to the coach.
 - **Accounts:** email-link authentication, invite-only membership, owner-scoped database/storage policies, private expiring photo URLs, state version checks, export and journal erasure.
 - **Local mode:** manual tracking and progress photos work without keys. Cloud journals are separate from the local browser journal. Online food lookup and AI require an invited account.
-- **Licensed media:** MP4 demonstration playback and a validated GIF importer. The owner supplied a purchased Vital Animations pack; private asset upload and reviewed exercise matching are pending. See [Vital integration status](docs/VITAL-INTEGRATION.md).
+- **Licensed media:** MP4 demonstration playback and a validated GIF importer. The owner supplied a purchased Vital Animations pack; 402 files are installed in private Supabase Storage, with 101 checked movement matches connected. The owner’s first app account still needs setup. See [Vital integration status](docs/VITAL-INTEGRATION.md).
 
 ## Run locally
 

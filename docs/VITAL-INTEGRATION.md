@@ -1,16 +1,13 @@
-# Vital Animations integration status
+# Vital Animations integration
 
-The owner purchased the Vital Animations pack and supplied its licence and private source folder. The folder contains 402 MP4 files (1,670,465,556 bytes). The three supplied JSON catalogues contain 402 rows, including one row with an empty exercise ID. Catalogue wording and filename matches are not evidence that a demonstration has been visually checked.
+402 compressed MP4 files (56,907,933 bytes) are installed in the private Supabase `exercise-media` bucket. Originals and purchased catalogue files remain outside the public repository.
 
-`scripts/prepare-vital.py` prepares compressed private copies. Keep purchased videos and catalogue files outside this public repository. The app's exercise demonstration component supports MP4 playback with controls and existing GIF/image URLs. Videos load only when a technique detail is opened, and do not autoplay.
+101 entries in `data/media.json` connect existing Body Burner exercises to these objects. Each enabled match was checked using sampled video frames for movement and equipment identity. This is not a comprehensive technique or coaching certification. Three candidate matches were excluded: the standing band chest press candidate showed a seated movement; cable lateral raise and machine lateral raise candidates did not clearly match the expected movement. Other exercises remain without an enabled animation where an equivalent was not established.
 
-The production media manifest remains empty until reviewed exercise matches have permanent authorized delivery URLs. Downloading and compressing the pack does not make it available in the deployed app. Do not commit temporary signed URLs to `data/media.json`.
+The player requests a one-hour signed URL only when the exercise detail is opened. It refreshes long-running playback authorization after 55 minutes and reacts to sign-in/out. The bucket's SELECT policy requires an entry in `public.members`; anonymous and non-member callers receive no access. Client uploads and changes to the licensed bucket are not permitted. No service-role key is used in the browser, and no signed URLs are committed.
 
-Next integration steps:
+The initial app database migration has been applied. Membership is invitation-only: create/invite each intended Supabase Auth user and add their actual user ID to `public.members`. There are currently no real registered app accounts. The owner's first account must be set up before signed-in playback can be verified in their session. The Supabase dashboard login is separate from an app login.
 
-1. Upload optimized videos to a private Supabase Storage bucket through authorized storage administration access.
-2. Match purchased demonstrations to Body Burner's exercise IDs; visually check movement, equipment and variation before enabling a match.
-3. Deliver short-lived signed playback URLs to authenticated invited members; keep storage writes restricted to the administrator.
-4. Verify playback on mobile and desktop, including expired sessions and missing media.
+Verification: production build and 29 automated tests; database checks confirmed member access to all 402 objects and zero visibility for a non-member. The positive access test ran in a rolled-back transaction and left no test account. Authenticated browser playback remains to be verified after the first real app account is created.
 
-The existing GIF importer handles GIF files only. Do not feed MP4 files into it or rename MP4 files to GIF.
+The GIF importer is separate and accepts GIF files only. Never rename MP4 files to GIF or publish the purchased pack in GitHub.

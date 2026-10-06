@@ -834,7 +834,15 @@ function ExerciseLibrary({
         {list.map((e) => (
           <button className="result-row" key={e.id} onClick={() => onSelect(e)}>
             <span className="exercise-art">
-              <Dumbbell size={23} strokeWidth={1.2} />
+              {media[e.id] ? (
+                <ExerciseMedia
+                  key={media[e.id].url}
+                  url={media[e.id].url}
+                  name={e.name}
+                />
+              ) : (
+                <Dumbbell size={23} strokeWidth={1.2} />
+              )}
             </span>
             <span>
               <strong>{e.name}</strong>
@@ -845,8 +853,9 @@ function ExerciseLibrary({
         ))}
       </div>
       <p className="muted small">
-        {list.length} movements · Animations appear after licensed media is
-        installed. Exercise descriptions are draft content.
+        {list.length} movements · {list.filter((e) => media[e.id]).length} video
+        demonstrations. Sign in to watch. Exercise descriptions are draft
+        content.
       </p>
     </Modal>
   );

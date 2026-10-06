@@ -1,8 +1,14 @@
 -- Run once in a NEW Supabase project. All user-facing access is invitation-only.
 begin;
+create schema if not exists private;
+revoke all on schema private from public, anon;
+grant usage on schema private to authenticated;
 create table public.members(user_id uuid primary key references auth.users(id) on delete cascade);
 alter table public.members enable row level security;
-create or replace function public.is_member() returns boolean language sql stable security definer set search_path='' as $$
+create policy own_membership_read on public.members for select to authenticated using(user_id=(select auth.uid()));
+revoke all on public.members from public,anon,authenticated;
+grant select on public.members to authenticated;
+create or replace function public.is_member() returns boolean language sql stable security invoker set search_path='' as $$
  select exists(select 1 from public.members where user_id=(select auth.uid()));
 $$;
 revoke all on function public.is_member() from public,anon;
@@ -18,7 +24,7 @@ create policy own_state_read on public.app_state for select to authenticated usi
 revoke all on public.app_state from anon,authenticated;
 grant select on public.app_state to authenticated;
 -- Compare-and-swap protects against simultaneous edits on different devices.
-create function public.save_state(new_payload jsonb, expected_version bigint) returns bigint language plpgsql security definer set search_path='' as $$
+create function private.save_state(new_payload jsonb, expected_version bigint) returns bigint language plpgsql security definer set search_path='' as $$
 declare result bigint;
 begin
  if auth.uid() is null or not public.is_member() then raise exception 'Not a member'; end if;
@@ -31,22 +37,22 @@ begin
  if result is null then raise exception 'SYNC_CONFLICT'; end if;
  return result;
 end $$;
-revoke all on function public.save_state(jsonb,bigint) from public,anon;
-grant execute on function public.save_state(jsonb,bigint) to authenticated;
-create function public.erase_state() returns void language plpgsql security definer set search_path='' as $$
+revoke all on function private.save_state(jsonb,bigint) from public,anon;
+grant execute on function private.save_state(jsonb,bigint) to authenticated;
+create function private.erase_state() returns void language plpgsql security definer set search_path='' as $$
 begin
  if auth.uid() is null or not public.is_member() then raise exception 'Not a member'; end if;
  delete from public.app_state where user_id=auth.uid();
 end $$;
-revoke all on function public.erase_state() from public,anon;
-grant execute on function public.erase_state() to authenticated;
+revoke all on function private.erase_state() from public,anon;
+grant execute on function private.erase_state() to authenticated;
 create table public.request_usage(bucket text primary key, count integer not null default 0, expires_at timestamptz not null);
 alter table public.request_usage enable row level security;
 revoke all on public.request_usage from anon,authenticated;
-create function public.consume_request(request_kind text) returns boolean language plpgsql security definer set search_path='' as $$
+create function private.consume_request(request_kind text) returns boolean language plpgsql security definer set search_path='' as $$
 declare minute_key text; day_key text; global_key text; n integer; max_user integer; max_global integer;
 begin
- if auth.uid() is null or not public.is_member() or request_kind not in ('food','ai') then return false; end if;
+ if auth.uid() is null or not public.is_member() or request_kind is null or request_kind not in ('food','ai') then return false; end if;
  -- Shared lock serializes counters across serverless instances.
  perform pg_advisory_xact_lock(71823051);
  delete from public.request_usage where expires_at<now();
@@ -59,10 +65,19 @@ begin
  insert into public.request_usage values(minute_key,1,now()+interval '2 minutes'),(day_key,1,now()+interval '2 days'),(global_key,1,now()+interval '2 days') on conflict(bucket) do update set count=public.request_usage.count+1;
  return true;
 end $$;
-revoke all on function public.consume_request(text) from public,anon;
-grant execute on function public.consume_request(text) to authenticated;
+revoke all on function private.consume_request(text) from public,anon;
+grant execute on function private.consume_request(text) to authenticated;
 insert into storage.buckets(id,name,public,file_size_limit,allowed_mime_types) values('progress','progress',false,2000000,array['image/jpeg','image/png','image/webp']) on conflict(id) do nothing;
 create policy private_photo_read on storage.objects for select to authenticated using(bucket_id='progress' and (storage.foldername(name))[1]=(select auth.uid())::text and (select public.is_member()));
 create policy private_photo_insert on storage.objects for insert to authenticated with check(bucket_id='progress' and (storage.foldername(name))[1]=(select auth.uid())::text and (select public.is_member()));
 create policy private_photo_delete on storage.objects for delete to authenticated using(bucket_id='progress' and (storage.foldername(name))[1]=(select auth.uid())::text and (select public.is_member()));
+
+create function public.save_state(new_payload jsonb,expected_version bigint) returns bigint language sql security invoker set search_path='' as $$ select private.save_state(new_payload,expected_version); $$;
+create function public.erase_state() returns void language sql security invoker set search_path='' as $$ select private.erase_state(); $$;
+create function public.consume_request(request_kind text) returns boolean language sql security invoker set search_path='' as $$ select private.consume_request(request_kind); $$;
+revoke all on function public.save_state(jsonb,bigint), public.erase_state(), public.consume_request(text) from public,anon;
+grant execute on function public.save_state(jsonb,bigint), public.erase_state(), public.consume_request(text) to authenticated;
+-- Licensed exercise files: invited members may read; no client writes.
+create policy member_exercise_media_read on storage.objects for select to authenticated using(bucket_id='exercise-media' and (select public.is_member()));
+
 commit;
