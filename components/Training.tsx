@@ -23,6 +23,7 @@ import {
   dayKey,
   exerciseMuscleCategories,
   exercises,
+  libraryExercises,
   fmt,
   lastExercise,
   loadSuggestion,
@@ -38,10 +39,11 @@ import {
   type WorkoutExercise,
 } from "@/lib/domain";
 import mediaManifest from "@/data/media.json";
+import vitalMediaManifest from "@/data/vital-media.json";
 import ExerciseMedia from "./ExerciseMedia";
 import type { StoreProps } from "./BodyBurner";
 import { Empty, Field, Heading, Modal, Section } from "./ui";
-const media = mediaManifest as Record<
+const media = { ...mediaManifest, ...vitalMediaManifest } as Record<
   string,
   { url: string; provider: string; license: string }
 >;
@@ -847,11 +849,11 @@ function ExerciseLibrary({
     [category, setCategory] = useState(""),
     [visibleCount, setVisibleCount] = useState(40);
   const normalizedQuery = query.trim().toLowerCase();
-  const movementCategories = [...new Set(exercises.map((e) => e.group))]
+  const movementCategories = [...new Set(libraryExercises.map((e) => e.group))]
     .map((id) => ({ id, label: id.replaceAll("_", " ") }))
     .sort((a, b) => a.label.localeCompare(b.label));
   const equipmentCategories = [
-    ...new Set(exercises.flatMap((e) => e.equipment)),
+    ...new Set(libraryExercises.flatMap((e) => e.equipment)),
   ]
     .map((id) => ({ id, label: id.replaceAll("_", " ") }))
     .sort((a, b) => a.label.localeCompare(b.label));
@@ -870,7 +872,7 @@ function ExerciseLibrary({
     if (mode === "movement") return exercise.group === category;
     return (exercise.equipment as readonly string[]).includes(category);
   };
-  const list = exercises
+  const list = libraryExercises
     .filter(
       (exercise) =>
         matchesCategory(exercise) &&
@@ -890,8 +892,8 @@ function ExerciseLibrary({
   return (
     <Modal title="Your movement library" onClose={onClose} wide>
       <p className="muted">
-        Browse by muscle first, or switch to movement, equipment or the complete
-        catalogue.
+        Browse all {libraryExercises.length} licensed movements by muscle, or
+        switch to movement, equipment or the complete catalogue.
       </p>
       <div className="search-input">
         <Search size={18} />
@@ -933,7 +935,7 @@ function ExerciseLibrary({
       {showCategories ? (
         <div className="library-category-grid">
           {categories.map((item) => {
-            const count = exercises.filter((exercise) => {
+            const count = libraryExercises.filter((exercise) => {
               if (mode === "muscles")
                 return exerciseMuscleCategories(exercise).includes(
                   item.id as (typeof MUSCLE_CATEGORIES)[number]["id"],

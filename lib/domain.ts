@@ -1,17 +1,21 @@
 import catalog from "@/data/exercises.json";
-export const exercises = catalog;
-export type Exercise = (typeof catalog)[number];
+import vitalCatalog from "@/data/vital-exercises.json";
+export const libraryExercises = vitalCatalog;
+export const exercises = [...catalog, ...vitalCatalog];
+export type Exercise = (typeof exercises)[number];
 export const MUSCLE_CATEGORIES = [
   { id: "chest", label: "Chest", tags: ["chest"] },
   {
     id: "shoulders",
     label: "Shoulders",
-    tags: ["deltoids", "front_deltoids"],
+    tags: ["deltoids", "front_deltoids", "rear_deltoids"],
   },
   { id: "biceps", label: "Biceps", tags: ["biceps"] },
   { id: "triceps", label: "Triceps", tags: ["triceps"] },
   { id: "forearms", label: "Forearms", tags: ["forearms"] },
   { id: "back", label: "Back", tags: ["back"] },
+  { id: "traps", label: "Traps", tags: ["traps"] },
+  { id: "neck", label: "Neck", tags: ["neck"] },
   { id: "glutes", label: "Glutes", tags: ["glutes"] },
   { id: "quadriceps", label: "Quadriceps", tags: ["quadriceps"] },
   { id: "hamstrings", label: "Hamstrings", tags: ["hamstrings"] },
@@ -21,6 +25,7 @@ export const MUSCLE_CATEGORIES = [
     tags: ["calves", "tibialis_anterior"],
   },
   { id: "core", label: "Core & abs", tags: ["abdominals", "trunk"] },
+  { id: "hip_flexors", label: "Hip flexors", tags: ["hip_flexors"] },
   { id: "hip_abductors", label: "Hip abductors", tags: ["hip_abductors"] },
   { id: "hip_adductors", label: "Hip adductors", tags: ["hip_adductors"] },
   { id: "full_body", label: "Full body", tags: ["whole_body", "varies"] },

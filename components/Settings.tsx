@@ -13,7 +13,7 @@ import {
 import { supabase } from "@/lib/supabase";
 import { exportData } from "@/lib/store";
 import { localPhoto } from "@/lib/photos";
-import { emptyState, type Profile } from "@/lib/domain";
+import { emptyState, libraryExercises, type Profile } from "@/lib/domain";
 import type { StoreProps } from "./BodyBurner";
 import { ErrorNote, Field, Heading, Modal, Section } from "./ui";
 export default function Settings({
@@ -306,7 +306,7 @@ export default function Settings({
             </div>
             <div className="settings-fact">
               <span>Exercise catalogue</span>
-              <strong>200 movements</strong>
+              <strong>{libraryExercises.length} licensed movements</strong>
             </div>
             <div className="settings-fact">
               <span>Media</span>
