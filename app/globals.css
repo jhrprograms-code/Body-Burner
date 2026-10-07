@@ -1480,7 +1480,8 @@ main {
   flex-shrink: 0;
   overflow: hidden;
 }
-.exercise-art img {
+.exercise-art img,
+.exercise-art video {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -1709,6 +1710,107 @@ main {
 }
 .library-results {
   max-height: 50vh;
+}
+.muscle-emphasis {
+  margin: 22px 0;
+}
+.muscle-emphasis h3 {
+  font-size: 17px;
+  margin: 5px 0 0;
+}
+.muscle-emphasis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 13px;
+}
+.muscle-emphasis-card,
+.library-category {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-align: left;
+  border: 1px solid #303030;
+  background: #151515;
+  border-radius: 12px;
+  padding: 12px;
+}
+.muscle-emphasis-card > span:last-child,
+.library-category > span:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+}
+.muscle-emphasis-card strong,
+.library-category strong {
+  display: block;
+  font-size: 11px;
+  text-transform: capitalize;
+}
+.muscle-emphasis-card small,
+.library-category small {
+  display: block;
+  color: #777;
+  font-size: 8px;
+  margin-top: 4px;
+}
+.muscle-monogram {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: radial-gradient(circle at 40% 30%, #ededeb, #8b8b87);
+  color: #111;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+.library-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  background: #272727;
+  padding: 5px;
+  border-radius: 13px;
+  margin: 15px 0;
+}
+.library-tabs button {
+  border: 0;
+  background: transparent;
+  color: #9a9a9a;
+  border-radius: 9px;
+  padding: 10px 8px;
+  font-size: 10px;
+}
+.library-tabs button.active {
+  background: #111;
+  color: #f1f1ee;
+}
+.library-category-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  max-height: 54vh;
+  overflow: auto;
+  padding-right: 3px;
+}
+.library-category {
+  width: 100%;
+}
+.library-category > svg {
+  color: #777;
+}
+.library-result-head {
+  margin: 13px 0 8px;
+  min-height: 36px;
+}
+.library-result-head strong {
+  font-size: 12px;
+}
+.library-results .result-row {
+  content-visibility: auto;
+  contain-intrinsic-size: 75px;
 }
 .detail-media {
   display: flex;
@@ -2817,6 +2919,16 @@ main {
   }
   .plan-exercise small {
     font-size: 9px;
+  }
+  .muscle-emphasis-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .library-category-grid {
+    grid-template-columns: 1fr;
+  }
+  .library-tabs button {
+    font-size: 9px;
+    padding-inline: 4px;
   }
   .exercise-card {
     padding: 17px 13px;

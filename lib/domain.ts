@@ -1,6 +1,84 @@
 import catalog from "@/data/exercises.json";
 export const exercises = catalog;
 export type Exercise = (typeof catalog)[number];
+export const MUSCLE_CATEGORIES = [
+  { id: "chest", label: "Chest", tags: ["chest"] },
+  {
+    id: "shoulders",
+    label: "Shoulders",
+    tags: ["deltoids", "front_deltoids"],
+  },
+  { id: "biceps", label: "Biceps", tags: ["biceps"] },
+  { id: "triceps", label: "Triceps", tags: ["triceps"] },
+  { id: "forearms", label: "Forearms", tags: ["forearms"] },
+  { id: "back", label: "Back", tags: ["back"] },
+  { id: "glutes", label: "Glutes", tags: ["glutes"] },
+  { id: "quadriceps", label: "Quadriceps", tags: ["quadriceps"] },
+  { id: "hamstrings", label: "Hamstrings", tags: ["hamstrings"] },
+  {
+    id: "calves",
+    label: "Calves & shins",
+    tags: ["calves", "tibialis_anterior"],
+  },
+  { id: "core", label: "Core & abs", tags: ["abdominals", "trunk"] },
+  { id: "hip_abductors", label: "Hip abductors", tags: ["hip_abductors"] },
+  { id: "hip_adductors", label: "Hip adductors", tags: ["hip_adductors"] },
+  { id: "full_body", label: "Full body", tags: ["whole_body", "varies"] },
+] as const;
+export type MuscleCategoryId = (typeof MUSCLE_CATEGORIES)[number]["id"];
+
+export function muscleCategoryForTag(tag: string) {
+  return MUSCLE_CATEGORIES.find((category) =>
+    (category.tags as readonly string[]).includes(tag),
+  );
+}
+
+export function exerciseMuscleCategories(exercise: Pick<Exercise, "muscles">) {
+  return [
+    ...new Set(
+      exercise.muscles
+        .map((tag) => muscleCategoryForTag(tag)?.id)
+        .filter((id): id is MuscleCategoryId => Boolean(id)),
+    ),
+  ];
+}
+
+export function targetMuscleBreakdown(ids: string[]) {
+  const counts = new Map<MuscleCategoryId, number>();
+  ids.forEach((id) => {
+    const exercise = exercises.find((item) => item.id === id);
+    if (!exercise) return;
+    exerciseMuscleCategories(exercise).forEach((category) =>
+      counts.set(category, (counts.get(category) || 0) + 1),
+    );
+  });
+  const top = [...counts]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 4)
+    .map(([id, count]) => ({
+      id,
+      count,
+      label: MUSCLE_CATEGORIES.find((category) => category.id === id)!.label,
+    }));
+  const total = top.reduce((sum, item) => sum + item.count, 0);
+  if (!total) return [];
+  const shares = top.map((item) => (item.count / total) * 100);
+  const percentages = shares.map(Math.floor);
+  let remainder = 100 - percentages.reduce((sum, value) => sum + value, 0);
+  shares
+    .map((share, index) => ({ index, fraction: share - percentages[index] }))
+    .sort((a, b) => b.fraction - a.fraction)
+    .forEach(({ index }) => {
+      if (remainder > 0) {
+        percentages[index] += 1;
+        remainder -= 1;
+      }
+    });
+  return top.map((item, index) => ({
+    ...item,
+    percentage: percentages[index],
+  }));
+}
 export type MealName = "Breakfast" | "Lunch" | "Dinner";
 export type Nutrients = {
   calories: number;

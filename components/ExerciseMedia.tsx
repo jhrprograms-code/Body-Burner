@@ -11,10 +11,12 @@ export default function ExerciseMedia({
   url,
   name,
   expanded = false,
+  thumbnail = false,
 }: {
   url: string;
   name: string;
   expanded?: boolean;
+  thumbnail?: boolean;
 }) {
   const [failed, setFailed] = useState(false);
   const [signedUrl, setSignedUrl] = useState<string | null>(null);
@@ -22,7 +24,7 @@ export default function ExerciseMedia({
   const [attempt, setAttempt] = useState(0);
   const storagePath = privateExercisePath(url);
   useEffect(() => {
-    if (!expanded || !storagePath) return;
+    if ((!expanded && !thumbnail) || !storagePath) return;
     let cancelled = false;
     setSignedUrl(null);
     setMessage("");
@@ -73,8 +75,14 @@ export default function ExerciseMedia({
       clearTimeout(timer);
       subscription?.data.subscription.unsubscribe();
     };
-  }, [expanded, storagePath, attempt]);
-  if (expanded && storagePath && !signedUrl)
+  }, [expanded, thumbnail, storagePath, attempt]);
+  if ((expanded || thumbnail) && storagePath && !signedUrl) {
+    if (thumbnail)
+      return (
+        <span role="img" aria-label={`${name} thumbnail loading`}>
+          <Dumbbell size={24} />
+        </span>
+      );
     return (
       <div role="status">
         <p>{message || "Loading demonstration…"}</p>
@@ -88,6 +96,7 @@ export default function ExerciseMedia({
         )}
       </div>
     );
+  }
   if (failed)
     return (
       <span role="img" aria-label={`${name} demonstration unavailable`}>
@@ -95,17 +104,21 @@ export default function ExerciseMedia({
       </span>
     );
   const video = /\.mp4(?:[?#]|$)/i.test(url);
-  if (video && !expanded)
+  if (video && !expanded && !thumbnail)
     return <Play size={24} aria-label={`Play ${name} demonstration`} />;
   return video ? (
     <video
       src={signedUrl || url}
-      aria-label={`${name} demonstration`}
+      aria-label={`${name} ${thumbnail ? "thumbnail" : "demonstration"}`}
       muted
       loop
       playsInline
       controls={expanded}
-      preload={expanded ? "metadata" : "none"}
+      preload={expanded || thumbnail ? "metadata" : "none"}
+      onLoadedMetadata={(event) => {
+        if (thumbnail && event.currentTarget.duration > 0.1)
+          event.currentTarget.currentTime = 0.1;
+      }}
       onError={() => setFailed(true)}
     >
       Your browser cannot play this demonstration.

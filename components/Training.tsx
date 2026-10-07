@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import {
+  ArrowLeft,
   ArrowRight,
   ArrowUpRight,
   Check,
@@ -20,12 +21,15 @@ import {
 import {
   buildWeek,
   dayKey,
+  exerciseMuscleCategories,
   exercises,
   fmt,
   lastExercise,
   loadSuggestion,
+  MUSCLE_CATEGORIES,
   newExercise,
   sessionVolume,
+  targetMuscleBreakdown,
   uid,
   WORKOUT_DURATION,
   weekDates,
@@ -158,6 +162,9 @@ export default function Training({ state, setState, notify }: StoreProps) {
           <div className="track session-progress">
             <span style={{ width: `${all ? (completed / all) * 100 : 0}%` }} />
           </div>
+          <MuscleEmphasis
+            ids={active.exercises.map((exercise) => exercise.exerciseId)}
+          />
           {active.exercises.map((entry, index) => {
             const exercise = exercises.find((e) => e.id === entry.exerciseId)!;
             const previous = lastExercise(state.sessions, entry.exerciseId),
@@ -179,6 +186,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
                         key={media[exercise.id].url}
                         url={media[exercise.id].url}
                         name={exercise.name}
+                        thumbnail
                       />
                     ) : (
                       <Dumbbell size={29} strokeWidth={1.25} />
@@ -514,6 +522,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
                   </p>
                 )}
               </section>
+              <MuscleEmphasis ids={day.ids} />
               <div className="plan-exercises">
                 {day.ids.map((id, i) => {
                   const e = exercises.find((x) => x.id === id)!;
@@ -532,6 +541,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
                             key={media[id].url}
                             url={media[id].url}
                             name={e.name}
+                            thumbnail
                           />
                         ) : (
                           <Dumbbell size={25} strokeWidth={1.3} />
@@ -795,6 +805,35 @@ export default function Training({ state, setState, notify }: StoreProps) {
     </>
   );
 }
+function MuscleEmphasis({ ids }: { ids: string[] }) {
+  const breakdown = targetMuscleBreakdown(ids);
+  if (!breakdown.length) return null;
+  return (
+    <section className="muscle-emphasis" aria-labelledby="target-muscles">
+      <div className="row between">
+        <div>
+          <span className="eyebrow">PLAN EMPHASIS</span>
+          <h3 id="target-muscles">Target muscles</h3>
+        </div>
+        <span className="muted small">Based on exercise tags</span>
+      </div>
+      <div className="muscle-emphasis-grid">
+        {breakdown.map((muscle) => (
+          <div className="muscle-emphasis-card" key={muscle.id}>
+            <span className="muscle-monogram" aria-hidden="true">
+              {muscle.label.slice(0, 2).toUpperCase()}
+            </span>
+            <span>
+              <strong>{muscle.label}</strong>
+              <small>{muscle.percentage}% of plan emphasis</small>
+            </span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ExerciseLibrary({
   onClose,
   onSelect,
@@ -802,20 +841,57 @@ function ExerciseLibrary({
   onClose: () => void;
   onSelect: (e: Exercise) => void;
 }) {
+  type BrowseMode = "muscles" | "movement" | "equipment" | "all";
   const [query, setQuery] = useState(""),
-    [group, setGroup] = useState("all");
-  const list = exercises.filter(
-    (e) =>
-      (group === "all" || e.group === group) &&
-      `${e.name} ${e.muscles.join(" ")} ${e.equipment.join(" ")}`
-        .toLowerCase()
-        .includes(query.toLowerCase()),
-  );
+    [mode, setMode] = useState<BrowseMode>("muscles"),
+    [category, setCategory] = useState(""),
+    [visibleCount, setVisibleCount] = useState(40);
+  const normalizedQuery = query.trim().toLowerCase();
+  const movementCategories = [...new Set(exercises.map((e) => e.group))]
+    .map((id) => ({ id, label: id.replaceAll("_", " ") }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+  const equipmentCategories = [
+    ...new Set(exercises.flatMap((e) => e.equipment)),
+  ]
+    .map((id) => ({ id, label: id.replaceAll("_", " ") }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+  const categories =
+    mode === "muscles"
+      ? MUSCLE_CATEGORIES
+      : mode === "movement"
+        ? movementCategories
+        : equipmentCategories;
+  const matchesCategory = (exercise: Exercise) => {
+    if (!category || mode === "all") return true;
+    if (mode === "muscles")
+      return exerciseMuscleCategories(exercise).includes(
+        category as (typeof MUSCLE_CATEGORIES)[number]["id"],
+      );
+    if (mode === "movement") return exercise.group === category;
+    return (exercise.equipment as readonly string[]).includes(category);
+  };
+  const list = exercises
+    .filter(
+      (exercise) =>
+        matchesCategory(exercise) &&
+        (!normalizedQuery ||
+          `${exercise.name} ${exercise.muscles.join(" ")} ${exercise.equipment.join(" ")}`
+            .toLowerCase()
+            .includes(normalizedQuery)),
+    )
+    .toSorted((a, b) => a.name.localeCompare(b.name));
+  const showCategories = !normalizedQuery && mode !== "all" && !category;
+  const selectedLabel = categories.find((item) => item.id === category)?.label;
+  const setBrowseMode = (next: BrowseMode) => {
+    setMode(next);
+    setCategory("");
+    setVisibleCount(40);
+  };
   return (
     <Modal title="Your movement library" onClose={onClose} wide>
       <p className="muted">
-        200 exercises to explore. Choose movements that suit your equipment,
-        experience and comfort.
+        Browse by muscle first, or switch to movement, equipment or the complete
+        catalogue.
       </p>
       <div className="search-input">
         <Search size={18} />
@@ -824,49 +900,143 @@ function ExerciseLibrary({
           aria-label="Search exercises"
           placeholder="Search exercises, muscles or equipment"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(event) => {
+            setQuery(event.target.value);
+            setVisibleCount(40);
+          }}
         />
       </div>
-      <select
-        className="library-filter"
-        aria-label="Movement type"
-        value={group}
-        onChange={(e) => setGroup(e.target.value)}
+      <div
+        className="library-tabs"
+        role="tablist"
+        aria-label="Browse exercises"
       >
-        <option value="all">All movement types</option>
-        {[...new Set(exercises.map((e) => e.group))].map((g) => (
-          <option value={g} key={g}>
-            {g.replaceAll("_", " ")}
-          </option>
-        ))}
-      </select>
-      <div className="search-results library-results">
-        {list.map((e) => (
-          <button className="result-row" key={e.id} onClick={() => onSelect(e)}>
-            <span className="exercise-art">
-              {media[e.id] ? (
-                <ExerciseMedia
-                  key={media[e.id].url}
-                  url={media[e.id].url}
-                  name={e.name}
-                />
-              ) : (
-                <Dumbbell size={23} strokeWidth={1.2} />
-              )}
-            </span>
-            <span>
-              <strong>{e.name}</strong>
-              <small>{e.muscles.join(" · ").replaceAll("_", " ")}</small>
-            </span>
-            <Plus size={17} />
+        {(
+          [
+            ["muscles", "Muscles"],
+            ["movement", "Movement"],
+            ["equipment", "Equipment"],
+            ["all", "All"],
+          ] as const
+        ).map(([id, label]) => (
+          <button
+            key={id}
+            role="tab"
+            aria-selected={mode === id}
+            className={mode === id ? "active" : ""}
+            onClick={() => setBrowseMode(id)}
+          >
+            {label}
           </button>
         ))}
       </div>
-      <p className="muted small">
-        {list.length} movements · {list.filter((e) => media[e.id]).length} video
-        demonstrations. Sign in to watch. Exercise descriptions are draft
-        content.
-      </p>
+      {showCategories ? (
+        <div className="library-category-grid">
+          {categories.map((item) => {
+            const count = exercises.filter((exercise) => {
+              if (mode === "muscles")
+                return exerciseMuscleCategories(exercise).includes(
+                  item.id as (typeof MUSCLE_CATEGORIES)[number]["id"],
+                );
+              if (mode === "movement") return exercise.group === item.id;
+              return (exercise.equipment as readonly string[]).includes(
+                item.id,
+              );
+            }).length;
+            if (!count) return null;
+            return (
+              <button
+                className="library-category"
+                key={item.id}
+                onClick={() => {
+                  setCategory(item.id);
+                  setVisibleCount(40);
+                }}
+              >
+                <span className="muscle-monogram" aria-hidden="true">
+                  {item.label.slice(0, 2).toUpperCase()}
+                </span>
+                <span>
+                  <strong>{item.label}</strong>
+                  <small>{count} exercises</small>
+                </span>
+                <ArrowRight size={17} />
+              </button>
+            );
+          })}
+        </div>
+      ) : (
+        <>
+          <div className="library-result-head row between">
+            <div className="row">
+              {category && !normalizedQuery && (
+                <button
+                  className="icon-btn"
+                  aria-label="Back to categories"
+                  onClick={() => setCategory("")}
+                >
+                  <ArrowLeft size={17} />
+                </button>
+              )}
+              <strong>
+                {normalizedQuery
+                  ? `Search results for “${query.trim()}”`
+                  : selectedLabel || "All exercises"}
+              </strong>
+            </div>
+            <span className="muted small">{list.length} exercises</span>
+          </div>
+          <div className="search-results library-results">
+            {list.slice(0, visibleCount).map((exercise) => (
+              <button
+                className="result-row"
+                key={exercise.id}
+                onClick={() => onSelect(exercise)}
+              >
+                <span className="exercise-art">
+                  {media[exercise.id] ? (
+                    <ExerciseMedia
+                      key={media[exercise.id].url}
+                      url={media[exercise.id].url}
+                      name={exercise.name}
+                      thumbnail
+                    />
+                  ) : (
+                    <Dumbbell size={23} strokeWidth={1.2} />
+                  )}
+                </span>
+                <span>
+                  <strong>{exercise.name}</strong>
+                  <small>
+                    {exercise.muscles.join(" · ").replaceAll("_", " ")}
+                  </small>
+                </span>
+                <Plus size={17} />
+              </button>
+            ))}
+          </div>
+          {list.length > visibleCount && (
+            <button
+              className="secondary full"
+              onClick={() => setVisibleCount((count) => count + 40)}
+            >
+              Show more exercises
+            </button>
+          )}
+          {!list.length && (
+            <Empty
+              icon={<Search size={22} />}
+              headline="No exercises found."
+              text="Try another muscle, movement or search term."
+            />
+          )}
+          <p className="muted small">
+            {list.filter((exercise) => media[exercise.id]).length} licensed
+            video demonstrations in this result. Sign in to view thumbnails and
+            technique videos.
+          </p>
+        </>
+      )}
     </Modal>
   );
 }
