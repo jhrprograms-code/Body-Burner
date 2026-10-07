@@ -12,7 +12,7 @@ Authenticated records are stored in one owner-scoped `app_state` JSONB document,
 
 This document-per-account design is appropriate for a small friends-only first release. A long-lived/multi-year journal or commercial product should migrate food entries, workout sessions, measurements and check-ins to normalized tables with independent versioning and pagination. There is no multi-user shared journal, trainer dashboard or public social feed.
 
-Cloud data is held in page memory rather than copied into the browser's local journal. The Supabase browser SDK manages its session; server routes verify bearer tokens with `auth.getUser()` and check membership. Ordinary operation requires no service-role key.
+Cloud data is held in page memory rather than copied into the browser's local journal. Supabase SSR stores the session in a persistent, same-site cookie; the Next.js proxy refreshes expired tokens before the client initializes. A one-time compatibility path migrates sessions created by the earlier local-storage client. Server routes verify bearer tokens with `auth.getUser()` and check membership. Ordinary operation requires no service-role key.
 
 ## Photos
 

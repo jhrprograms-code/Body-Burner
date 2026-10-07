@@ -20,7 +20,7 @@ import {
   Utensils,
   Weight,
 } from "lucide-react";
-import { supabase } from "@/lib/supabase";
+import { restoreSession, supabase } from "@/lib/supabase";
 import { useStore, exportData } from "@/lib/store";
 import {
   dayKey,
@@ -66,18 +66,30 @@ const nav = [
 export default function BodyBurner() {
   const [user, setUser] = useState<User | null>(null),
     [authReady, setAuthReady] = useState(!supabase),
-    [login, setLogin] = useState(false);
+    [login, setLogin] = useState(false),
+    [authNotice, setAuthNotice] = useState("");
   useEffect(() => {
     if (!supabase) return;
-    supabase.auth.getSession().then(({ data }) => {
-      setUser(data.session?.user || null);
-      setAuthReady(true);
-    });
+    let active = true;
     const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!active) return;
       setUser(session?.user || null);
       setAuthReady(true);
     });
-    return () => data.subscription.unsubscribe();
+    restoreSession().then(({ session, error }) => {
+      if (!active) return;
+      setUser(session?.user || null);
+      setAuthNotice(
+        error
+          ? "Your saved sign-in could not be restored. Please sign in again."
+          : "",
+      );
+      setAuthReady(true);
+    });
+    return () => {
+      active = false;
+      data.subscription.unsubscribe();
+    };
   }, []);
   if (!authReady)
     return (
@@ -92,6 +104,7 @@ export default function BodyBurner() {
         key={user?.id || "local"}
         user={user}
         onLogin={() => setLogin(true)}
+        authNotice={authNotice}
       />
       {login && <Login onClose={() => setLogin(false)} />}
     </>
@@ -156,9 +169,11 @@ function Login({ onClose }: { onClose: () => void }) {
 function Workspace({
   user,
   onLogin,
+  authNotice,
 }: {
   user: User | null;
   onLogin: () => void;
+  authNotice: string;
 }) {
   const { state, setState, ready, status, blocked } = useStore(
     user?.id || null,
@@ -174,6 +189,11 @@ function Workspace({
   const props = { state, setState, notify: setToast };
   return (
     <div className="app-shell">
+      {authNotice && (
+        <div className="toast" role="status">
+          {authNotice}
+        </div>
+      )}
       <aside className="sidebar">
         <Brand />
         <div className="workspace-label">YOUR EVERYDAY STRONG</div>

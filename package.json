@@ -11,6 +11,7 @@
     "media:import": "node scripts/import-media.mjs"
   },
   "dependencies": {
+    "@supabase/ssr": "0.12.7",
     "@supabase/supabase-js": "2.117.2",
     "@zxing/browser": "^0.1.5",
     "lucide-react": "^0.577.0",

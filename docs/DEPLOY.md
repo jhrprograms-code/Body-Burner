@@ -48,7 +48,7 @@ Copy the resulting `https://...vercel.app` URL. In Supabase Auth URL configurati
 - For local development only, add `http://localhost:3000`.
 - Only add trusted preview origins, not an unrestricted redirect wildcard.
 
-Open Body Burner, enter any email you control, and follow its confirmation link. Email links use the Supabase browser client's default implicit flow. Confirm your profile and manually chosen nutrition targets under Settings.
+Open Body Burner, enter any email you control, and follow its confirmation link in the same browser that requested it. The app stores the session in a persistent, same-site cookie and refreshes it through the Next.js proxy. Confirm your profile and manually chosen nutrition targets under Settings. Closing and reopening the same non-private browser should restore the account; private/incognito sessions and a different browser profile do not share the cookie.
 
 ## 4. Configure food and AI services
 
