@@ -12,7 +12,7 @@
 
 ## Automated coverage
 
-The tests check portion scaling and invalid portions; empty nutrient totals; starting-weight calibration; successful versus incomplete/unknown-effort/painful sets; limited load increments at light weights; 7-day program structure and dumbbell substitutions; comparable weight windows; completed-set volume; calendar boundaries; OFF missing and zero values; kJ conversion; USDA nutrient-ID/unit handling; liquid serving units; media licence confirmation, path traversal rejection and hashed asset imports; request byte limits; malformed JSON; safe error messages; anonymous API rejection; and explicit unavailable-service responses.
+The tests check portion scaling and invalid portions; empty nutrient totals; starting-weight calibration; successful versus incomplete/unknown-effort/painful sets; limited load increments at light weights; the six-training-day/one-recovery-day program, 80–90 minute targets and dumbbell substitutions; comparable weight windows; completed-set volume; calendar boundaries; OFF missing and zero values; kJ conversion; USDA nutrient-ID/unit handling; liquid serving units; media licence confirmation, path traversal rejection and hashed asset imports; request byte limits; malformed JSON; safe error messages; anonymous API rejection; and explicit unavailable-service responses.
 
 ## Not yet verified
 

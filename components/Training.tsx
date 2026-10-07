@@ -27,6 +27,7 @@ import {
   newExercise,
   sessionVolume,
   uid,
+  WORKOUT_DURATION,
   weekDates,
   type Exercise,
   type Session,
@@ -94,14 +95,25 @@ export default function Training({ state, setState, notify }: StoreProps) {
         (sum, e) => sum + e.sets.filter((s) => s.done).length,
         0,
       ) || 0,
-    all = active?.exercises.reduce((sum, e) => sum + e.sets.length, 0) || 0;
+    all = active?.exercises.reduce((sum, e) => sum + e.sets.length, 0) || 0,
+    elapsedMinutes = active
+      ? Math.floor((clock - active.startedAt) / 60000)
+      : 0,
+    durationMessage =
+      elapsedMinutes < 80
+        ? `${80 - elapsedMinutes} min until target window`
+        : elapsedMinutes <= 90
+          ? "80–90 min target reached"
+          : "90 min reached — finish safely; do not add extra work";
   return (
     <>
       <Heading
         eyebrow="SHOW UP. GET STRONGER."
         title={active ? "One good set at a time." : "Your week. Your work."}
         text={
-          active ? active.name : "A balanced week of training and recovery."
+          active
+            ? active.name
+            : "Six focused gym days, followed by one recovery day."
         }
         action={
           <button className="secondary" onClick={() => setLibrary(true)}>
@@ -116,7 +128,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
             <div className="row">
               <span className="status-dot pulse" />
               <strong>
-                {Math.floor((clock - active.startedAt) / 60000)}:
+                {elapsedMinutes}:
                 {String(
                   Math.floor((clock - active.startedAt) / 1000) % 60,
                 ).padStart(2, "0")}
@@ -124,6 +136,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
               <span className="muted">
                 {completed} / {all} sets
               </span>
+              <span className="muted small">{durationMessage}</span>
             </div>
             <div className="row">
               <button
@@ -486,10 +499,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
                       </span>
                       <span>
                         <Clock size={15} />
-                        {state.profile.experience === "new"
-                          ? "30–45"
-                          : "45–60"}{" "}
-                        min
+                        {day.duration}
                       </span>
                     </div>
                     <button className="primary" onClick={start}>
@@ -544,10 +554,10 @@ export default function Training({ state, setState, notify }: StoreProps) {
                 })}
               </div>
               <p className="muted small">
-                Editable starter template, not a clinical prescription. Warm up
-                with easy movement and lighter practice sets. Rest roughly
-                90–180 seconds as needed. Change training days and equipment in
-                Settings.
+                Target {WORKOUT_DURATION}: about 10 minutes to warm up, 60–65
+                minutes for the listed resistance work, and 10–15 minutes of
+                easy conditioning or cooldown. Rest roughly 90–180 seconds as
+                needed. The plan is editable and is not a clinical prescription.
               </p>
               {state.profile.equipment === "bodyweight" && (
                 <p className="notice">

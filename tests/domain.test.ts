@@ -87,25 +87,48 @@ test("blank and bodyweight loads are not treated as a calibrated barbell load", 
   assert.equal(loadSuggestion(sets({ weight: "" })).weight, "");
   assert.doesNotMatch(loadSuggestion(sets({ weight: "0" })).text, /Consider/);
 });
-test("plans always span seven days with the requested lifting count", () => {
-  for (const days of [3, 4, 5] as const) {
-    const week = buildWeek({ ...emptyState().profile, days });
-    assert.equal(week.length, 7);
-    assert.equal(week.filter((d) => d.ids.length).length, days);
-    for (const id of week.flatMap((d) => d.ids))
-      assert.ok(exercises.some((e) => e.id === id));
-  }
+test("plan has six 80–90 minute gym days and one recovery day", () => {
+  const week = buildWeek(emptyState().profile);
+  assert.equal(week.length, 7);
+  assert.deepEqual(
+    week.map((day) => day.name),
+    [
+      "Push A",
+      "Pull A",
+      "Legs A",
+      "Push B",
+      "Pull B",
+      "Legs B",
+      "Recovery day",
+    ],
+  );
+  const training = week.filter((day) => day.ids.length);
+  assert.equal(training.length, 6);
+  assert.ok(training.every((day) => day.duration === "80–90 min"));
+  assert.equal(week[6].duration, null);
+  for (const id of week.flatMap((day) => day.ids))
+    assert.ok(exercises.some((exercise) => exercise.id === id));
 });
 test("dumbbell substitution removes machine and cable movements from starter plan", () => {
-  for (const days of [3, 4, 5] as const) {
-    const ids = buildWeek({
-      ...emptyState().profile,
-      days,
-      equipment: "dumbbells",
-    }).flatMap((d) => d.ids);
-    for (const id of ["E021", "E029", "E049", "E142", "E112"])
-      assert.ok(!ids.includes(id));
-  }
+  const ids = buildWeek({
+    ...emptyState().profile,
+    equipment: "dumbbells",
+  }).flatMap((d) => d.ids);
+  for (const id of [
+    "E021",
+    "E029",
+    "E049",
+    "E084",
+    "E091",
+    "E112",
+    "E113",
+    "E128",
+    "E141",
+    "E142",
+    "E143",
+    "E154",
+  ])
+    assert.ok(!ids.includes(id));
 });
 test("weight trend needs enough observations in both comparable weeks", () => {
   const items = [0, 1, 2, 7, 8, 9].map((d, i) => ({

@@ -43,6 +43,10 @@ export function useStore(owner: string | null) {
           !Array.isArray(next.sessions)
         )
           throw new Error("Saved data could not be read.");
+        next = {
+          ...next,
+          profile: { ...next.profile, days: 6 },
+        };
         if (alive) {
           baseline.current = JSON.stringify(next);
           setState(next);

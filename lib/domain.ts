@@ -30,7 +30,7 @@ export type Profile = {
   protein: number;
   carbs: number;
   fat: number;
-  days: 3 | 4 | 5;
+  days: 6;
   equipment: "gym" | "dumbbells" | "bodyweight";
   experience: "new" | "regular";
   limitations: string;
@@ -97,7 +97,7 @@ export const emptyState = (): State => ({
     protein: 0,
     carbs: 0,
     fat: 0,
-    days: 3,
+    days: 6,
     equipment: "gym",
     experience: "new",
     limitations: "",
@@ -152,57 +152,62 @@ export function scaleFood(food: Food, grams: number): Food {
     ),
   };
 }
-export type PlanDay = { name: string; focus: string; ids: string[] };
+export const WORKOUT_DURATION = "80–90 min";
+export type PlanDay = {
+  name: string;
+  focus: string;
+  ids: string[];
+  duration: typeof WORKOUT_DURATION | null;
+};
 const rest: PlanDay = {
-  name: "Active recovery",
-  focus: "An easy walk, gentle mobility, or complete rest.",
+  name: "Recovery day",
+  focus: "Complete rest, or an easy walk and gentle mobility if comfortable.",
   ids: [],
+  duration: null,
 };
 export function buildWeek(p: Profile): PlanDay[] {
-  const upper = ["E002", "E021", "E029", "E082", "E101"];
-  const lower = ["E049", "E062", "E142", "E152", "E124"];
-  const fullA = ["E042", "E002", "E021", "E062", "E124"];
-  const fullB = ["E049", "E082", "E029", "E072", "E101"];
   const mk = (
     name: string,
     ids: string[],
-    focus = "Controlled reps. Leave 2–3 reps in reserve.",
-  ): PlanDay => ({ name, focus, ids });
-  let days =
-    p.days === 5
-      ? [
-          mk("Upper body", upper),
-          mk("Lower body", lower),
-          rest,
-          mk("Push", ["E003", "E082", "E090", "E112"]),
-          mk("Pull", ["E021", "E029", "E096", "E101"]),
-          mk("Legs & core", lower),
-          rest,
-        ]
-      : p.days === 4
-        ? [
-            mk("Upper A", upper),
-            mk("Lower A", lower),
-            rest,
-            mk("Upper B", ["E003", "E029", "E082", "E090", "E104"]),
-            mk("Lower B", ["E042", "E062", "E142", "E152", "E124"]),
-            rest,
-            rest,
-          ]
-        : [
-            mk("Full body A", fullA),
-            rest,
-            mk("Full body B", fullB),
-            rest,
-            mk("Full body A", fullA),
-            rest,
-            rest,
-          ];
+    focus = "Controlled reps. Leave 2–3 reps in reserve; stop for pain.",
+  ): PlanDay => ({ name, focus, ids, duration: WORKOUT_DURATION });
+  let days = [
+    mk("Push A", ["E001", "E003", "E082", "E015", "E090", "E112", "E124"]),
+    mk("Pull A", ["E021", "E029", "E032", "E039", "E096", "E101", "E137"]),
+    mk("Legs A", ["E043", "E061", "E049", "E142", "E152", "E154", "E124"]),
+    mk("Push B", ["E002", "E004", "E084", "E017", "E091", "E113", "E128"]),
+    mk("Pull B", ["E025", "E035", "E034", "E037", "E097", "E103", "E138"]),
+    mk("Legs B", ["E044", "E070", "E055", "E141", "E143", "E149", "E127"]),
+    rest,
+  ];
   const dumbbell: Record<string, string> = {
+    E001: "E002",
+    E004: "E003",
     E021: "E031",
     E029: "E030",
+    E032: "E038",
+    E039: "E096",
+    E043: "E042",
+    E044: "E045",
     E049: "E042",
+    E061: "E062",
+    E070: "E071",
+    E084: "E082",
+    E091: "E090",
+    E097: "E096",
+    E103: "E101",
+    E113: "E114",
+    E128: "E129",
+    E141: "E060",
     E142: "E072",
+    E143: "E067",
+    E149: "E152",
+    E154: "E156",
+    E127: "E124",
+    E025: "E031",
+    E035: "E030",
+    E034: "E031",
+    E037: "E038",
     E112: "E114",
   };
   const body: Record<string, string> = {
@@ -221,6 +226,34 @@ export function buildWeek(p: Profile): PlanDay[] {
     E112: "E008",
     E096: "E125",
     E104: "E125",
+    E001: "E006",
+    E004: "E007",
+    E015: "E009",
+    E017: "E006",
+    E025: "E033",
+    E032: "E033",
+    E034: "E033",
+    E035: "E033",
+    E037: "E125",
+    E039: "E125",
+    E043: "E041",
+    E044: "E051",
+    E055: "E054",
+    E061: "E067",
+    E070: "E072",
+    E084: "E089",
+    E091: "E093",
+    E097: "E125",
+    E103: "E101",
+    E113: "E010",
+    E127: "E129",
+    E128: "E129",
+    E137: "E140",
+    E138: "E140",
+    E141: "E060",
+    E143: "E147",
+    E149: "E150",
+    E154: "E156",
   };
   days = days.map((d) => ({
     ...d,

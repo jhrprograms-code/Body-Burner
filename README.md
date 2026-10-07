@@ -5,7 +5,7 @@ A private, mobile-friendly fitness web app for you and friends. Black-and-white 
 ## What is implemented
 
 - **Today:** a weekly calendar, daily calorie/macronutrient overview, workout entry point and completion checklist.
-- **Training:** 3-, 4- or 5-day starter routines arranged across seven days including recovery; gym, dumbbell or bodyweight options; 200 searchable exercises; editable sets, loads, reps and RIR; rest timer; persistent active session; completed session history and summaries.
+- **Training:** a six-day push/pull/legs rotation with Sunday recovery and an 80–90 minute session target; gym, dumbbell or bodyweight options; 200 searchable exercises; editable sets, loads, reps and RIR; rest timer; persistent active session; completed session history and summaries.
 - **Progression:** compare previous sets; propose a small increase only after all working sets reach the upper rep range with effort recorded and no reported pain. Starting loads are calibrated, never inferred from body size or photos.
 - **Nutrition:** breakfast, lunch and dinner logs, manual nutrients, saved foods/meals, portions in grams or millilitres, calorie/protein/carbohydrate/fat budgets, previous-day logs, Open Food Facts packaged-food/barcode lookup, USDA whole-food search, Kirkland search shortcut, camera barcode scanning.
 - **AI meals:** optional compressed image and/or description sent to Gemini, structured estimate with calorie range and assumptions, editable items and a confirmation step. Nothing is logged automatically. Meal photos are not stored by the app.

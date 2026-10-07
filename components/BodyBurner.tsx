@@ -325,6 +325,7 @@ function Dashboard({
   const totals = totalFoods(state.foods.filter((f) => f.date === date)),
     p = state.profile,
     week = buildWeek(p),
+    workoutDays = week.filter((day) => day.ids.length).length,
     index = (new Date(date + "T12:00:00").getDay() + 6) % 7,
     today = week[index];
   const remaining = p.calories ? Math.max(0, p.calories - totals.calories) : 0,
@@ -404,14 +405,14 @@ function Dashboard({
                 <span className="status-dot" />
                 {today.ids.length ? "YOUR NEXT SESSION" : "RECOVER & RECHARGE"}
               </span>
-              <span className="muted small">{p.days} day plan</span>
+              <span className="muted small">{workoutDays} day plan</span>
             </div>
             <div className="hero-content">
               <div>
                 <h2>{state.active ? state.active.name : today.name}</h2>
                 <p>
                   {today.ids.length
-                    ? `${today.ids.length} exercises · ${p.experience === "new" ? "30–45" : "45–60"} min · ${p.equipment === "gym" ? "Gym" : "At home"}`
+                    ? `${today.ids.length} exercises · ${today.duration} · ${p.equipment === "gym" ? "Gym" : "At home"}`
                     : today.focus}
                 </p>
                 <button className="primary" onClick={() => go("Training")}>
@@ -496,7 +497,7 @@ function Dashboard({
               </div>
               <strong>
                 {sessions.length}
-                <small> / {p.days}</small>
+                <small> / {workoutDays}</small>
               </strong>
               <span className="muted">Last 7 days</span>
             </div>

@@ -153,17 +153,12 @@ export default function Settings({
           </Section>
           <Section title="Your training rhythm">
             <div className="form-grid">
-              <Field label="Lifting days per week">
-                <select
-                  value={profile.days}
-                  onChange={(e) => change("days", Number(e.target.value))}
-                >
-                  <option value="3">3 — Full body</option>
-                  <option value="4">4 — Upper / lower</option>
-                  <option value="5">
-                    5 — Upper / lower + push / pull / legs
-                  </option>
-                </select>
+              <Field label="Weekly schedule">
+                <input
+                  readOnly
+                  value="6 gym days + 1 recovery day"
+                  aria-label="Weekly schedule"
+                />
               </Field>
               <Field label="Available equipment">
                 <select
@@ -176,6 +171,10 @@ export default function Settings({
                 </select>
               </Field>
             </div>
+            <p className="muted small">
+              Push, pull and legs repeat twice from Monday to Saturday. Sunday
+              is the recovery day. Each gym session targets 80–90 minutes.
+            </p>
             <Field label="Training experience">
               <select
                 value={profile.experience}
