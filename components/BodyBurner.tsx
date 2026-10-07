@@ -104,8 +104,8 @@ function Login({ onClose }: { onClose: () => void }) {
   return (
     <Modal title="Your private space" onClose={onClose}>
       <p className="muted">
-        Sign in with your invited email. Your training, meals and photos belong
-        to your account.
+        Enter your email to create or open your private account. Your training,
+        meals and photos belong to your account.
       </p>
       {!supabase ? (
         <div className="notice">
@@ -121,13 +121,13 @@ function Login({ onClose }: { onClose: () => void }) {
             const { error } = await supabase!.auth.signInWithOtp({
               email,
               options: {
-                shouldCreateUser: false,
+                shouldCreateUser: true,
                 emailRedirectTo: window.location.origin,
               },
             });
             setMessage(
               error
-                ? "Unable to send a link. Check that the owner has invited this email."
+                ? "Unable to send a sign-in link. Check the email address and try again."
                 : "Check your inbox for a sign-in link.",
             );
             setBusy(false);

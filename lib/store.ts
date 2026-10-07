@@ -56,7 +56,7 @@ export function useStore(owner: string | null) {
           setReady(true);
           setStatus(
             owner
-              ? "Could not open your account. Check your invitation and connection, then reload."
+              ? "Could not open your account. Check your connection, then reload."
               : "Could not load your saved data. Reload before editing.",
           );
         }

@@ -11,9 +11,9 @@ A private, mobile-friendly fitness web app for you and friends. Black-and-white 
 - **AI meals:** optional compressed image and/or description sent to Gemini, structured estimate with calorie range and assumptions, editable items and a confirmation step. Nothing is logged automatically. Meal photos are not stored by the app.
 - **Progress:** weight and waist measurements, steps, weight chart, comparable weekly averages, private side-by-side photo album (24 images), weekly subjective check-ins.
 - **Coach:** optional AI guidance using selected recent account logs, plus a deterministic weekly snapshot that needs no AI. Progress photos are never submitted to the coach.
-- **Accounts:** email-link authentication, invite-only membership, owner-scoped database/storage policies, private expiring photo URLs, state version checks, export and journal erasure.
-- **Local mode:** manual tracking and progress photos work without keys. Cloud journals are separate from the local browser journal. Online food lookup and AI require an invited account.
-- **Licensed media:** MP4 demonstration playback and a validated GIF importer. The owner supplied a purchased Vital Animations pack; 402 files are installed in private Supabase Storage, with 101 checked movement matches connected. The owner’s first app account still needs setup. See [Vital integration status](docs/VITAL-INTEGRATION.md).
+- **Accounts:** open email-link signup with email confirmation, automatic membership, owner-scoped database/storage policies, private expiring photo URLs, state version checks, export and journal erasure.
+- **Local mode:** manual tracking and progress photos work without keys. Cloud journals are separate from the local browser journal. Online food lookup and AI require a verified account.
+- **Licensed media:** MP4 demonstration playback and a validated GIF importer. The owner supplied a purchased Vital Animations pack; 402 files are installed in private Supabase Storage, with 101 checked movement matches connected. See [Vital integration status](docs/VITAL-INTEGRATION.md).
 
 ## Run locally
 
@@ -38,7 +38,7 @@ npm start
 
 1. Create a **private GitHub repository** and push this directory.
 2. Create a Supabase project and run `supabase/migrations/001_body_burner.sql` once.
-3. Configure invited users, email delivery and redirect URLs as described in the deployment guide.
+3. Configure email delivery and redirect URLs as described in the deployment guide.
 4. Import the GitHub repository into Vercel; configure environment variables in its dashboard and redeploy.
 5. Add your Google Gemini key and enable AI only after reviewing provider privacy/billing settings. USDA needs a separate free API key; Open Food Facts needs an app contact email.
 6. Install the purchased Vital animations using reviewed exercise matches. See [VITAL-INTEGRATION.md](docs/VITAL-INTEGRATION.md). The separate GIF importer is documented in [MEDIA.md](docs/MEDIA.md).

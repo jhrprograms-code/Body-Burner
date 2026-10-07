@@ -49,7 +49,7 @@ export default function ExerciseMedia({
         if (cancelled) return;
         if (error || !data?.signedUrl) {
           setMessage(
-            "Video access is available to invited members. Ask the app owner to enable your account.",
+            "Video access could not be verified. Sign out, sign in again, and retry.",
           );
           return;
         }

@@ -19,19 +19,9 @@ Use your own GitHub authentication locally. `.env.local`, dependencies, build ou
 
 1. Create a new project, preferably in a region appropriate to you and your friends. Keep its database password private.
 2. Open **SQL Editor** and run the complete `supabase/migrations/001_body_burner.sql` file once. This creates `members`, `app_state`, request counters, restricted functions and a private `progress` image bucket with owner policies.
-3. In **Authentication**, disable public sign-ups. Body Burner does not expose a self-signup flow.
+3. In **Authentication**, keep **Allow new users to sign up**, **Confirm email**, and the **Email** provider enabled. New verified email users receive membership automatically.
 4. Configure a custom SMTP provider for reliable delivery to your friends. Supabase's default mail service has restrictions and is not a production email solution. Use a provider whose cost/privacy terms you accept.
-5. Under Authentication users, invite your own email and each friend's email. For each created user UUID, run this in the SQL Editor with the real UUID:
-
-```sql
-insert into public.members(user_id)
-values ('PASTE-INVITED-USERS-UUID-HERE')
-on conflict do nothing;
-```
-
-Only an app administrator should edit membership. An Auth user without membership cannot read/write logs, upload progress photos, search food or use the AI API.
-
-6. Copy the project URL and its **publishable/anon** key into Vercel. Do not use a service-role key. This app never needs a service-role secret in normal operation.
+5. Copy the project URL and its **publishable/anon** key into Vercel. Do not use a service-role key. This app never needs a service-role secret in normal operation.
 
 ## 3. Deploy Vercel
 
@@ -39,15 +29,15 @@ Import the private GitHub repository into Vercel. Select the Next.js framework p
 
 Add these variables in **Project Settings → Environment Variables**:
 
-| Name | Value | Visibility |
-|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Public; expected |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase publishable/anon key | Public; protected by RLS |
-| `FOOD_API_CONTACT` | Your app support/contact email | Server-only configuration |
-| `USDA_API_KEY` | FoodData Central API key | Secret, server only |
-| `GEMINI_API_KEY` | Google AI Studio API key | Secret, server only |
-| `GEMINI_MODEL` | `gemini-3.1-flash-lite` | Server configuration |
-| `AI_ENABLED` | `true` only when ready | Server configuration |
+| Name                            | Value                          | Visibility                |
+| ------------------------------- | ------------------------------ | ------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Your Supabase project URL      | Public; expected          |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase publishable/anon key  | Public; protected by RLS  |
+| `FOOD_API_CONTACT`              | Your app support/contact email | Server-only configuration |
+| `USDA_API_KEY`                  | FoodData Central API key       | Secret, server only       |
+| `GEMINI_API_KEY`                | Google AI Studio API key       | Secret, server only       |
+| `GEMINI_MODEL`                  | `gemini-3.1-flash-lite`        | Server configuration      |
+| `AI_ENABLED`                    | `true` only when ready         | Server configuration      |
 
 You can deploy with `AI_ENABLED=false` and add AI later. Public variables are embedded at build time, so **redeploy after adding or changing them**. Do not expose production credentials to untrusted preview deployments.
 
@@ -58,7 +48,7 @@ Copy the resulting `https://...vercel.app` URL. In Supabase Auth URL configurati
 - For local development only, add `http://localhost:3000`.
 - Only add trusted preview origins, not an unrestricted redirect wildcard.
 
-Open Body Burner and sign in with an invited email. Email links use the Supabase browser client's default implicit flow. Confirm your profile and manually chosen nutrition targets under Settings.
+Open Body Burner, enter any email you control, and follow its confirmation link. Email links use the Supabase browser client's default implicit flow. Confirm your profile and manually chosen nutrition targets under Settings.
 
 ## 4. Configure food and AI services
 
@@ -80,7 +70,7 @@ Set budget alerts and appropriate provider quotas. This app's request limits are
 
 ## 5. Complete live acceptance testing before inviting friends
 
-Use two distinct invited accounts and one non-member test account. Test in separate browser profiles:
+Use two distinct verified email accounts and one unauthenticated browser profile. Test in separate browser profiles:
 
 - Sign in via email; sign out; verify the second user never sees the first user's logs or cached photos.
 - Log a meal, finish a workout, reload, then open on a second device. Confirm saved values.

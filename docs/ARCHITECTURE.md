@@ -8,7 +8,7 @@ Next.js App Router, React, TypeScript, plain responsive CSS, lucide-react icons,
 
 The initial app starts without fabricated history or personal defaults. An unsigned user writes their journal to localStorage and compressed progress photos to IndexedDB. Logging in mounts a new account workspace; local records are not silently imported into an account.
 
-Authenticated records are stored in one owner-scoped `app_state` JSONB document, limited to 2 MB per account, with an integer version. The store serializes debounced saves through `save_state`. That function compares the expected version atomically; a conflict freezes editing and offers export/reload. Direct table writes by the browser are revoked. Reads use RLS. A membership function checks the invitation table.
+Authenticated records are stored in one owner-scoped `app_state` JSONB document, limited to 2 MB per account, with an integer version. The store serializes debounced saves through `save_state`. That function compares the expected version atomically; a conflict freezes editing and offers export/reload. Direct table writes by the browser are revoked. Reads use RLS. A database trigger gives each verified email signup a membership row, and a membership function gates private services and licensed media.
 
 This document-per-account design is appropriate for a small friends-only first release. A long-lived/multi-year journal or commercial product should migrate food entries, workout sessions, measurements and check-ins to normalized tables with independent versioning and pagination. There is no multi-user shared journal, trainer dashboard or public social feed.
 
@@ -24,7 +24,7 @@ Photo uploads and metadata writes are not one database transaction. If a tab clo
 
 ## APIs and spending
 
-Every online API call requires an invited user. Database request counters use a transaction lock so serverless instances share the same limits. Food lookup is limited to 8 requests globally per UTC minute, 6 per user per minute and 100 per user per UTC day. AI is limited to 20 per user/day, 200 globally/day and 6 per user/minute. Direct authenticated calls to the counter can consume that user's quota but cannot increase it or bypass the API's checks.
+Every online API call requires a verified signed-in user. Database request counters use a transaction lock so serverless instances share the same limits. Food lookup is limited to 8 requests globally per UTC minute, 6 per user per minute and 100 per user per UTC day. AI is limited to 20 per user/day, 200 globally/day and 6 per user/minute. Direct authenticated calls to the counter can consume that user's quota but cannot increase it or bypass the API's checks.
 
 Inputs are bounded; images are MIME/signature checked; output is JSON-schema constrained and Zod validated. API errors do not expose provider response bodies or secrets. Routes return `Cache-Control: no-store`. User text is treated as untrusted by the model prompt. These controls reduce risk but do not make the model infallible. Food estimates always need confirmation.
 

@@ -29,7 +29,7 @@ export async function authorized(request: Request) {
   const member = await client.rpc("is_member");
   if (member.error || !member.data)
     throw new ApiError(
-      "This app is invitation-only. Ask the owner to add your account.",
+      "Your account setup is incomplete. Sign out, sign in again, and retry.",
       403,
     );
   return { client, user: data.user };

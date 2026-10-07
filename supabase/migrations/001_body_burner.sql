@@ -1,4 +1,4 @@
--- Run once in a NEW Supabase project. All user-facing access is invitation-only.
+-- Run once in a NEW Supabase project. Verified email signups receive membership automatically.
 begin;
 create schema if not exists private;
 revoke all on schema private from public, anon;
@@ -13,6 +13,13 @@ create or replace function public.is_member() returns boolean language sql stabl
 $$;
 revoke all on function public.is_member() from public,anon;
 grant execute on function public.is_member() to authenticated;
+create function private.add_new_user_membership() returns trigger language plpgsql security definer set search_path='' as $$
+begin
+ insert into public.members(user_id) values(new.id) on conflict do nothing;
+ return new;
+end $$;
+revoke all on function private.add_new_user_membership() from public,anon,authenticated;
+create trigger add_new_user_membership after insert on auth.users for each row execute function private.add_new_user_membership();
 create table public.app_state (
  user_id uuid primary key references auth.users(id) on delete cascade,
  payload jsonb not null check (jsonb_typeof(payload)='object' and octet_length(payload::text)<=2000000),
@@ -77,7 +84,7 @@ create function public.erase_state() returns void language sql security invoker 
 create function public.consume_request(request_kind text) returns boolean language sql security invoker set search_path='' as $$ select private.consume_request(request_kind); $$;
 revoke all on function public.save_state(jsonb,bigint), public.erase_state(), public.consume_request(text) from public,anon;
 grant execute on function public.save_state(jsonb,bigint), public.erase_state(), public.consume_request(text) to authenticated;
--- Licensed exercise files: invited members may read; no client writes.
+-- Licensed exercise files: signed-in members may read; no client writes.
 create policy member_exercise_media_read on storage.objects for select to authenticated using(bucket_id='exercise-media' and (select public.is_member()));
 
 commit;
