@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { api } from "@/lib/supabase";
 import { compressImage } from "@/lib/store";
+import { commonFoods } from "@/data/common-foods";
+import { foodIcon } from "@/lib/food-icons";
 import {
   dayKey,
   dateOffset,
@@ -151,8 +153,8 @@ export default function Nutrition({
                 ) : (
                   entries.map((food) => (
                     <div className="food-row" key={food.entryId}>
-                      <span className="food-icon">
-                        <Utensils size={17} />
+                      <span className="food-icon food-emoji" aria-hidden="true">
+                        {foodIcon(food.name)}
                       </span>
                       <div className="food-detail">
                         <strong>{food.name}</strong>
@@ -252,7 +254,7 @@ function FoodModal({
   date,
   onClose,
 }: StoreProps & { meal: MealName; date: string; onClose: () => void }) {
-  const [mode, setMode] = useState("Search"),
+  const [mode, setMode] = useState("Foods"),
     [query, setQuery] = useState(""),
     [provider, setProvider] = useState("off"),
     [results, setResults] = useState<Food[]>([]),
@@ -305,8 +307,20 @@ function FoodModal({
           ))}
         </select>
       </div>
+      <div className="nutrition-actions" aria-label="Food logging methods">
+        {[
+          ["Barcode", "Barcode", <ScanBarcode key="barcode" size={18} />],
+          ["AI Scan", "Photo / describe", <Camera key="camera" size={18} />],
+          ["Describe", "Photo / describe", <Utensils key="describe" size={18} />],
+          ["Quick log", "Manual", <Plus key="quick" size={18} />],
+        ].map(([label, target, icon]) => (
+          <button key={label as string} onClick={() => setMode(target as string)}>
+            {icon}{label}
+          </button>
+        ))}
+      </div>
       <div className="tab-pills">
-        {["Search", "Barcode", "Photo / describe", "Manual", "Saved"].map(
+        {["Foods", "Search", "Saved", "Manual", "Photo / describe"].map(
           (t) => (
             <button
               className={mode === t ? "active" : ""}
@@ -326,6 +340,12 @@ function FoodModal({
       </div>
       {selected ? (
         <>
+          {mode === "Foods" && (
+            <FoodLibrary
+              state={state}
+              onSelect={setSelected}
+            />
+          )}
           <button className="text-btn" onClick={() => setSelected(null)}>
             <ArrowLeft size={16} />
             Back to results
@@ -413,8 +433,8 @@ function FoodModal({
                     className="result-row"
                     onClick={() => setSelected(food)}
                   >
-                    <span className="food-icon">
-                      <Utensils size={18} />
+                    <span className="food-icon food-emoji" aria-hidden="true">
+                      {foodIcon(food.name)}
                     </span>
                     <span>
                       <strong>{food.name}</strong>
@@ -639,6 +659,119 @@ function FoodEditor({
     </form>
   );
 }
+function FoodLibrary({
+  state,
+  onSelect,
+}: {
+  state: StoreProps["state"];
+  onSelect: (food: Food) => void;
+}) {
+  const [query, setQuery] = useState("");
+  const [filter, setFilter] = useState<
+    "Smart" | "Favourites" | "Recent" | "All"
+  >("Smart");
+  const recentNames = new Set(
+    [...state.foods]
+      .reverse()
+      .slice(0, 20)
+      .map((item) => item.name.toLowerCase()),
+  );
+  const counts = new Map<string, number>();
+  state.foods.forEach((item) =>
+    counts.set(
+      item.name.toLowerCase(),
+      (counts.get(item.name.toLowerCase()) || 0) + 1,
+    ),
+  );
+  const savedIds = new Set(state.savedFoods.map((item) => item.id));
+  const combined = [...state.savedFoods, ...commonFoods].filter(
+    (item, index, all) =>
+      all.findIndex((candidate) => candidate.id === item.id) === index,
+  );
+  const visible = combined
+    .filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase().trim()),
+    )
+    .filter((item) =>
+      filter === "Favourites"
+        ? savedIds.has(item.id)
+        : filter === "Recent"
+          ? recentNames.has(item.name.toLowerCase())
+          : true,
+    )
+    .toSorted((a, b) =>
+      filter === "Smart"
+        ? (counts.get(b.name.toLowerCase()) || 0) -
+          (counts.get(a.name.toLowerCase()) || 0)
+        : a.name.localeCompare(b.name),
+    );
+  return (
+    <div className="food-library">
+      <div className="search-input food-library-search">
+        <Search size={18} />
+        <input
+          aria-label="Filter food library"
+          placeholder="Search everyday foods"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+      </div>
+      <div className="food-filter-row" aria-label="Food library filters">
+        {(["Smart", "Favourites", "Recent", "All"] as const).map(
+          (item) => (
+            <button
+              key={item}
+              className={filter === item ? "active" : ""}
+              onClick={() => setFilter(item)}
+            >
+              {item}
+            </button>
+          ),
+        )}
+      </div>
+      <div className="library-heading">
+        <strong>{filter === "Smart" ? "Everyday foods" : filter}</strong>
+        <span>{visible.length} items</span>
+      </div>
+      <div className="food-library-list">
+        {visible.map((food) => (
+          <button
+            key={food.id}
+            className="result-row"
+            onClick={() => onSelect(food)}
+          >
+            <span className="food-icon food-emoji" aria-hidden="true">
+              {foodIcon(food.name)}
+            </span>
+            <span>
+              <strong>{food.name}</strong>
+              <small>
+                {food.brand || "Generic"} · {fmt(food.grams)} {food.unit || "g"}
+              </small>
+            </span>
+            <span>
+              {fmt(food.calories)}
+              <small>kcal · {fmt(food.protein)}g P</small>
+            </span>
+            <Plus size={17} />
+          </button>
+        ))}
+      </div>
+      {!visible.length && (
+        <Empty
+          icon={<Search size={25} />}
+          headline="No matching foods yet."
+          text="Try All, search the online databases, or create a manual item."
+        />
+      )}
+      <p className="notice small">
+        Library values are approximate. Confirm brands, cooking method, oil and
+        portion size before logging.
+      </p>
+    </div>
+  );
+}
+
 function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
   const [image, setImage] = useState(""),
     [description, setDescription] = useState(""),

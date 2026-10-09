@@ -964,6 +964,71 @@ main {
   border-radius: 11px;
   flex-shrink: 0;
 }
+.food-emoji {
+  font-family: Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif;
+  font-size: 23px;
+  line-height: 1;
+}
+.nutrition-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 14px 0;
+}
+.nutrition-actions button {
+  min-height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 12px;
+  cursor: pointer;
+}
+.nutrition-actions button:hover {
+  border-color: var(--text);
+}
+.food-library-search {
+  margin: 14px 0 10px;
+}
+.food-filter-row {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.food-filter-row button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 13px;
+  background: transparent;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.food-filter-row button.active {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.library-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 8px;
+}
+.library-heading span {
+  color: var(--muted);
+  font-size: 12px;
+}
+.food-library-list {
+  max-height: min(52vh, 570px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
 .food-row {
   display: flex;
   align-items: center;
