@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import {
   ArrowLeft,
+  ArrowLeftRight,
   ArrowRight,
   ArrowUpRight,
   Check,
@@ -28,7 +29,9 @@ import {
   lastExercise,
   loadSuggestion,
   MUSCLE_CATEGORIES,
+  movePlanDay,
   newExercise,
+  orderPlan,
   sessionVolume,
   targetMuscleBreakdown,
   uid,
@@ -48,11 +51,12 @@ const media = { ...mediaManifest, ...vitalMediaManifest } as Record<
   { url: string; provider: string; license: string }
 >;
 export default function Training({ state, setState, notify }: StoreProps) {
-  const plan = buildWeek(state.profile),
+  const plan = orderPlan(buildWeek(state.profile), state.planOrder),
     [selected, setSelected] = useState((new Date().getDay() + 6) % 7),
     [library, setLibrary] = useState(false),
     [detail, setDetail] = useState<Exercise | null>(null),
     [summary, setSummary] = useState<Session | null>(null),
+    [moving, setMoving] = useState(false),
     [confirm, setConfirm] = useState<"finish" | "discard" | null>(null),
     [clock, setClock] = useState(Date.now());
   useEffect(() => {
@@ -499,6 +503,10 @@ export default function Training({ state, setState, notify }: StoreProps) {
                 </div>
                 <h2>{day.name}</h2>
                 <p>{day.focus}</p>
+                <button className="secondary" onClick={() => setMoving(true)}>
+                  <ArrowLeftRight size={16} />
+                  Move this day
+                </button>
                 {day.ids.length ? (
                   <>
                     <div className="row plan-meta">
@@ -673,6 +681,47 @@ export default function Training({ state, setState, notify }: StoreProps) {
             }
           }}
         />
+      )}
+      {moving && (
+        <Modal
+          title={`Move ${day.name}`}
+          onClose={() => setMoving(false)}
+        >
+          <p className="muted">
+            Choose another weekday. The two days will exchange places, so your
+            six training days and one recovery day stay intact.
+          </p>
+          <div className="move-day-grid">
+            {dates.map((date, target) => {
+              if (target === selected) return null;
+              const label = new Date(date + "T12:00:00").toLocaleDateString(
+                "en",
+                { weekday: "long" },
+              );
+              return (
+                <button
+                  className="secondary"
+                  key={date}
+                  onClick={() => {
+                    const sourceLabel = new Date(
+                      dates[selected] + "T12:00:00",
+                    ).toLocaleDateString("en", { weekday: "long" });
+                    setState((s) => ({
+                      ...s,
+                      planOrder: movePlanDay(s.planOrder, selected, target),
+                    }));
+                    setSelected(target);
+                    setMoving(false);
+                    notify(`${day.name} moved from ${sourceLabel} to ${label}.`);
+                  }}
+                >
+                  <span>{label}</span>
+                  <small>{plan[target].name}</small>
+                </button>
+              );
+            })}
+          </div>
+        </Modal>
       )}
       {detail && (
         <Modal title={detail.name} onClose={() => setDetail(null)}>

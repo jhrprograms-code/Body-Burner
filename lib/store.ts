@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { supabase } from "./supabase";
-import { emptyState, type State } from "./domain";
+import { emptyState, normalizePlanOrder, type State } from "./domain";
 const LOCAL_KEY = "body-burner-local-v1";
 export function useStore(owner: string | null) {
   const [state, setState] = useState<State>(emptyState);
@@ -46,6 +46,7 @@ export function useStore(owner: string | null) {
         next = {
           ...next,
           profile: { ...next.profile, days: 6 },
+          planOrder: normalizePlanOrder(next.planOrder),
         };
         if (alive) {
           baseline.current = JSON.stringify(next);

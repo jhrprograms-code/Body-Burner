@@ -166,6 +166,7 @@ export type State = {
   measurements: Measurement[];
   checkins: Checkin[];
   photos: Photo[];
+  planOrder: number[];
 };
 export const emptyState = (): State => ({
   version: 1,
@@ -192,6 +193,7 @@ export const emptyState = (): State => ({
   measurements: [],
   checkins: [],
   photos: [],
+  planOrder: [0, 1, 2, 3, 4, 5, 6],
 });
 export const uid = () => crypto.randomUUID();
 export function dayKey(d = new Date()) {
@@ -242,6 +244,39 @@ export type PlanDay = {
   ids: string[];
   duration: typeof WORKOUT_DURATION | null;
 };
+const DEFAULT_PLAN_ORDER = [0, 1, 2, 3, 4, 5, 6];
+
+export function normalizePlanOrder(order: unknown): number[] {
+  if (
+    !Array.isArray(order) ||
+    order.length !== 7 ||
+    order.some((value) => !Number.isInteger(value) || value < 0 || value > 6) ||
+    new Set(order).size !== 7
+  )
+    return [...DEFAULT_PLAN_ORDER];
+  return [...order];
+}
+
+export function orderPlan(days: PlanDay[], order: unknown): PlanDay[] {
+  return normalizePlanOrder(order).map((index) => days[index]);
+}
+
+/** Moving a plan to another weekday swaps the two days and preserves one recovery day. */
+export function movePlanDay(order: unknown, from: number, to: number) {
+  const next = normalizePlanOrder(order);
+  if (
+    !Number.isInteger(from) ||
+    !Number.isInteger(to) ||
+    from < 0 ||
+    from > 6 ||
+    to < 0 ||
+    to > 6 ||
+    from === to
+  )
+    return next;
+  [next[from], next[to]] = [next[to], next[from]];
+  return next;
+}
 const rest: PlanDay = {
   name: "Recovery day",
   focus: "Complete rest, or an easy walk and gentle mobility if comfortable.",
@@ -295,48 +330,48 @@ export function buildWeek(p: Profile): PlanDay[] {
   };
   const body: Record<string, string> = {
     E002: "E007",
-    E003: "E006",
-    E021: "E125",
-    E029: "E125",
+    E003: "V0238",
+    E021: "V1111",
+    E029: "V1111",
     E082: "E089",
-    E101: "E125",
+    E101: "V1111",
     E049: "E041",
     E042: "E041",
     E062: "E072",
     E142: "E073",
-    E152: "E150",
-    E090: "E199",
-    E112: "E008",
-    E096: "E125",
-    E104: "E125",
-    E001: "E006",
+    E152: "V0281",
+    E090: "V1132",
+    E112: "V0231",
+    E096: "V1111",
+    E104: "V1111",
+    E001: "V0238",
     E004: "E007",
     E015: "E009",
-    E017: "E006",
+    E017: "V0238",
     E025: "E033",
     E032: "E033",
     E034: "E033",
     E035: "E033",
-    E037: "E125",
-    E039: "E125",
+    E037: "V1111",
+    E039: "V1111",
     E043: "E041",
-    E044: "E051",
-    E055: "E054",
-    E061: "E067",
+    E044: "V0250",
+    E055: "V0216",
+    E061: "V0111",
     E070: "E072",
     E084: "E089",
-    E091: "E093",
-    E097: "E125",
+    E091: "V1132",
+    E097: "V1111",
     E103: "E101",
     E113: "E010",
-    E127: "E129",
-    E128: "E129",
+    E127: "V0125",
+    E128: "V0125",
     E137: "E140",
     E138: "E140",
-    E141: "E060",
-    E143: "E147",
-    E149: "E150",
-    E154: "E156",
+    E141: "V0240",
+    E143: "V0124",
+    E149: "V0281",
+    E154: "V1113",
   };
   days = days.map((d) => ({
     ...d,
@@ -351,6 +386,35 @@ export function buildWeek(p: Profile): PlanDay[] {
         ),
       ),
     ],
+  }));
+  const withLicensedMedia: Record<string, string> = {
+    E137: "V0255",
+    E091: "V0137",
+    E037: "V0023",
+    E138: "E121",
+    E055: "V0063",
+    E149: "V0248",
+    E030: "V0189",
+    E038: "V0203",
+    E156: "V0111",
+    E129: "V0125",
+    E045: "E042",
+    E071: "V0111",
+    E060: "V0240",
+    E067: "V0204",
+    E006: "V0238",
+    E199: "V1132",
+    E008: "V0231",
+    E125: "V1111",
+    E150: "V0281",
+    E093: "V1132",
+    E051: "V0250",
+    E054: "V0216",
+    E147: "V0124",
+  };
+  days = days.map((day) => ({
+    ...day,
+    ids: [...new Set(day.ids.map((id) => withLicensedMedia[id] || id))],
   }));
   return days;
 }

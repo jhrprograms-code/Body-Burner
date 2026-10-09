@@ -5,6 +5,8 @@ import {
   emptyState,
   exercises,
   loadSuggestion,
+  movePlanDay,
+  orderPlan,
   scaleFood,
   sessionVolume,
   totalFoods,
@@ -108,6 +110,26 @@ test("plan has six 80–90 minute gym days and one recovery day", () => {
   assert.equal(week[6].duration, null);
   for (const id of week.flatMap((day) => day.ids))
     assert.ok(exercises.some((exercise) => exercise.id === id));
+});
+test("every generated workout exercise has licensed thumbnail and video media", async () => {
+  const media = {
+    ...(await import("../data/media.json", { with: { type: "json" } })).default,
+    ...(await import("../data/vital-media.json", { with: { type: "json" } })).default,
+  } as Record<string, unknown>;
+  for (const equipment of ["gym", "dumbbells", "bodyweight"] as const) {
+    const week = buildWeek({ ...emptyState().profile, equipment });
+    for (const id of week.flatMap((day) => day.ids))
+      assert.ok(media[id], `${equipment} plan exercise ${id} needs media`);
+  }
+});
+test("moving Friday to Sunday swaps the complete plans and keeps one recovery day", () => {
+  const base = buildWeek(emptyState().profile);
+  const order = movePlanDay([0, 1, 2, 3, 4, 5, 6], 4, 6);
+  const moved = orderPlan(base, order);
+  assert.equal(moved[6].name, "Pull B");
+  assert.equal(moved[4].name, "Recovery day");
+  assert.equal(moved.filter((day) => !day.ids.length).length, 1);
+  assert.deepEqual(movePlanDay([0, 0], 4, 6), [0, 1, 2, 3, 6, 5, 4]);
 });
 test("dumbbell substitution removes machine and cable movements from starter plan", () => {
   const ids = buildWeek({

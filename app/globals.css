@@ -1208,6 +1208,26 @@ main {
   margin: 16px auto 0;
   display: flex;
 }
+.move-day-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+.move-day-grid button {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+}
+.move-day-grid small {
+  color: #888;
+  font-size: 10px;
+}
+@media (max-width: 520px) {
+  .move-day-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .field {
   display: flex;
   flex-direction: column;
