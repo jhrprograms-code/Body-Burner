@@ -340,12 +340,6 @@ function FoodModal({
       </div>
       {selected ? (
         <>
-          {mode === "Foods" && (
-            <FoodLibrary
-              state={state}
-              onSelect={setSelected}
-            />
-          )}
           <button className="text-btn" onClick={() => setSelected(null)}>
             <ArrowLeft size={16} />
             Back to results
@@ -354,6 +348,9 @@ function FoodModal({
         </>
       ) : (
         <>
+          {mode === "Foods" && (
+            <FoodLibrary state={state} onSelect={setSelected} />
+          )}
           {(mode === "Search" || mode === "Barcode") && (
             <>
               <form
