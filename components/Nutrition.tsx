@@ -19,6 +19,7 @@ import {
 import { api } from "@/lib/supabase";
 import { compressImage } from "@/lib/store";
 import { commonFoods } from "@/data/common-foods";
+import { recipes } from "@/data/recipes";
 import { foodIcon } from "@/lib/food-icons";
 import {
   dayKey,
@@ -320,7 +321,7 @@ function FoodModal({
         ))}
       </div>
       <div className="tab-pills">
-        {["Foods", "Search", "Saved", "Manual", "Photo / describe"].map(
+        {["Foods", "Recipes", "Search", "Saved", "Manual", "Photo / describe"].map(
           (t) => (
             <button
               className={mode === t ? "active" : ""}
@@ -350,6 +351,15 @@ function FoodModal({
         <>
           {mode === "Foods" && (
             <FoodLibrary state={state} onSelect={setSelected} />
+          )}
+          {mode === "Recipes" && (
+            <RecipeLibrary
+              initialMeal={mealName}
+              onSelect={(recipeMeal, food) => {
+                setMealName(recipeMeal);
+                setSelected(food);
+              }}
+            />
           )}
           {(mode === "Search" || mode === "Barcode") && (
             <>
@@ -544,7 +554,9 @@ function FoodEditor({
   food?: Food;
   onSave: (f: Food) => void;
 }) {
-  const [unit, setUnit] = useState<"g" | "ml">(food?.unit || "g");
+  const [unit, setUnit] = useState<"g" | "ml" | "item" | "serving">(
+    food?.unit || "g",
+  );
   const [name, setName] = useState(food?.name || ""),
     [grams, setGrams] = useState(String(food?.grams || 100)),
     [values, setValues] = useState<Nutrients>({
@@ -584,14 +596,18 @@ function FoodEditor({
       >
         <select
           value={unit}
-          onChange={(e) => setUnit(e.target.value as "g" | "ml")}
+          onChange={(e) =>
+            setUnit(e.target.value as "g" | "ml" | "item" | "serving")
+          }
         >
           <option value="g">Grams (g)</option>
           <option value="ml">Millilitres (ml)</option>
+          <option value="item">Items</option>
+          <option value="serving">Servings</option>
         </select>
       </Field>
       <Field
-        label={`Portion (${unit})`}
+        label={`Amount (${unit === "item" ? "items" : unit === "serving" ? "servings" : unit})`}
         hint="Check cooked versus raw weight and the serving unit on your package."
       >
         <input
@@ -764,6 +780,77 @@ function FoodLibrary({
       <p className="notice small">
         Library values are approximate. Confirm brands, cooking method, oil and
         portion size before logging.
+      </p>
+    </div>
+  );
+}
+
+function RecipeLibrary({
+  initialMeal,
+  onSelect,
+}: {
+  initialMeal: MealName;
+  onSelect: (meal: MealName, food: Food) => void;
+}) {
+  const [meal, setMeal] = useState<MealName>(initialMeal);
+  return (
+    <div className="recipe-library">
+      <div className="food-filter-row recipe-meals" aria-label="Recipe meal">
+        {meals.map((item) => (
+          <button
+            key={item}
+            className={meal === item ? "active" : ""}
+            onClick={() => setMeal(item)}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+      <div className="recipe-grid">
+        {recipes
+          .filter((item) => item.meal === meal)
+          .map((item) => (
+            <article className="recipe-card" key={item.id}>
+              <div className="recipe-title">
+                <span className="food-icon food-emoji" aria-hidden="true">
+                  {foodIcon(item.name)}
+                </span>
+                <div>
+                  <strong>{item.name}</strong>
+                  <small>
+                    {item.minutes} min · {fmt(item.food.calories)} kcal ·{" "}
+                    {fmt(item.food.protein)}g protein
+                  </small>
+                </div>
+              </div>
+              <details>
+                <summary>Ingredients and directions</summary>
+                <h4>Ingredients</h4>
+                <ul>
+                  {item.ingredients.map((ingredient) => (
+                    <li key={ingredient}>{ingredient}</li>
+                  ))}
+                </ul>
+                <h4>Directions</h4>
+                <ol>
+                  {item.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+              </details>
+              <button
+                className="secondary full"
+                onClick={() => onSelect(item.meal, item.food)}
+              >
+                <Plus size={16} />
+                Choose servings and log
+              </button>
+            </article>
+          ))}
+      </div>
+      <p className="notice small">
+        Recipe nutrition is an estimate. Oil, meat cut, brands and serving size
+        can change the result; edit the serving before logging.
       </p>
     </div>
   );

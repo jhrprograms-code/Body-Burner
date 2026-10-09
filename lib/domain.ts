@@ -99,7 +99,7 @@ export type Food = Nutrients & {
   sourceUrl?: string;
   basis: string;
   grams: number;
-  unit?: "g" | "ml";
+  unit?: "g" | "ml" | "item" | "serving";
 };
 export type FoodLog = Food & { date: string; meal: MealName; entryId: string };
 export type Profile = {
@@ -362,7 +362,7 @@ export function lastExercise(sessions: Session[], id: string) {
 }
 export function loadSuggestion(
   previous: WorkoutExercise | undefined,
-  increment = 2.5,
+  increment = 5,
 ) {
   if (!previous)
     return {
@@ -402,7 +402,7 @@ export function loadSuggestion(
   return {
     weight: String(load),
     text: increase
-      ? `All sets reached 12 reps with room to spare. Consider ${fmt(Math.round((load + step) * 100) / 100)} kg next time, if your equipment allows and form stays comfortable.`
+      ? `All sets reached 12 reps with room to spare. Consider ${fmt(Math.round((load + step) * 100) / 100)} lb next time, if your equipment allows and form stays comfortable.`
       : "Repeat the previous load. Build reps within 8–12 before considering an increase.",
   };
 }

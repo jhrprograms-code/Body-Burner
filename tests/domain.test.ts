@@ -63,7 +63,7 @@ test("new lifter gets calibration instead of an invented weight", () =>
 test("full successful sets suggest a small increment without changing entered weight", () => {
   const x = loadSuggestion(sets());
   assert.equal(x.weight, "20");
-  assert.match(x.text, /22 kg/);
+  assert.match(x.text, /22 lb/);
 });
 test("failure, unknown effort and incomplete sessions never trigger increase", () => {
   for (const s of [
@@ -251,6 +251,6 @@ test("liquids keep a millilitre basis instead of silently being labelled grams",
 });
 
 test("light isolation loads never receive an outsized fixed increase", () => {
-  assert.match(loadSuggestion(sets({ weight: "5" })).text, /5.5 kg/);
+  assert.match(loadSuggestion(sets({ weight: "5" })).text, /5.5 lb/);
   assert.doesNotMatch(loadSuggestion(sets({ weight: "2" })).text, /Consider/);
 });

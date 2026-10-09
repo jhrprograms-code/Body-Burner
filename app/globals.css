@@ -1029,6 +1029,63 @@ main {
   overflow-y: auto;
   padding-right: 4px;
 }
+.recipe-meals {
+  margin: 14px 0;
+}
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-height: min(56vh, 620px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.recipe-card {
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 14px;
+  background: var(--surface-2);
+}
+.recipe-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.recipe-title > div {
+  min-width: 0;
+}
+.recipe-title strong,
+.recipe-title small {
+  display: block;
+}
+.recipe-title small {
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.recipe-card details {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+  margin: 13px 0;
+}
+.recipe-card summary {
+  color: var(--text);
+  cursor: pointer;
+}
+.recipe-card h4 {
+  color: var(--text);
+  margin: 12px 0 4px;
+}
+.recipe-card ul,
+.recipe-card ol {
+  margin: 0;
+  padding-left: 19px;
+}
+.recipe-card .secondary {
+  margin-top: 10px;
+}
 .food-row {
   display: flex;
   align-items: center;
@@ -3311,6 +3368,12 @@ main {
     min-height: 50vh;
   }
 }
+@media (max-width: 700px) {
+  .recipe-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

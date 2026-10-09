@@ -233,7 +233,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
                   <div className="set-row set-labels">
                     <span>SET</span>
                     <span>PREVIOUS</span>
-                    <span>KG</span>
+                    <span>LB</span>
                     <span>
                       {timed
                         ? exercise.tracking === "minutes"
@@ -267,14 +267,14 @@ export default function Training({ state, setState, notify }: StoreProps) {
                             : "—"}
                         </span>
                         <input
-                          aria-label={`${exercise.name} set ${si + 1} weight kg`}
+                          aria-label={`${exercise.name} set ${si + 1} weight lb`}
                           disabled={set.done || timed}
                           inputMode="decimal"
                           type="number"
                           min="0"
                           max="1000"
                           step="0.5"
-                          placeholder={timed ? "—" : "kg"}
+                          placeholder={timed ? "—" : "lb"}
                           value={set.weight}
                           onChange={(ev) =>
                             updateExercise(index, (e) => ({
@@ -777,7 +777,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
             </div>
             <div>
               <strong>{fmt(sessionVolume(summary))}</strong>
-              <span>logged kg × reps</span>
+              <span>logged lb × reps</span>
             </div>
           </div>
           {summary.exercises.map((e, i) => (
@@ -791,7 +791,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
                   .map((s) =>
                     exercises.find((x) => x.id === e.exerciseId)?.tracking ===
                     "repetitions"
-                      ? `${s.weight || 0} kg × ${s.reps}`
+                      ? `${s.weight || 0} lb × ${s.reps}`
                       : `${s.reps} ${exercises.find((x) => x.id === e.exerciseId)?.tracking === "minutes" ? "min" : "sec"}`,
                   )
                   .join(" · ") || "No completed sets"}

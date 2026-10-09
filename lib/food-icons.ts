@@ -11,6 +11,12 @@ const ICONS: Array<[RegExp, string]> = [
   [/rice|quinoa/i, "🍚"], [/broccoli/i, "🥦"], [/apple/i, "🍎"],
   [/strawberr/i, "🍓"], [/blueberr/i, "🫐"], [/almond|peanut|nut/i, "🥜"],
   [/lentil|chickpea|bean/i, "🫘"],
+  [/kabuli|pulao|biryani/i, "🍛"], [/rosh|qorma|karahi|shorwa/i, "🍲"],
+  [/mantu|ashak/i, "🥟"], [/bolani|naan|flatbread|wrap/i, "🫓"],
+  [/shawarma|kebab|kofta/i, "🥙"], [/hummus|falafel/i, "🧆"],
+  [/carrot/i, "🥕"], [/cucumber/i, "🥒"], [/eggplant/i, "🍆"],
+  [/pumpkin/i, "🎃"], [/orange/i, "🍊"], [/pear/i, "🍐"],
+  [/mango/i, "🥭"], [/grape|raisin/i, "🍇"], [/date/i, "🌴"],
 ];
 
 export function foodIcon(name: string) {
