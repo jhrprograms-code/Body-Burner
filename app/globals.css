@@ -1204,6 +1204,10 @@ main {
 .modal .primary.full {
   margin-top: 14px;
 }
+.auth-recovery {
+  margin: 16px auto 0;
+  display: flex;
+}
 .field {
   display: flex;
   flex-direction: column;

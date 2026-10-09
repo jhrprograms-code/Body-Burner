@@ -67,13 +67,15 @@ export default function BodyBurner() {
   const [user, setUser] = useState<User | null>(null),
     [authReady, setAuthReady] = useState(!supabase),
     [login, setLogin] = useState(false),
+    [passwordRecovery, setPasswordRecovery] = useState(false),
     [authNotice, setAuthNotice] = useState("");
   useEffect(() => {
     if (!supabase) return;
     let active = true;
-    const { data } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data } = supabase.auth.onAuthStateChange((event, session) => {
       if (!active) return;
       setUser(session?.user || null);
+      if (event === "PASSWORD_RECOVERY") setPasswordRecovery(true);
       setAuthReady(true);
     });
     restoreSession().then(({ session, error }) => {
@@ -107,18 +109,30 @@ export default function BodyBurner() {
         authNotice={authNotice}
       />
       {login && <Login onClose={() => setLogin(false)} />}
+      {passwordRecovery && (
+        <SetPassword onClose={() => setPasswordRecovery(false)} />
+      )}
     </>
   );
 }
 function Login({ onClose }: { onClose: () => void }) {
-  const [email, setEmail] = useState(""),
+  const [mode, setMode] = useState<"signin" | "signup" | "recovery">(
+      "signin",
+    ),
+    [email, setEmail] = useState(""),
+    [password, setPassword] = useState(""),
     [message, setMessage] = useState(""),
     [busy, setBusy] = useState(false);
+  const chooseMode = (next: "signin" | "signup" | "recovery") => {
+    setMode(next);
+    setMessage("");
+    setPassword("");
+  };
   return (
     <Modal title="Your private space" onClose={onClose}>
       <p className="muted">
-        Enter your email to create or open your private account. Your training,
-        meals and photos belong to your account.
+        Sign in once on your iPhone and Body Burner will keep you signed in.
+        Your training, meals and photos belong to your account.
       </p>
       {!supabase ? (
         <div className="notice">
@@ -131,21 +145,69 @@ function Login({ onClose }: { onClose: () => void }) {
             e.preventDefault();
             setBusy(true);
             setMessage("");
-            const { error } = await supabase!.auth.signInWithOtp({
+            if (mode === "recovery") {
+              const { error } = await supabase!.auth.resetPasswordForEmail(
+                email,
+                { redirectTo: window.location.origin },
+              );
+              setMessage(
+                error
+                  ? "Unable to send the password setup email. Please try again."
+                  : "Check your inbox once to set a password. After that, use your password on iPhone without a new email link.",
+              );
+              setBusy(false);
+              return;
+            }
+
+            if (mode === "signup") {
+              const { data, error } = await supabase!.auth.signUp({
+                email,
+                password,
+                options: { emailRedirectTo: window.location.origin },
+              });
+              if (error) {
+                setMessage(error.message);
+              } else if (data.session) {
+                onClose();
+              } else {
+                setMessage(
+                  "Account created. Check your email once to confirm it, then sign in with your password.",
+                );
+              }
+              setBusy(false);
+              return;
+            }
+
+            const { error } = await supabase!.auth.signInWithPassword({
               email,
-              options: {
-                shouldCreateUser: true,
-                emailRedirectTo: window.location.origin,
-              },
+              password,
             });
-            setMessage(
-              error
-                ? "Unable to send a sign-in link. Check the email address and try again."
-                : "Check your inbox for a sign-in link.",
-            );
+            if (error) {
+              setMessage(
+                "Email or password is incorrect. If you previously used email links, choose Set up / reset password below.",
+              );
+            } else {
+              onClose();
+            }
             setBusy(false);
           }}
         >
+          <div className="tab-pills" aria-label="Account action">
+            <button
+              type="button"
+              className={mode === "signin" ? "active" : ""}
+              onClick={() => chooseMode("signin")}
+            >
+              Sign in
+            </button>
+            <button
+              type="button"
+              className={mode === "signup" ? "active" : ""}
+              onClick={() => chooseMode("signup")}
+            >
+              Create account
+            </button>
+          </div>
           <Field label="Email address">
             <input
               autoFocus
@@ -156,13 +218,98 @@ function Login({ onClose }: { onClose: () => void }) {
               placeholder="you@example.com"
             />
           </Field>
+          {mode !== "recovery" && (
+            <Field
+              label="Password"
+              hint={mode === "signup" ? "Use at least 8 characters." : undefined}
+            >
+              <input
+                type="password"
+                required
+                minLength={8}
+                autoComplete={
+                  mode === "signup" ? "new-password" : "current-password"
+                }
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Your password"
+              />
+            </Field>
+          )}
           <button className="primary full" disabled={busy}>
-            {busy ? "Sending…" : "Send sign-in link"}
+            {busy
+              ? "Please wait…"
+              : mode === "signin"
+                ? "Sign in"
+                : mode === "signup"
+                  ? "Create account"
+                  : "Email password setup link"}
             <ArrowRight size={17} />
           </button>
+          {mode === "signin" && (
+            <button
+              type="button"
+              className="text-btn auth-recovery"
+              onClick={() => chooseMode("recovery")}
+            >
+              Set up or reset password
+            </button>
+          )}
+          {mode === "recovery" && (
+            <button
+              type="button"
+              className="text-btn auth-recovery"
+              onClick={() => chooseMode("signin")}
+            >
+              Back to sign in
+            </button>
+          )}
         </form>
       )}
       {message && <p role="status">{message}</p>}
+    </Modal>
+  );
+}
+
+function SetPassword({ onClose }: { onClose: () => void }) {
+  const [password, setPassword] = useState(""),
+    [message, setMessage] = useState(""),
+    [busy, setBusy] = useState(false);
+  return (
+    <Modal title="Choose your password" onClose={onClose}>
+      <p className="muted">
+        Set this once, then use your email and password on your iPhone.
+      </p>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          if (!supabase) return;
+          setBusy(true);
+          setMessage("");
+          const { error } = await supabase.auth.updateUser({ password });
+          if (error) setMessage(error.message);
+          else onClose();
+          setBusy(false);
+        }}
+      >
+        <Field label="New password" hint="Use at least 8 characters.">
+          <input
+            autoFocus
+            type="password"
+            required
+            minLength={8}
+            autoComplete="new-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="New password"
+          />
+        </Field>
+        <button className="primary full" disabled={busy}>
+          {busy ? "Saving…" : "Save password"}
+          <ArrowRight size={17} />
+        </button>
+      </form>
+      {message && <ErrorNote message={message} />}
     </Modal>
   );
 }
