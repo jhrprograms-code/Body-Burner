@@ -20,7 +20,12 @@ import {
   Utensils,
   Weight,
 } from "lucide-react";
-import { restoreSession, supabase } from "@/lib/supabase";
+import {
+  isPasswordRecoveryUrl,
+  PASSWORD_RECOVERY_KEY,
+  restoreSession,
+  supabase,
+} from "@/lib/supabase";
 import { useStore, exportData } from "@/lib/store";
 import {
   dayKey,
@@ -81,6 +86,11 @@ export default function BodyBurner() {
     restoreSession().then(({ session, error }) => {
       if (!active) return;
       setUser(session?.user || null);
+      const pendingRecovery =
+        typeof window !== "undefined" &&
+        (isPasswordRecoveryUrl(window.location.href) ||
+          window.localStorage.getItem(PASSWORD_RECOVERY_KEY) === "pending");
+      if (session && pendingRecovery) setPasswordRecovery(true);
       setAuthNotice(
         error
           ? "Your saved sign-in could not be restored. Please sign in again."
@@ -155,6 +165,8 @@ function Login({ onClose }: { onClose: () => void }) {
                   ? "Unable to send the password setup email. Please try again."
                   : "Check your inbox once to set a password. After that, use your password on iPhone without a new email link.",
               );
+              if (!error)
+                window.localStorage.setItem(PASSWORD_RECOVERY_KEY, "pending");
               setBusy(false);
               return;
             }
@@ -171,7 +183,7 @@ function Login({ onClose }: { onClose: () => void }) {
                 onClose();
               } else {
                 setMessage(
-                  "Account created. Check your email once to confirm it, then sign in with your password.",
+                  "If this is a new email address, check your inbox once to confirm it. If the account already exists, use Sign in or Set up / reset password.",
                 );
               }
               setBusy(false);
@@ -273,6 +285,7 @@ function Login({ onClose }: { onClose: () => void }) {
 
 function SetPassword({ onClose }: { onClose: () => void }) {
   const [password, setPassword] = useState(""),
+    [confirmation, setConfirmation] = useState(""),
     [message, setMessage] = useState(""),
     [busy, setBusy] = useState(false);
   return (
@@ -284,11 +297,19 @@ function SetPassword({ onClose }: { onClose: () => void }) {
         onSubmit={async (e) => {
           e.preventDefault();
           if (!supabase) return;
+          if (password !== confirmation) {
+            setMessage("The two passwords do not match.");
+            return;
+          }
           setBusy(true);
           setMessage("");
           const { error } = await supabase.auth.updateUser({ password });
           if (error) setMessage(error.message);
-          else onClose();
+          else {
+            window.localStorage.removeItem(PASSWORD_RECOVERY_KEY);
+            window.history.replaceState({}, "", window.location.pathname);
+            onClose();
+          }
           setBusy(false);
         }}
       >
@@ -302,6 +323,17 @@ function SetPassword({ onClose }: { onClose: () => void }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="New password"
+          />
+        </Field>
+        <Field label="Confirm new password">
+          <input
+            type="password"
+            required
+            minLength={8}
+            autoComplete="new-password"
+            value={confirmation}
+            onChange={(e) => setConfirmation(e.target.value)}
+            placeholder="Type the same password again"
           />
         </Field>
         <button className="primary full" disabled={busy}>

@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { parseLegacySession } from "../lib/supabase";
+import { isPasswordRecoveryUrl, parseLegacySession } from "../lib/supabase";
 
 test("reads the access and refresh tokens from a legacy browser session", () => {
   assert.deepEqual(
@@ -23,4 +23,17 @@ test("rejects missing, malformed, or incomplete legacy sessions", () => {
     parseLegacySession(JSON.stringify({ access_token: "access" })),
     null,
   );
+});
+
+test("detects password recovery links in query strings and URL fragments", () => {
+  assert.equal(
+    isPasswordRecoveryUrl("https://body-burner.vercel.app/#type=recovery&access_token=x"),
+    true,
+  );
+  assert.equal(
+    isPasswordRecoveryUrl("https://body-burner.vercel.app/?type=recovery"),
+    true,
+  );
+  assert.equal(isPasswordRecoveryUrl("https://body-burner.vercel.app/"), false);
+  assert.equal(isPasswordRecoveryUrl("not a URL"), false);
 });

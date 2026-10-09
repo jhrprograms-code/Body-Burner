@@ -4,6 +4,21 @@ import type { Session } from "@supabase/supabase-js";
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
+export const PASSWORD_RECOVERY_KEY = "body-burner:password-recovery";
+
+export function isPasswordRecoveryUrl(value: string) {
+  try {
+    const url = new URL(value);
+    const hash = new URLSearchParams(url.hash.replace(/^#/, ""));
+    return (
+      url.searchParams.get("type") === "recovery" ||
+      hash.get("type") === "recovery"
+    );
+  } catch {
+    return false;
+  }
+}
+
 export const supabase =
   url && key
     ? createBrowserClient(url, key, {
