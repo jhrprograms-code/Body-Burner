@@ -102,9 +102,8 @@ export default function Training({ state, setState, notify }: StoreProps) {
         0,
       ) || 0,
     all = active?.exercises.reduce((sum, e) => sum + e.sets.length, 0) || 0,
-    elapsedMinutes = active
-      ? Math.floor((clock - active.startedAt) / 60000)
-      : 0,
+    elapsedMs = active ? Math.max(0, clock - active.startedAt) : 0,
+    elapsedMinutes = Math.floor(elapsedMs / 60000),
     durationMessage =
       elapsedMinutes < 80
         ? `${80 - elapsedMinutes} min until target window`
@@ -136,7 +135,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
               <strong>
                 {elapsedMinutes}:
                 {String(
-                  Math.floor((clock - active.startedAt) / 1000) % 60,
+                  Math.floor(elapsedMs / 1000) % 60,
                 ).padStart(2, "0")}
               </strong>
               <span className="muted">
