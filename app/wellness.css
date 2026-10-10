@@ -12,6 +12,27 @@ html[data-theme="light"] body {
   background:
     radial-gradient(ellipse at 80% 0%, #ece9f4 0, transparent 40%), var(--bg);
 }
+html[data-theme="light"] .workout-hero {
+  background: linear-gradient(145deg, #fff, #eeedf5);
+  border-color: var(--border);
+}
+html[data-theme="light"]
+  :is(.week-strip, .check-box, .calorie-ring, .ring-inner) {
+  background: var(--panel);
+  border-color: var(--border);
+  color: var(--text);
+}
+html[data-theme="light"]
+  :is(.hero-footer, .checklist-row, .fuel-numbers > div, .divider) {
+  border-color: var(--border);
+}
+html[data-theme="light"]
+  :is(.meter-label, .nav-item:hover, .day-button strong) {
+  color: var(--text);
+}
+html[data-theme="light"] .nav-item:hover {
+  background: #f4f4f8;
+}
 html[data-theme="light"] :is(input, textarea, select) {
   background: #fafafd;
   border-color: var(--border);
@@ -111,11 +132,27 @@ html[data-theme="light"]
   :is(.wellness-energy, .wellness-macro, .wellness-water) {
   box-shadow: 0 8px 28px #28203808;
 }
-.legacy-nutrition-summary {
+html[data-theme="light"] .calorie-ring {
+  background: conic-gradient(#202027 var(--progress), #ededf3 0);
+}
+html[data-theme="light"] .calorie-ring > div {
+  background: var(--panel);
+}
+html[data-theme="light"] .meter .row > span:first-child {
+  color: var(--muted);
+}
+.panel.legacy-nutrition-summary {
   display: none;
 }
-.micro-cards { margin-top:16px; }
-.micro-coverage { display:block;color:var(--muted);font-size:10px;margin-top:8px; }
+.micro-cards {
+  margin-top: 16px;
+}
+.micro-coverage {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 8px;
+}
 .wellness-dashboard {
   max-width: 820px;
   margin: 0 auto 32px;

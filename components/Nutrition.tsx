@@ -1143,7 +1143,9 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
                                       Number(e.target.value),
                                     ),
                                   }
-                                : { ...x, [k]: Number(e.target.value) }
+                                : k === "grams"
+                                  ? x
+                                  : { ...x, [k]: Number(e.target.value) }
                               : x,
                           ),
                         })
