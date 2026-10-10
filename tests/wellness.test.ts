@@ -57,7 +57,7 @@ test("Gemini model accepts harmless formatting, rejects credentials without expo
     geminiModel(" models/gemini-2.5-flash-lite\n"),
     "gemini-2.5-flash-lite",
   );
-  assert.equal(geminiModel(), "gemini-2.5-flash-lite");
+  assert.equal(geminiModel(), "gemini-3.1-flash-lite");
   assert.throws(
     () => geminiModel("SECRET-CREDENTIAL"),
     (e) => !String(e).includes("SECRET-CREDENTIAL"),

@@ -1,11 +1,11 @@
 // Model identifiers are configuration, never credentials. Do not echo invalid values.
 export function geminiModel(raw?: string) {
-  const model = (raw || "gemini-2.5-flash-lite")
+  const model = (raw || "gemini-3.1-flash-lite")
     .trim()
     .replace(/^models\//, "");
   if (!/^gemini-[a-z0-9.-]+$/.test(model))
     throw new Error(
-      "Set GEMINI_MODEL to a model ID such as gemini-2.5-flash-lite. Put your Google API key in GEMINI_API_KEY, not GEMINI_MODEL.",
+      "Set GEMINI_MODEL to a model ID such as gemini-3.1-flash-lite. Put your Google API key in GEMINI_API_KEY, not GEMINI_MODEL.",
     );
   return model;
 }
