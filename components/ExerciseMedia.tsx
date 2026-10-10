@@ -79,7 +79,10 @@ export default function ExerciseMedia({
   if ((expanded || thumbnail) && storagePath && !signedUrl) {
     if (thumbnail)
       return (
-        <span role="img" aria-label={`${name} thumbnail loading`}>
+        <span
+          role="img"
+          aria-label={`${name} ${message ? "thumbnail unavailable" : "thumbnail loading"}`}
+        >
           <Dumbbell size={24} />
         </span>
       );
@@ -97,6 +100,21 @@ export default function ExerciseMedia({
       </div>
     );
   }
+  if (failed && expanded)
+    return (
+      <div role="status">
+        <p>Demonstration could not play. Check your connection and retry.</p>
+        <button
+          className="secondary"
+          onClick={() => {
+            setFailed(false);
+            setAttempt((n) => n + 1);
+          }}
+        >
+          Retry demonstration
+        </button>
+      </div>
+    );
   if (failed)
     return (
       <span role="img" aria-label={`${name} demonstration unavailable`}>

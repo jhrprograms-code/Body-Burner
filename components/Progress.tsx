@@ -38,9 +38,9 @@ export default function Progress({
     [photoDate, setPhotoDate] = useState(dayKey()),
     [remove, setRemove] = useState<string | null>(null);
   const [range, setRange] = useState(30);
-  const entries = [...state.measurements].sort((a, b) =>
-      a.date.localeCompare(b.date),
-    ),
+  const entries = state.measurements
+      .filter((m) => m.date <= dayKey())
+      .sort((a, b) => a.date.localeCompare(b.date)),
     last = entries.at(-1),
     trend = weightTrend(entries, dayKey());
   useEffect(() => {

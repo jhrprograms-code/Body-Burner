@@ -172,8 +172,9 @@ export default function Settings({
               </Field>
             </div>
             <p className="muted small">
-              Push, pull and legs repeat twice from Monday to Saturday. Sunday
-              is the recovery day. Each gym session targets 80–90 minutes.
+              Push, pull and legs repeat twice each week with one recovery day.
+              Move days in Training to fit your schedule. Each gym session
+              targets 80–90 minutes.
             </p>
             <Field label="Training experience">
               <select
@@ -302,7 +303,7 @@ export default function Settings({
             </div>
             <div className="settings-fact">
               <span>Units</span>
-              <strong>kg · cm · kcal</strong>
+              <strong>Workout lb · body kg · cm · kcal</strong>
             </div>
             <div className="settings-fact">
               <span>Exercise catalogue</span>

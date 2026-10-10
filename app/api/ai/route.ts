@@ -241,6 +241,16 @@ export async function POST(request: Request) {
       { headers: { "Cache-Control": "no-store" } },
     );
   } catch (e) {
+    if (
+      e instanceof Error &&
+      (e.name === "TimeoutError" || e.name === "AbortError")
+    )
+      return failure(
+        new ApiError(
+          "The AI request timed out. Try again or log your meal manually.",
+          504,
+        ),
+      );
     return failure(e);
   }
 }

@@ -316,17 +316,23 @@ export default function Nutrition({
               </Field>
             ))}
           </div>
+          <OptionalNutrients
+            values={editing}
+            onChange={(key, value) => setEditing({ ...editing, [key]: value })}
+          />
           <button
             className="primary full"
             disabled={
               !editing.name.trim() ||
+              editing.grams <= 0 ||
               [
                 editing.grams,
                 editing.calories,
                 editing.protein,
                 editing.carbs,
                 editing.fat,
-              ].some((n) => !Number.isFinite(n) || n < 0 || n > 10000)
+              ].some((n) => !Number.isFinite(n) || n < 0 || n > 10000) ||
+              !validOptionalNutrients(editing)
             }
             onClick={() => {
               setState((s) => ({
@@ -665,7 +671,7 @@ function FoodModal({
     </Modal>
   );
 }
-function FoodEditor({
+export function FoodEditor({
   food,
   onSave,
 }: {
@@ -682,6 +688,9 @@ function FoodEditor({
       protein: food?.protein || 0,
       carbs: food?.carbs || 0,
       fat: food?.fat || 0,
+      fiber: food?.fiber,
+      sugar: food?.sugar,
+      sodium: food?.sodium,
     });
   return (
     <form
@@ -731,7 +740,7 @@ function FoodEditor({
         <input
           type="number"
           required
-          min="1"
+          min="0.1"
           max="5000"
           step="0.1"
           value={grams}
@@ -744,6 +753,9 @@ function FoodEditor({
                 protein: f.protein,
                 carbs: f.carbs,
                 fat: f.fat,
+                fiber: f.fiber,
+                sugar: f.sugar,
+                sodium: f.sodium,
               });
             }
           }}
@@ -773,6 +785,10 @@ function FoodEditor({
         Enter totals for the portion you will eat. These numbers stay editable
         before saving.
       </p>
+      <OptionalNutrients
+        values={values}
+        onChange={(key, value) => setValues((v) => ({ ...v, [key]: value }))}
+      />
       {food?.sourceUrl && (
         <a
           className="small"
@@ -788,6 +804,59 @@ function FoodEditor({
         Confirm and log food
       </button>
     </form>
+  );
+}
+function validOptionalNutrients(
+  values: Pick<Nutrients, "fiber" | "sugar" | "sodium">,
+) {
+  return (["fiber", "sugar", "sodium"] as const).every(
+    (key) =>
+      values[key] === undefined ||
+      (Number.isFinite(values[key]) &&
+        values[key]! >= 0 &&
+        values[key]! <= (key === "sodium" ? 100000 : 10000)),
+  );
+}
+function OptionalNutrients({
+  values,
+  onChange,
+}: {
+  values: Pick<Nutrients, "fiber" | "sugar" | "sodium">;
+  onChange: (
+    key: "fiber" | "sugar" | "sodium",
+    value: number | undefined,
+  ) => void;
+}) {
+  return (
+    <details className="optional-nutrients">
+      <summary>Fiber, sugar and sodium (optional)</summary>
+      <p className="muted small">
+        Leave blank when unknown. Values are totals for this portion.
+      </p>
+      <div className="form-grid">
+        {(["fiber", "sugar", "sodium"] as const).map((key) => (
+          <Field
+            key={key}
+            label={`${key === "fiber" ? "Fiber" : key === "sugar" ? "Total sugar" : "Sodium"} (${key === "sodium" ? "mg" : "g"})`}
+          >
+            <input
+              type="number"
+              min="0"
+              max={key === "sodium" ? 100000 : 10000}
+              step="0.1"
+              placeholder="Unknown"
+              value={values[key] ?? ""}
+              onChange={(e) =>
+                onChange(
+                  key,
+                  e.target.value === "" ? undefined : Number(e.target.value),
+                )
+              }
+            />
+          </Field>
+        ))}
+      </div>
+    </details>
   );
 }
 function FoodLibrary({
@@ -1008,6 +1077,7 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
           <button
             className="icon-btn"
             aria-label="Remove meal photo"
+            disabled={busy}
             onClick={() => {
               setImage("");
               setEstimate(null);
@@ -1025,6 +1095,7 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
             type="file"
             accept="image/jpeg,image/png,image/webp"
             capture="environment"
+            disabled={busy}
             onChange={async (e) => {
               if (e.target.files?.[0])
                 try {
@@ -1044,8 +1115,12 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
         <textarea
           rows={3}
           maxLength={3000}
+          disabled={busy}
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => {
+            setDescription(e.target.value);
+            setEstimate(null);
+          }}
           placeholder="Chicken breast, cooked rice, vegetables, and 1 tsp olive oil…"
         />
       </Field>
@@ -1154,6 +1229,17 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
                   </Field>
                 ))}
               </div>
+              <OptionalNutrients
+                values={item}
+                onChange={(key, value) =>
+                  setEstimate({
+                    ...estimate,
+                    items: estimate.items.map((x: any, n: number) =>
+                      n === i ? { ...x, [key]: value } : x,
+                    ),
+                  })
+                }
+              />
             </div>
           ))}
           <p className="muted small">
@@ -1168,6 +1254,7 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
               estimate.items.some(
                 (x: any) =>
                   !x.name.trim() ||
+                  !validOptionalNutrients(x) ||
                   x.grams <= 0 ||
                   ["grams", "calories", "protein", "carbs", "fat"].some(
                     (k) => !Number.isFinite(x[k]) || x[k] < 0 || x[k] > 10000,

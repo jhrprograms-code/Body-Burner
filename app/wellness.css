@@ -4,7 +4,7 @@ html[data-theme="light"] {
   --panel: #fff;
   --panel-hover: #f3f3f7;
   --border: #e7e7ef;
-  --muted: #767680;
+  --muted: #62626d;
   --text: #1e1e26;
   --accent: #202027;
 }
@@ -140,6 +140,160 @@ html[data-theme="light"] .calorie-ring > div {
 }
 html[data-theme="light"] .meter .row > span:first-child {
   color: var(--muted);
+}
+/* Legacy surfaces must follow the selected theme, including nested dialogs. */
+html[data-theme="light"] :is(.plan-feature, .quick-capture) {
+  background: linear-gradient(145deg, #fff, #eeedf5);
+}
+html[data-theme="light"]
+  :is(
+    .plan-days button,
+    .plan-exercise,
+    .muscle-emphasis-card,
+    .library-category,
+    .meal-empty,
+    .prompt,
+    .message,
+    .upload-area,
+    .search-input,
+    .detail-media,
+    .photo-preview,
+    .progress-photo,
+    .photo-loading,
+    .empty-icon,
+    .summary-stats,
+    .session-progress,
+    .set-check,
+    .rest-bar,
+    .coach-avatar,
+    .chat-compose form,
+    .library-tabs,
+    .set-done input
+  ) {
+  background: var(--panel-hover);
+  border-color: var(--border);
+  color: var(--text);
+}
+html[data-theme="light"]
+  :is(
+    .plan-days button.selected,
+    .library-tabs button.active,
+    .set-check.checked
+  ) {
+  background: var(--text);
+  color: white;
+  border-color: var(--text);
+}
+html[data-theme="light"] .plan-days button.selected strong {
+  color: white;
+}
+html[data-theme="light"]
+  :is(
+    .plan-days button strong,
+    .week-plan-row strong,
+    .week-plan-row.active strong,
+    .week-plan-row.active > span:first-child,
+    .coach-welcome h2,
+    .empty h3,
+    .message p,
+    .cue-list,
+    .notice,
+    .field > span,
+    .radio,
+    .checkbox-label,
+    .coach-note h3,
+    .coach-note a,
+    .recipe-card details,
+    .recipe-title strong,
+    .loading .brand
+  ) {
+  color: var(--text);
+}
+html[data-theme="light"]
+  :is(
+    .plan-feature > p,
+    .plan-meta,
+    .plan-exercise small,
+    .week-plan-row small,
+    .result-row small,
+    .field > small,
+    .coach-welcome p,
+    .coach-welcome,
+    .coach-note p,
+    .history-row small,
+    .measurement-row > span,
+    .summary-stats span,
+    .progress-photo > .row,
+    .library-tabs button,
+    .muscle-emphasis-card small,
+    .library-category small,
+    .rest-bar > span
+  ) {
+  color: var(--muted);
+}
+html[data-theme="light"]
+  :is(
+    .week-plan-row,
+    .history-row,
+    .result-row,
+    .measurement-row,
+    .settings-fact,
+    .coach-header,
+    .chat-compose,
+    .exercise-bottom,
+    .history-detail,
+    .checkin-entry,
+    .estimate,
+    .estimate-item,
+    .account,
+    .sidebar-bottom
+  ) {
+  border-color: var(--border);
+}
+html[data-theme="light"] .exercise-art {
+  background: #eeedf5;
+  border-color: var(--border);
+  color: var(--muted);
+}
+html[data-theme="light"] :focus-visible {
+  outline-color: var(--text);
+}
+html[data-theme="light"] input[type="checkbox"] {
+  accent-color: var(--text);
+}
+html[data-theme="light"] .danger {
+  color: #a32d3d;
+}
+html[data-theme="light"] .photo-preview .icon-btn {
+  background: #ffffffed;
+  color: var(--text);
+}
+@media (max-width: 700px) {
+  html body input:not([type="checkbox"]):not([type="radio"]),
+  html body textarea,
+  html body select,
+  html body .date-toolbar input,
+  html body .estimate-grid input,
+  html body .chat-compose textarea {
+    font-size: 16px;
+  }
+  html body .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  html body .estimate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html body .page-content {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
 }
 .panel.legacy-nutrition-summary {
   display: none;

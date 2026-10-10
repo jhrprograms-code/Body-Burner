@@ -9,6 +9,8 @@
   --muted: #929292;
   --text: #f0f0ee;
   --accent: #f1f1ed;
+  --line: var(--border);
+  --surface-2: var(--panel-hover);
   --radius: 18px;
   --font: "DM Sans", Arial, sans-serif;
 }
@@ -966,7 +968,11 @@ main {
   flex-shrink: 0;
 }
 .food-emoji {
-  font-family: Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif;
+  font-family:
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Noto Color Emoji,
+    sans-serif;
   font-size: 23px;
   line-height: 1;
 }

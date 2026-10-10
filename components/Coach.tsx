@@ -27,18 +27,17 @@ export default function Coach({ state, setState, notify }: StoreProps) {
           mode: "coach",
           text: question,
           consent,
-          history: messages
-            .slice(-6)
-            .map((m) => ({
-              role: m.role === "you" ? "user" : "assistant",
-              text: m.text.slice(0, 1500),
-            })),
+          history: messages.slice(-6).map((m) => ({
+            role: m.role === "you" ? "user" : "assistant",
+            text: m.text.slice(0, 1500),
+          })),
         }),
       });
       setMessages((m) => [...m, { role: "coach", text: data.reply }]);
     } catch (e) {
       setError((e as Error).message);
       setText(question);
+      setMessages((m) => (m.at(-1)?.role === "you" ? m.slice(0, -1) : m));
     } finally {
       setBusy(false);
     }
@@ -127,6 +126,7 @@ export default function Coach({ state, setState, notify }: StoreProps) {
                 aria-label="Ask your coach"
                 rows={2}
                 maxLength={3000}
+                disabled={busy}
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="What’s on your mind?"
