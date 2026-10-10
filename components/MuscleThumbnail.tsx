@@ -28,7 +28,6 @@ export default function MuscleThumbnail({ id, label }: { id: MuscleCategoryId; l
       {on("hip_abductors") && <path className="muscle-hot" d="M27 39L32 43 29 52 25 49ZM45 39L40 43 43 52 47 49Z"/>}
       {on("hip_adductors") && <path className="muscle-hot" d="M34 43L35 47 32 57 29 53ZM38 43L37 47 40 57 43 53Z"/>}
       {on("full_body") && <path className="muscle-hot" opacity=".86" d="M30 15H42L47 36 41 44 43 67H38L36 47 34 67H27L29 44 25 36Z"/>}
-      {on("abs") && <g className="muscle-hot"><rect x="32" y="27" width="3" height="5" rx="1"/><rect x="37" y="27" width="3" height="5" rx="1"/><rect x="32" y="33" width="3" height="5" rx="1"/><rect x="37" y="33" width="3" height="5" rx="1"/><rect x="33" y="39" width="6" height="4" rx="1"/></g>}
       {back && <path className="anatomy-line" d="M29 18Q36 23 43 18M31 31L36 36 41 31"/>}
     </svg>
   </span>;
