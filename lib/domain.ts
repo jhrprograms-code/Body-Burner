@@ -90,6 +90,9 @@ export type Nutrients = {
   protein: number;
   carbs: number;
   fat: number;
+  fiber?: number;
+  sugar?: number;
+  sodium?: number; // milligrams; optional means unknown, not zero
 };
 export type Food = Nutrients & {
   id: string;
@@ -167,6 +170,8 @@ export type State = {
   checkins: Checkin[];
   photos: Photo[];
   planOrder: number[];
+  water?: { id: string; date: string; ml: number }[];
+  targetWeight?: number;
 };
 export const emptyState = (): State => ({
   version: 1,
@@ -194,6 +199,7 @@ export const emptyState = (): State => ({
   checkins: [],
   photos: [],
   planOrder: [0, 1, 2, 3, 4, 5, 6],
+  water: [],
 });
 export const uid = () => crypto.randomUUID();
 export function dayKey(d = new Date()) {
@@ -230,10 +236,12 @@ export function scaleFood(food: Food, grams: number): Food {
     ...food,
     grams,
     ...Object.fromEntries(
-      ["calories", "protein", "carbs", "fat"].map((k) => [
-        k,
-        Math.round(food[k as keyof Nutrients] * ratio * 10) / 10,
-      ]),
+      ["calories", "protein", "carbs", "fat", "fiber", "sugar", "sodium"]
+        .filter((k) => food[k as keyof Nutrients] !== undefined)
+        .map((k) => [
+          k,
+          Math.round(food[k as keyof Nutrients]! * ratio * 10) / 10,
+        ]),
     ),
   };
 }

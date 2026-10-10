@@ -29,6 +29,13 @@ export function offFood(p: Record<string, any>): Food | null {
     protein: protein!,
     carbs: carbs!,
     fat: fat!,
+    ...(number(n.fiber_100g) !== null ? { fiber: number(n.fiber_100g)! } : {}),
+    ...(number(n.sugars_100g) !== null
+      ? { sugar: number(n.sugars_100g)! }
+      : {}),
+    ...(number(n.sodium_100g) !== null
+      ? { sodium: number(n.sodium_100g)! * 1000 }
+      : {}),
   };
 }
 export function usdaFood(p: Record<string, any>): Food | null {
@@ -59,5 +66,8 @@ export function usdaFood(p: Record<string, any>): Food | null {
     protein: protein!,
     carbs: carbs!,
     fat: fat!,
+    ...(n([1079], "G") !== null ? { fiber: n([1079], "G")! } : {}),
+    ...(n([2000], "G") !== null ? { sugar: n([2000], "G")! } : {}),
+    ...(n([1093], "MG") !== null ? { sodium: n([1093], "MG")! } : {}),
   };
 }

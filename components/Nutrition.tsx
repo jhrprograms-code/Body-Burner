@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Flame,
   Plus,
+  Pencil,
   ScanBarcode,
   Search,
   Trash2,
@@ -29,11 +30,13 @@ import {
   totalFoods,
   uid,
   type Food,
+  type FoodLog,
   type MealName,
   type Nutrients,
 } from "@/lib/domain";
 import type { StoreProps } from "./BodyBurner";
 import { Empty, ErrorNote, Field, Heading, Meter, Modal, Section } from "./ui";
+import { NutritionDashboard } from "./WellnessCards";
 const meals: MealName[] = ["Breakfast", "Lunch", "Dinner"];
 export default function Nutrition({
   state,
@@ -43,6 +46,8 @@ export default function Nutrition({
   setDate,
 }: StoreProps & { date: string; setDate: (s: string) => void }) {
   const [add, setAdd] = useState<MealName | null>(null);
+  const [startScan, setStartScan] = useState(false);
+  const [editing, setEditing] = useState<FoodLog | null>(null);
   const foods = state.foods.filter((f) => f.date === date),
     total = totalFoods(foods),
     p = state.profile;
@@ -86,7 +91,14 @@ export default function Nutrition({
           Today
         </button>
       </div>
-      <section className="panel nutrition-summary">
+      <NutritionDashboard
+        {...{ state, setState, notify, date, setDate }}
+        onScan={() => {
+          setStartScan(true);
+          setAdd("Lunch");
+        }}
+      />
+      <section className="panel nutrition-summary legacy-nutrition-summary">
         <div className="budget-main">
           <span className="eyebrow">TODAY’S ENERGY</span>
           <div>
@@ -170,6 +182,13 @@ export default function Nutrition({
                       </strong>
                       <button
                         className="icon-btn"
+                        aria-label={`Edit ${food.name}`}
+                        onClick={() => setEditing(food)}
+                      >
+                        <Pencil size={16} />
+                      </button>
+                      <button
+                        className="icon-btn"
                         title="Save this meal"
                         aria-label={`Save ${food.name}`}
                         onClick={() => {
@@ -217,7 +236,13 @@ export default function Nutrition({
               Turn a meal photo into an editable estimate. You know your
               portions best.
             </p>
-            <button className="primary full" onClick={() => setAdd("Lunch")}>
+            <button
+              className="primary full"
+              onClick={() => {
+                setStartScan(true);
+                setAdd("Lunch");
+              }}
+            >
               <Camera size={17} />
               Add a meal photo
             </button>
@@ -241,8 +266,82 @@ export default function Nutrition({
           {...{ state, setState, notify }}
           meal={add}
           date={date}
-          onClose={() => setAdd(null)}
+          initialMode={startScan ? "Photo / describe" : "Foods"}
+          onClose={() => {
+            setAdd(null);
+            setStartScan(false);
+          }}
         />
+      )}
+      {editing && (
+        <Modal title="Edit your food" onClose={() => setEditing(null)}>
+          <Field label="Food name">
+            <input
+              value={editing.name}
+              onChange={(e) => setEditing({ ...editing, name: e.target.value })}
+            />
+          </Field>
+          <Field
+            label={`Amount (${editing.unit || "g"})`}
+            hint="Nutrition scales with the portion; you can also correct each value below."
+          >
+            <input
+              type="number"
+              min={0.1}
+              max={10000}
+              step="0.1"
+              value={editing.grams}
+              onChange={(e) => {
+                const n = Number(e.target.value);
+                if (n > 0) setEditing({ ...editing, ...scaleFood(editing, n) });
+              }}
+            />
+          </Field>
+          <div className="estimate-grid">
+            {(["calories", "protein", "carbs", "fat"] as const).map((k) => (
+              <Field
+                key={k}
+                label={k === "calories" ? "Calories (kcal)" : `${k} (g)`}
+              >
+                <input
+                  type="number"
+                  min={0}
+                  max={10000}
+                  step="0.1"
+                  value={editing[k]}
+                  onChange={(e) =>
+                    setEditing({ ...editing, [k]: Number(e.target.value) })
+                  }
+                />
+              </Field>
+            ))}
+          </div>
+          <button
+            className="primary full"
+            disabled={
+              !editing.name.trim() ||
+              [
+                editing.grams,
+                editing.calories,
+                editing.protein,
+                editing.carbs,
+                editing.fat,
+              ].some((n) => !Number.isFinite(n) || n < 0 || n > 10000)
+            }
+            onClick={() => {
+              setState((s) => ({
+                ...s,
+                foods: s.foods.map((f) =>
+                  f.entryId === editing.entryId ? editing : f,
+                ),
+              }));
+              setEditing(null);
+              notify("Food updated");
+            }}
+          >
+            Save changes
+          </button>
+        </Modal>
       )}
     </>
   );
@@ -254,8 +353,14 @@ function FoodModal({
   meal,
   date,
   onClose,
-}: StoreProps & { meal: MealName; date: string; onClose: () => void }) {
-  const [mode, setMode] = useState("Foods"),
+  initialMode = "Foods",
+}: StoreProps & {
+  meal: MealName;
+  date: string;
+  onClose: () => void;
+  initialMode?: string;
+}) {
+  const [mode, setMode] = useState(initialMode),
     [query, setQuery] = useState(""),
     [provider, setProvider] = useState("off"),
     [results, setResults] = useState<Food[]>([]),
@@ -312,32 +417,45 @@ function FoodModal({
         {[
           ["Barcode", "Barcode", <ScanBarcode key="barcode" size={18} />],
           ["AI Scan", "Photo / describe", <Camera key="camera" size={18} />],
-          ["Describe", "Photo / describe", <Utensils key="describe" size={18} />],
+          [
+            "Describe",
+            "Photo / describe",
+            <Utensils key="describe" size={18} />,
+          ],
           ["Quick log", "Manual", <Plus key="quick" size={18} />],
         ].map(([label, target, icon]) => (
-          <button key={label as string} onClick={() => setMode(target as string)}>
-            {icon}{label}
+          <button
+            key={label as string}
+            onClick={() => setMode(target as string)}
+          >
+            {icon}
+            {label}
           </button>
         ))}
       </div>
       <div className="tab-pills">
-        {["Foods", "Recipes", "Search", "Saved", "Manual", "Photo / describe"].map(
-          (t) => (
-            <button
-              className={mode === t ? "active" : ""}
-              key={t}
-              onClick={() => {
-                setMode(t);
-                setSelected(null);
-                setError("");
-                setResults([]);
-                setNote("");
-              }}
-            >
-              {t}
-            </button>
-          ),
-        )}
+        {[
+          "Foods",
+          "Recipes",
+          "Search",
+          "Saved",
+          "Manual",
+          "Photo / describe",
+        ].map((t) => (
+          <button
+            className={mode === t ? "active" : ""}
+            key={t}
+            onClick={() => {
+              setMode(t);
+              setSelected(null);
+              setError("");
+              setResults([]);
+              setNote("");
+            }}
+          >
+            {t}
+          </button>
+        ))}
       </div>
       {selected ? (
         <>
@@ -730,17 +848,15 @@ function FoodLibrary({
         />
       </div>
       <div className="food-filter-row" aria-label="Food library filters">
-        {(["Smart", "Favourites", "Recent", "All"] as const).map(
-          (item) => (
-            <button
-              key={item}
-              className={filter === item ? "active" : ""}
-              onClick={() => setFilter(item)}
-            >
-              {item}
-            </button>
-          ),
-        )}
+        {(["Smart", "Favourites", "Recent", "All"] as const).map((item) => (
+          <button
+            key={item}
+            className={filter === item ? "active" : ""}
+            onClick={() => setFilter(item)}
+          >
+            {item}
+          </button>
+        ))}
       </div>
       <div className="library-heading">
         <strong>{filter === "Smart" ? "Everyday foods" : filter}</strong>
@@ -1013,7 +1129,22 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
                         setEstimate({
                           ...estimate,
                           items: estimate.items.map((x: any, n: number) =>
-                            n === i ? { ...x, [k]: Number(e.target.value) } : x,
+                            n === i
+                              ? k === "grams" && Number(e.target.value) > 0
+                                ? {
+                                    ...x,
+                                    ...scaleFood(
+                                      {
+                                        ...x,
+                                        id: "estimate",
+                                        source: "AI",
+                                        basis: "portion",
+                                      },
+                                      Number(e.target.value),
+                                    ),
+                                  }
+                                : { ...x, [k]: Number(e.target.value) }
+                              : x,
                           ),
                         })
                       }
@@ -1024,8 +1155,9 @@ function PhotoMeal({ onSave }: { onSave: (foods: Food[]) => void }) {
             </div>
           ))}
           <p className="muted small">
-            Changing grams alone does not recalculate AI nutrients. Adjust each
-            total, or describe the corrected portions and estimate again.
+            Changing grams scales the nutrition proportionally. Correct any
+            ingredient or nutrient before logging; oil and sauces need your
+            review.
           </p>
           <button
             className="primary full"

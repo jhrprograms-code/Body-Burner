@@ -19,6 +19,8 @@ import {
   Target,
   Utensils,
   Weight,
+  Sun,
+  Moon,
 } from "lucide-react";
 import {
   isPasswordRecoveryUrl,
@@ -32,6 +34,7 @@ import {
   dateOffset,
   weekDates,
   buildWeek,
+  orderPlan,
   totalFoods,
   weightTrend,
   fmt,
@@ -126,9 +129,7 @@ export default function BodyBurner() {
   );
 }
 function Login({ onClose }: { onClose: () => void }) {
-  const [mode, setMode] = useState<"signin" | "signup" | "recovery">(
-      "signin",
-    ),
+  const [mode, setMode] = useState<"signin" | "signup" | "recovery">("signin"),
     [email, setEmail] = useState(""),
     [password, setPassword] = useState(""),
     [message, setMessage] = useState(""),
@@ -233,7 +234,9 @@ function Login({ onClose }: { onClose: () => void }) {
           {mode !== "recovery" && (
             <Field
               label="Password"
-              hint={mode === "signup" ? "Use at least 8 characters." : undefined}
+              hint={
+                mode === "signup" ? "Use at least 8 characters." : undefined
+              }
             >
               <input
                 type="password"
@@ -360,6 +363,12 @@ function Workspace({
   const [tab, setTab] = useState<Tab>("Today"),
     [toast, setToast] = useState(""),
     [date, setDate] = useState(dayKey());
+  const [light, setLight] = useState(true);
+  useEffect(() => {
+    const next = localStorage.getItem("body-burner-theme") !== "dark";
+    setLight(next);
+    document.documentElement.dataset.theme = next ? "light" : "dark";
+  }, []);
   useEffect(() => {
     if (!toast) return;
     const id = setTimeout(() => setToast(""), 4200);
@@ -425,6 +434,25 @@ function Workspace({
             Your space <span>/</span> <strong>{tab}</strong>
           </span>
           <div className="row">
+            <button
+              className="icon-btn"
+              aria-label={
+                light ? "Switch to dark theme" : "Switch to light theme"
+              }
+              onClick={() => {
+                const next = !light;
+                setLight(next);
+                document.documentElement.dataset.theme = next
+                  ? "light"
+                  : "dark";
+                localStorage.setItem(
+                  "body-burner-theme",
+                  next ? "light" : "dark",
+                );
+              }}
+            >
+              {light ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
             <span className={`sync-status ${blocked ? "warning" : ""}`}>
               {status}
             </span>
@@ -523,7 +551,7 @@ function Dashboard({
 }) {
   const totals = totalFoods(state.foods.filter((f) => f.date === date)),
     p = state.profile,
-    week = buildWeek(p),
+    week = orderPlan(buildWeek(p), state.planOrder),
     workoutDays = week.filter((day) => day.ids.length).length,
     index = (new Date(date + "T12:00:00").getDay() + 6) % 7,
     today = week[index];

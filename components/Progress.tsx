@@ -11,7 +11,15 @@ import {
   TrendingDown,
   Weight,
 } from "lucide-react";
-import { dayKey, fmt, uid, weightTrend, type Measurement } from "@/lib/domain";
+import {
+  dayKey,
+  dateOffset,
+  fmt,
+  uid,
+  weightTrend,
+  type Measurement,
+} from "@/lib/domain";
+import { ProgressHighlights } from "./WellnessCards";
 import { supabase } from "@/lib/supabase";
 import { compressImage } from "@/lib/store";
 import { localPhoto } from "@/lib/photos";
@@ -29,6 +37,7 @@ export default function Progress({
     [urls, setUrls] = useState<Record<string, string>>({}),
     [photoDate, setPhotoDate] = useState(dayKey()),
     [remove, setRemove] = useState<string | null>(null);
+  const [range, setRange] = useState(30);
   const entries = [...state.measurements].sort((a, b) =>
       a.date.localeCompare(b.date),
     ),
@@ -127,6 +136,7 @@ export default function Progress({
           </button>
         }
       />
+      <ProgressHighlights {...{ state, setState, notify }} />
       <div className="progress-stats">
         <div className="mini-stat">
           <div className="row between">
@@ -170,9 +180,27 @@ export default function Progress({
       </div>
       <Section
         title="Your weight over time"
-        action={<span className="pill">LAST 30 ENTRIES</span>}
+        action={
+          <select
+            aria-label="Weight chart time range"
+            value={range}
+            onChange={(e) => setRange(Number(e.target.value))}
+          >
+            <option value={30}>30 days</option>
+            <option value={90}>90 days</option>
+            <option value={180}>6 months</option>
+            <option value={365}>1 year</option>
+            <option value={0}>All time</option>
+          </select>
+        }
       >
-        <WeightChart entries={entries.slice(-30)} />
+        <WeightChart
+          entries={entries.filter(
+            (m) =>
+              m.date <= dayKey() &&
+              (!range || m.date >= dateOffset(dayKey(), -range)),
+          )}
+        />
         <p className="muted small">
           Use similar morning conditions. Water, food, salt and creatine can
           move the scale independently of fat.
