@@ -38,12 +38,14 @@ import {
   WORKOUT_DURATION,
   weekDates,
   type Exercise,
+  type MuscleCategoryId,
   type Session,
   type WorkoutExercise,
 } from "@/lib/domain";
 import mediaManifest from "@/data/media.json";
 import vitalMediaManifest from "@/data/vital-media.json";
 import ExerciseMedia from "./ExerciseMedia";
+import MuscleThumbnail from "./MuscleThumbnail";
 import type { StoreProps } from "./BodyBurner";
 import { Empty, Field, Heading, Modal, Section } from "./ui";
 const media = { ...mediaManifest, ...vitalMediaManifest } as Record<
@@ -870,9 +872,7 @@ function MuscleEmphasis({ ids }: { ids: string[] }) {
       <div className="muscle-emphasis-grid">
         {breakdown.map((muscle) => (
           <div className="muscle-emphasis-card" key={muscle.id}>
-            <span className="muscle-monogram" aria-hidden="true">
-              {muscle.label.slice(0, 2).toUpperCase()}
-            </span>
+            <MuscleThumbnail id={muscle.id} label={muscle.label} />
             <span>
               <strong>{muscle.label}</strong>
               <small>{muscle.percentage}% of plan emphasis</small>
@@ -1003,9 +1003,16 @@ function ExerciseLibrary({
                   setVisibleCount(40);
                 }}
               >
-                <span className="muscle-monogram" aria-hidden="true">
-                  {item.label.slice(0, 2).toUpperCase()}
-                </span>
+                {mode === "muscles" ? (
+                  <MuscleThumbnail
+                    id={item.id as MuscleCategoryId}
+                    label={item.label}
+                  />
+                ) : (
+                  <span className="muscle-monogram" aria-hidden="true">
+                    {item.label.slice(0, 2).toUpperCase()}
+                  </span>
+                )}
                 <span>
                   <strong>{item.label}</strong>
                   <small>{count} exercises</small>

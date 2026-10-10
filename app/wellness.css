@@ -687,3 +687,28 @@ html[data-theme="dark"] .wellness-energy .wellness-ring > span {
     transition: none !important;
   }
 }
+
+.muscle-thumbnail {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 13px;
+  border: 1px solid var(--border);
+  background: radial-gradient(circle at 50% 22%, #f3f3f1, #aaa9a5);
+}
+.muscle-thumbnail svg { width: 100%; height: 100%; display: block; }
+.muscle-thumbnail .anatomy-base { fill: #d7d7d3; stroke: #696966; stroke-width: 1; }
+.muscle-thumbnail .anatomy-line { fill: none; stroke: #858581; stroke-width: .7; opacity: .8; }
+.muscle-thumbnail .muscle-hot { fill: #ed654b; stroke: #a93e2f; stroke-width: .7; }
+html[data-theme="dark"] .muscle-thumbnail {
+  border-color: #393939;
+  background: radial-gradient(circle at 50% 22%, #dededa, #777773);
+}
+.library-category .muscle-thumbnail { width: 58px; height: 58px; flex-basis: 58px; }
+@media (max-width: 700px) {
+  .muscle-thumbnail { width: 48px; height: 48px; flex-basis: 48px; }
+  .library-category .muscle-thumbnail { width: 52px; height: 52px; flex-basis: 52px; }
+}
