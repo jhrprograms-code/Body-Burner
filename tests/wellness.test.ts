@@ -31,6 +31,14 @@ test("streak counts unique consecutive dates across month boundaries", () => {
   );
   assert.equal(loggingStreak(["2026-10-01"], "2026-10-03"), 0);
 });
+test("stale weigh-ins cannot be presented as recent period changes", () => {
+  const entries = [
+    { id: "1", date: "2026-08-15", weight: 99.8, notes: "" },
+    { id: "2", date: "2026-10-09", weight: 96.8, notes: "" },
+  ];
+  for (const days of [3, 7, 14, 30])
+    assert.equal(weightChange(entries, "2026-10-09", days), null);
+});
 test("badges start locked, completed workouts and recorded water earn badges", () => {
   const s = emptyState();
   assert.equal(earnedBadges(s, "2026-10-09").filter((b) => b.earned).length, 0);

@@ -32,8 +32,11 @@ export function weightChange(
     .sort((a, b) => a.date.localeCompare(b.date));
   const latest = sorted.at(-1);
   if (!latest) return null;
+  const cutoff = dateOffset(latest.date, -days);
+  // A months-old weigh-in must not masquerade as a 3-day or 7-day change.
+  const earliest = dateOffset(cutoff, -Math.max(3, Math.round(days * 0.25)));
   const baseline = sorted
-    .filter((x) => x.date <= dateOffset(latest.date, -days))
+    .filter((x) => x.date <= cutoff && x.date >= earliest)
     .at(-1);
   return baseline ? latest.weight - baseline.weight : null;
 }
