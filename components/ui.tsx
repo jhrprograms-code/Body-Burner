@@ -8,7 +8,7 @@ export function Brand() {
         <Flame size={23} fill="currentColor" strokeWidth={1.5} />
       </div>
       <span>
-        body burner<span className="brand-dot">.</span>
+        resilience buddy<span className="brand-dot">.</span>
       </span>
     </div>
   );

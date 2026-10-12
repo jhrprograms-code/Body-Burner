@@ -314,7 +314,7 @@ export default function Settings({
               <strong>Licensed import</strong>
             </div>
             <p className="muted small">
-              Body Burner gives general fitness guidance. AI estimates need
+              Resilience Buddy gives general fitness guidance. AI estimates need
               review and cannot diagnose health conditions.
             </p>
           </Section>

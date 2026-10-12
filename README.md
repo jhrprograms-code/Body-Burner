@@ -1,4 +1,4 @@
-# Body Burner
+# Resilience Buddy
 
 A private, mobile-friendly fitness web app for you and friends. Black-and-white dark design, with training, nutrition and progress in one place. Built with Next.js, React, TypeScript and Supabase; ready to deploy on Vercel after configuration.
 

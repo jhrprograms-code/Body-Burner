@@ -142,7 +142,7 @@ function Login({ onClose }: { onClose: () => void }) {
   return (
     <Modal title="Your private space" onClose={onClose}>
       <p className="muted">
-        Sign in once on your iPhone and Body Burner will keep you signed in.
+        Sign in once on your iPhone and Resilience Buddy will keep you signed in.
         Your training, meals and photos belong to your account.
       </p>
       {!supabase ? (
@@ -526,7 +526,7 @@ function Workspace({
         </main>
         <footer className="app-footer">
           <span>Small steps. Stronger every day.</span>
-          <span>BODY BURNER / 01</span>
+          <span>RESILIENCE BUDDY / 01</span>
         </footer>
       </div>
       {toast && (

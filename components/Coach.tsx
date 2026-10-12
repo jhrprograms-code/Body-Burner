@@ -62,7 +62,7 @@ export default function Coach({ state, setState, notify }: StoreProps) {
               <Sparkles size={24} />
             </div>
             <div>
-              <h2>Body Burner coach</h2>
+              <h2>Resilience Buddy coach</h2>
               <span className="muted small">
                 General fitness guidance · powered by Gemini
               </span>
@@ -98,7 +98,7 @@ export default function Coach({ state, setState, notify }: StoreProps) {
             ) : (
               messages.map((m, i) => (
                 <div className={`message ${m.role}`} key={i}>
-                  <span>{m.role === "you" ? "YOU" : "BODY BURNER"}</span>
+                  <span>{m.role === "you" ? "YOU" : "RESILIENCE BUDDY"}</span>
                   <p>{m.text}</p>
                 </div>
               ))

@@ -32,7 +32,7 @@ export async function GET(request: Request) {
     }
     const result = await fetch(url, {
       headers: {
-        "User-Agent": `BodyBurner/0.1 (${process.env.FOOD_API_CONTACT || "personal fitness app"})`,
+        "User-Agent": `ResilienceBuddy/0.1 (${process.env.FOOD_API_CONTACT || "personal fitness app"})`,
       },
       signal: AbortSignal.timeout(12000),
       cache: "no-store",

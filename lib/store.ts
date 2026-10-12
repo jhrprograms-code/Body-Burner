@@ -133,7 +133,7 @@ export function exportData(state: State) {
   );
   const a = document.createElement("a");
   a.href = url;
-  a.download = "body-burner-data.json";
+  a.download = "resilience-buddy-data.json";
   a.click();
   URL.revokeObjectURL(url);
 }
