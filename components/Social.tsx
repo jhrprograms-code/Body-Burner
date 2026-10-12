@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import {
   Check,
@@ -93,6 +93,7 @@ export default function Social({
   const [groups, setGroups] = useState<Group[]>([]);
   const [selectedGroup, setSelectedGroup] = useState<string | null>(null);
   const [selectedFriend, setSelectedFriend] = useState<string | null>(null);
+  const selectedFriendRef = useRef<string | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState<Profile[]>([]);
@@ -220,47 +221,100 @@ export default function Social({
   }, [loadCommunity]);
 
   useEffect(() => {
+    selectedFriendRef.current = selectedFriend;
+  }, [selectedFriend]);
+
+  const loadMessages = useCallback(
+    async (friendId: string) => {
+      if (!supabase || !user) return;
+      const { data, error } = await supabase
+        .from("social_messages")
+        .select("id,sender_id,recipient_id,body,created_at")
+        .or(
+          `and(sender_id.eq.${user.id},recipient_id.eq.${friendId}),and(sender_id.eq.${friendId},recipient_id.eq.${user.id})`,
+        )
+        .order("created_at", { ascending: true })
+        .limit(300);
+      if (error) {
+        setError(error.message || "Unable to load this conversation.");
+        return;
+      }
+      setMessages((data || []) as Message[]);
+    },
+    [user],
+  );
+
+  useEffect(() => {
     if (!supabase || !user) return;
-    const channel = supabase
-      .channel(`social-inbox-${user.id}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "INSERT",
-          schema: "public",
-          table: "social_messages",
-          filter: `recipient_id=eq.${user.id}`,
-        },
-        ({ new: row }) => {
-          const message = row as Message;
-          if (message.sender_id === selectedFriend)
+    const client = supabase;
+    let active = true;
+    let channel: ReturnType<typeof client.channel> | null = null;
+    const connect = async () => {
+      let { data, error } = await client
+        .from("social_inbox_tokens")
+        .select("token")
+        .eq("user_id", user.id)
+        .maybeSingle();
+      if (!data && !error) {
+        const created = await client
+          .from("social_inbox_tokens")
+          .insert({ user_id: user.id })
+          .select("token")
+          .single();
+        data = created.data;
+        error = created.error;
+      }
+      if (!active) return;
+      if (error || !data) {
+        setError("Live messages are reconnecting. New messages will still sync.");
+        return;
+      }
+      channel = client
+        .channel(`social:inbox:${data.token}`)
+        .on("broadcast", { event: "INSERT" }, ({ payload }) => {
+          const message = (payload as { new?: Message }).new;
+          if (!message) return;
+          if (message.sender_id === selectedFriendRef.current)
             setMessages((current) =>
               current.some((item) => item.id === message.id)
                 ? current
                 : [...current, message],
             );
-        },
-      )
-      .subscribe();
-    return () => {
-      supabase?.removeChannel(channel);
+        })
+        .subscribe((status) => {
+          if (status === "SUBSCRIBED" && selectedFriendRef.current)
+            loadMessages(selectedFriendRef.current);
+        });
     };
-  }, [selectedFriend, user]);
+    connect();
+    return () => {
+      active = false;
+      if (channel) client.removeChannel(channel);
+    };
+  }, [loadMessages, user]);
+
+  useEffect(() => {
+    if (!selectedFriend || view !== "Chats") return;
+    const syncVisibleChat = () => {
+      if (document.visibilityState === "visible") loadMessages(selectedFriend);
+    };
+    syncVisibleChat();
+    const timer = window.setInterval(syncVisibleChat, 4000);
+    document.addEventListener("visibilitychange", syncVisibleChat);
+    window.addEventListener("focus", syncVisibleChat);
+    window.addEventListener("pageshow", syncVisibleChat);
+    return () => {
+      window.clearInterval(timer);
+      document.removeEventListener("visibilitychange", syncVisibleChat);
+      window.removeEventListener("focus", syncVisibleChat);
+      window.removeEventListener("pageshow", syncVisibleChat);
+    };
+  }, [loadMessages, selectedFriend, view]);
 
   const openChat = async (friendId: string) => {
-    if (!supabase || !user) return;
     setSelectedFriend(friendId);
     setView("Chats");
-    const { data, error } = await supabase
-      .from("social_messages")
-      .select("id,sender_id,recipient_id,body,created_at")
-      .or(
-        `and(sender_id.eq.${user.id},recipient_id.eq.${friendId}),and(sender_id.eq.${friendId},recipient_id.eq.${user.id})`,
-      )
-      .order("created_at", { ascending: true })
-      .limit(300);
-    if (error) return fail(error);
-    setMessages((data || []) as Message[]);
+    await loadMessages(friendId);
   };
 
   const findPeople = async () => {

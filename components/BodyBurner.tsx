@@ -13,6 +13,7 @@ import {
   Dumbbell,
   Home,
   LogOut,
+  Menu,
   Plus,
   Settings as SettingsIcon,
   Sparkles,
@@ -22,6 +23,7 @@ import {
   Sun,
   Moon,
   Users,
+  UserRound,
 } from "lucide-react";
 import {
   isPasswordRecoveryUrl,
@@ -70,7 +72,8 @@ type Tab =
   | "Progress"
   | "Friends"
   | "Coach"
-  | "Settings";
+  | "Settings"
+  | "More";
 const nav = [
   { name: "Today", icon: Home },
   { name: "Training", icon: Dumbbell },
@@ -79,6 +82,7 @@ const nav = [
   { name: "Friends", icon: Users },
   { name: "Coach", icon: Sparkles },
   { name: "Settings", icon: SettingsIcon },
+  { name: "More", icon: Menu },
 ] as const;
 export default function BodyBurner() {
   const [user, setUser] = useState<User | null>(null),
@@ -398,18 +402,24 @@ function Workspace({
         <Brand />
         <div className="workspace-label">YOUR EVERYDAY STRONG</div>
         <nav aria-label="Main navigation">
-          {nav.map(({ name, icon: Icon }) => (
-            <button
-              key={name}
-              className={`nav-item ${name === "Settings" ? "settings-nav" : ""} ${tab === name ? "active" : ""}`}
-              onClick={() => setTab(name)}
-              aria-current={tab === name ? "page" : undefined}
-            >
-              <Icon size={20} />
-              <span>{name}</span>
-              {name === "Coach" && <span className="tiny-tag">AI</span>}
-            </button>
-          ))}
+          {nav.map(({ name, icon: Icon }) => {
+            const current =
+              tab === name ||
+              (name === "More" &&
+                ["More", "Progress", "Coach", "Settings"].includes(tab));
+            return (
+              <button
+                key={name}
+                className={`nav-item ${["Progress", "Coach", "Settings"].includes(name) ? "desktop-extra-nav" : ""} ${name === "More" ? "mobile-more-nav" : ""} ${current ? "active" : ""}`}
+                onClick={() => setTab(name)}
+                aria-current={current ? "page" : undefined}
+              >
+                <Icon size={20} />
+                <span>{name}</span>
+                {name === "Coach" && <span className="tiny-tag">AI</span>}
+              </button>
+            );
+          })}
         </nav>
         <div className="sidebar-bottom">
           <div className="private-card">
@@ -474,7 +484,7 @@ function Workspace({
             </span>
             <button
               className="icon-btn mobile-brand"
-              aria-label="Open settings"
+              aria-label="Edit profile and settings"
               onClick={() => setTab("Settings")}
             >
               <Image
@@ -542,6 +552,9 @@ function Workspace({
                 <Social {...props} user={user} onLogin={onLogin} />
               )}{" "}
               {tab === "Coach" && <Coach {...props} />}{" "}
+              {tab === "More" && (
+                <MobileMore user={user} go={setTab} onLogin={onLogin} />
+              )}{" "}
               {tab === "Settings" && (
                 <Settings
                   {...props}
@@ -565,6 +578,55 @@ function Workspace({
         </div>
       )}
     </div>
+  );
+}
+function MobileMore({
+  user,
+  go,
+  onLogin,
+}: {
+  user: User | null;
+  go: (tab: Tab) => void;
+  onLogin: () => void;
+}) {
+  return (
+    <>
+      <Heading
+        eyebrow="YOUR ACCOUNT"
+        title="More"
+        text="Your progress, coach and profile settings are all here."
+      />
+      <Section title="Account and tools" className="mobile-more-panel">
+        <div className="mobile-more-grid">
+          <button onClick={() => go("Progress")}>
+            <Activity size={22} />
+            <span>
+              <strong>Progress</strong>
+              <small>Weight, measurements and photos</small>
+            </span>
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+          <button onClick={() => go("Coach")}>
+            <Sparkles size={22} />
+            <span>
+              <strong>AI Coach</strong>
+              <small>Ask about training and nutrition</small>
+            </span>
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+          <button onClick={() => (user ? go("Settings") : onLogin())}>
+            <UserRound size={22} />
+            <span>
+              <strong>{user ? "Edit profile" : "Sign in"}</strong>
+              <small>
+                {user ? "Goals, account and app settings" : "Sync your data"}
+              </small>
+            </span>
+            <ChevronRight size={20} aria-hidden="true" />
+          </button>
+        </div>
+      </Section>
+    </>
   );
 }
 function Dashboard({

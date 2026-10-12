@@ -368,6 +368,9 @@ html[data-theme="light"] .brand-wordmark {
   background: #171717;
   color: #ddd;
 }
+.mobile-more-nav {
+  display: none;
+}
 .tiny-tag {
   margin-left: auto;
   font-size: 8px;
@@ -3950,8 +3953,11 @@ main:focus {
 }
 
 @media (max-width: 700px) {
-  .sidebar nav .settings-nav {
+  .sidebar nav .desktop-extra-nav {
     display: none;
+  }
+  .sidebar nav .mobile-more-nav {
+    display: flex;
   }
   .social-tabs {
     width: 100%;
@@ -3996,6 +4002,96 @@ main:focus {
   .social-search input,
   .chat-compose textarea {
     font-size: 16px;
+  }
+
+  /* Phone-first layout: keep navigation anchored to the visual viewport and
+     make every primary control comfortable to tap without browser zoom. */
+  .sidebar {
+    position: fixed !important;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    will-change: transform;
+  }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    height: calc(57px + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) 14px 0;
+    background: color-mix(in srgb, var(--bg) 94%, transparent);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  main {
+    padding: 20px 14px 24px;
+  }
+  .page-heading {
+    flex-direction: column;
+  }
+  .page-heading > .primary,
+  .page-heading > .secondary {
+    width: 100%;
+    min-height: 44px;
+    margin-top: 0;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .panel {
+    padding: 16px;
+    border-radius: 14px;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  .app-footer {
+    display: none;
+  }
+  .chat-compose {
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+    padding-top: 10px;
+    padding-bottom: max(4px, env(safe-area-inset-bottom));
+    background: var(--surface);
+  }
+  .mobile-more-grid {
+    display: grid;
+    gap: 10px;
+  }
+  .mobile-more-grid > button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    min-height: 72px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface-2);
+    color: var(--text);
+    text-align: left;
+  }
+  .mobile-more-grid > button > span {
+    display: block;
+    min-width: 0;
+    flex: 1;
+  }
+  .mobile-more-grid strong,
+  .mobile-more-grid small {
+    display: block;
+  }
+  .mobile-more-grid strong {
+    font-size: 15px;
+  }
+  .mobile-more-grid small {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
   }
 }
 
