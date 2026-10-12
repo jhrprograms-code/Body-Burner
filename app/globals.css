@@ -292,22 +292,19 @@ button:hover:not(:disabled) {
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: Manrope, sans-serif;
-  font-weight: 750;
-  font-size: 19px;
-  letter-spacing: -0.9px;
-  white-space: nowrap;
 }
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 37px;
-  color: #ecece9;
+.brand-wordmark {
+  display: block;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  filter: invert(1);
 }
-.brand-dot {
-  color: #8e8e8e;
+html[data-theme="light"] .brand-wordmark {
+  filter: none;
+}
+.mobile-brand img {
+  border-radius: 6px;
 }
 .workspace-label {
   margin: 51px 16px 17px;

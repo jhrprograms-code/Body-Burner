@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import Image from "next/image";
 import type { User } from "@supabase/supabase-js";
 import {
   Activity,
@@ -10,7 +11,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Dumbbell,
-  Flame,
   Home,
   LogOut,
   Plus,
@@ -461,7 +461,12 @@ function Workspace({
               aria-label="Open settings"
               onClick={() => setTab("Settings")}
             >
-              <Flame size={22} />
+              <Image
+                src="/resilience-buddy-icon-192.png"
+                alt=""
+                width={24}
+                height={24}
+              />
             </button>
             <span className="top-avatar">
               {(state.profile.name || "B").slice(0, 1)}
@@ -490,7 +495,12 @@ function Workspace({
           )}
           {!ready ? (
             <div className="loading">
-              <Flame size={30} />
+              <Image
+                src="/resilience-buddy-icon-192.png"
+                alt=""
+                width={30}
+                height={30}
+              />
               <p>Loading your journal…</p>
             </div>
           ) : (

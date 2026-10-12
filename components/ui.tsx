@@ -1,15 +1,18 @@
 "use client";
 import { useEffect, useId, useRef, type ReactNode } from "react";
-import { X, ArrowUpRight, Flame } from "lucide-react";
+import Image from "next/image";
+import { X, ArrowUpRight } from "lucide-react";
 export function Brand() {
   return (
     <div className="brand">
-      <div className="brand-mark">
-        <Flame size={23} fill="currentColor" strokeWidth={1.5} />
-      </div>
-      <span>
-        resilience buddy<span className="brand-dot">.</span>
-      </span>
+      <Image
+        src="/resilience-buddy-wordmark.png"
+        alt="Resilience Buddy"
+        width={1290}
+        height={220}
+        className="brand-wordmark"
+        priority
+      />
     </div>
   );
 }

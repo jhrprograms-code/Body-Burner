@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   description: "Your training, nutrition and progress. One clear plan.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { title: "Resilience Buddy" },
+  icons: {
+    icon: "/resilience-buddy-icon-192.png",
+    apple: "/resilience-buddy-icon-512.png",
+  },
 };
 export const viewport: Viewport = {
   width: "device-width",
