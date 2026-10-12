@@ -2309,6 +2309,9 @@ main:focus {
   height: 33px;
   flex-shrink: 0;
 }
+.send-button span {
+  display: none;
+}
 .chat-compose > small {
   font-size: 8px;
   color: #777;
@@ -3811,7 +3814,7 @@ main:focus {
   overflow-wrap: anywhere;
 }
 .comment-compose,
-.chat-compose,
+.chat-shell .chat-compose,
 .social-search {
   display: flex;
   align-items: center;
@@ -4057,6 +4060,63 @@ main:focus {
     padding-top: 10px;
     padding-bottom: max(4px, env(safe-area-inset-bottom));
     background: var(--surface);
+  }
+  .coach-compose {
+    display: block;
+    position: static;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    padding: 16px;
+  }
+  .coach-compose > .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0 0 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .coach-compose > .checkbox-label input {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    margin-top: 1px;
+  }
+  .coach-compose form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+  }
+  .coach-compose textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 88px;
+    max-height: none;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .coach-compose .send-button {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .coach-compose .send-button span {
+    display: inline;
+  }
+  .coach-compose > small {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.5;
   }
   .mobile-more-grid {
     display: grid;

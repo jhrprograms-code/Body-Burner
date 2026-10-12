@@ -105,7 +105,7 @@ export default function Coach({ state, setState, notify }: StoreProps) {
             )}
             {busy && <p className="muted">Thinking through your question…</p>}
           </div>
-          <div className="chat-compose">
+          <div className="chat-compose coach-compose">
             <ErrorNote message={error} />
             <label className="checkbox-label small">
               <input
@@ -137,6 +137,7 @@ export default function Coach({ state, setState, notify }: StoreProps) {
                 disabled={!consent || !text.trim() || busy}
               >
                 <ArrowUp size={20} />
+                <span>Send question</span>
               </button>
             </form>
             <small>
