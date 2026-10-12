@@ -7,6 +7,7 @@ import Nutrition, { FoodEditor } from "../components/Nutrition";
 import Progress from "../components/Progress";
 import Coach from "../components/Coach";
 import Settings from "../components/Settings";
+import Social from "../components/Social";
 import { Meter, Modal } from "../components/ui";
 import { emptyState, dayKey, type Food } from "../lib/domain";
 
@@ -19,8 +20,17 @@ test("all principal workspace screens render without errors for an empty journal
     createElement(Progress, { ...props, user: null }),
     createElement(Coach, props),
     createElement(Settings, { ...props, user: null, onLogin: () => {} }),
+    createElement(Social, { ...props, user: null, onLogin: () => {} }),
   ])
     assert.match(renderToStaticMarkup(element), /<h1/);
+});
+test("signed-out community screen explains privacy and offers sign in", () => {
+  const html = renderToStaticMarkup(
+    createElement(Social, { ...props, user: null, onLogin: () => {} }),
+  );
+  assert.match(html, /Your social space stays private/);
+  assert.match(html, /never posted automatically/);
+  assert.match(html, /Sign in to continue/);
 });
 test("food confirmation retains known micronutrients and supports fractional servings", () => {
   const food: Food = {

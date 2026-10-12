@@ -21,6 +21,7 @@ import {
   Weight,
   Sun,
   Moon,
+  Users,
 } from "lucide-react";
 import {
   isPasswordRecoveryUrl,
@@ -56,18 +57,26 @@ import Training from "./Training";
 import Progress from "./Progress";
 import Coach from "./Coach";
 import Settings from "./Settings";
+import Social from "./Social";
 export type StoreProps = {
   state: State;
   setState: Dispatch<SetStateAction<State>>;
   notify: (s: string) => void;
 };
 type Tab =
-  "Today" | "Training" | "Nutrition" | "Progress" | "Coach" | "Settings";
+  | "Today"
+  | "Training"
+  | "Nutrition"
+  | "Progress"
+  | "Friends"
+  | "Coach"
+  | "Settings";
 const nav = [
   { name: "Today", icon: Home },
   { name: "Training", icon: Dumbbell },
   { name: "Nutrition", icon: Utensils },
   { name: "Progress", icon: Activity },
+  { name: "Friends", icon: Users },
   { name: "Coach", icon: Sparkles },
   { name: "Settings", icon: SettingsIcon },
 ] as const;
@@ -142,8 +151,8 @@ function Login({ onClose }: { onClose: () => void }) {
   return (
     <Modal title="Your private space" onClose={onClose}>
       <p className="muted">
-        Sign in once on your iPhone and Resilience Buddy will keep you signed in.
-        Your training, meals and photos belong to your account.
+        Sign in once on your iPhone and Resilience Buddy will keep you signed
+        in. Your training, meals and photos belong to your account.
       </p>
       {!supabase ? (
         <div className="notice">
@@ -392,7 +401,7 @@ function Workspace({
           {nav.map(({ name, icon: Icon }) => (
             <button
               key={name}
-              className={`nav-item ${tab === name ? "active" : ""}`}
+              className={`nav-item ${name === "Settings" ? "settings-nav" : ""} ${tab === name ? "active" : ""}`}
               onClick={() => setTab(name)}
               aria-current={tab === name ? "page" : undefined}
             >
@@ -529,6 +538,9 @@ function Workspace({
                 <Nutrition {...props} date={date} setDate={setDate} />
               )}{" "}
               {tab === "Progress" && <Progress {...props} user={user} />}{" "}
+              {tab === "Friends" && (
+                <Social {...props} user={user} onLogin={onLogin} />
+              )}{" "}
               {tab === "Coach" && <Coach {...props} />}{" "}
               {tab === "Settings" && (
                 <Settings
