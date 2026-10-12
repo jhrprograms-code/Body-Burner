@@ -6,7 +6,7 @@
   --panel: #111111;
   --panel-hover: #171717;
   --border: #272727;
-  --muted: #929292;
+  --muted: #a8a8a8;
   --text: #f0f0ee;
   --accent: #f1f1ed;
   --line: var(--border);
@@ -17,8 +17,16 @@
 * {
   box-sizing: border-box;
 }
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body {
   margin: 0;
+  min-height: 100%;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
@@ -40,10 +48,11 @@ textarea {
 }
 button {
   cursor: pointer;
+  touch-action: manipulation;
 }
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.35;
+  opacity: 0.55;
 }
 button {
   color: inherit;
@@ -79,7 +88,7 @@ select:focus {
 }
 input::placeholder,
 textarea::placeholder {
-  color: #777;
+  color: #9a9a9a;
 }
 input[type="checkbox"],
 input[type="radio"] {
@@ -136,6 +145,7 @@ h3 {
 }
 p {
   line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 small,
 .small {
@@ -159,10 +169,26 @@ button:hover:not(:disabled) {
 .muted {
   color: var(--muted);
 }
+.skip-link {
+  position: fixed;
+  z-index: 2000;
+  top: 10px;
+  left: 10px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #111;
+  font-weight: 700;
+  transform: translateY(-160%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
 .row {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
 }
 .between {
   justify-content: space-between;
@@ -275,6 +301,7 @@ button:hover:not(:disabled) {
 .app-shell {
   display: flex;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 .sidebar {
   position: fixed;
@@ -310,7 +337,7 @@ html[data-theme="light"] .brand-wordmark {
   margin: 51px 16px 17px;
   font-size: 9px;
   letter-spacing: 1.6px;
-  color: #626262;
+  color: #9a9a9a;
 }
 .sidebar nav {
   display: flex;
@@ -434,8 +461,8 @@ html[data-theme="light"] .brand-wordmark {
   font-weight: 500;
 }
 .sync-status {
-  color: #757575;
-  font-size: 10px;
+  color: #a0a0a0;
+  font-size: 11px;
 }
 .sync-status.warning {
   color: #dfb6b6;
@@ -452,6 +479,17 @@ main {
   max-width: 1390px;
   margin: 0 auto;
   padding: 39px 46px 24px;
+}
+main:focus {
+  outline: none;
+}
+.panel,
+.modal,
+.page-heading,
+.section-heading,
+.food-detail,
+.exercise-header {
+  min-width: 0;
 }
 .page-content {
   animation: appear 0.25s ease;
@@ -2690,21 +2728,27 @@ main {
 }
 @media (max-width: 700px) {
   body {
-    font-size: 13px;
+    font-size: 15px;
+    padding-bottom: calc(78px + env(safe-area-inset-bottom));
   }
   .sidebar {
-    position: fixed;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: fixed !important;
+    inset: auto 0 0 0;
     width: 100%;
-    height: calc(67px + env(safe-area-inset-bottom));
-    padding: 6px 7px calc(6px + env(safe-area-inset-bottom));
+    height: calc(74px + env(safe-area-inset-bottom));
+    min-height: calc(74px + env(safe-area-inset-bottom));
+    padding:
+      7px max(7px, env(safe-area-inset-right))
+      calc(7px + env(safe-area-inset-bottom))
+      max(7px, env(safe-area-inset-left));
     border: 0;
     border-top: 1px solid #303030;
-    background: #101010f5;
+    background: #101010fa;
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    isolation: isolate;
+    transform: translate3d(0, 0, 0);
+    z-index: 1000;
   }
   .sidebar > .brand,
   .workspace-label,
@@ -2716,6 +2760,7 @@ main {
     gap: 0;
     justify-content: space-around;
     height: 100%;
+    min-width: 0;
   }
   .nav-item {
     flex-direction: column;
@@ -2723,15 +2768,17 @@ main {
     justify-content: center;
     width: auto;
     flex: 1;
-    height: 53px;
+    height: 58px;
+    min-width: 0;
+    min-height: 48px;
     border-radius: 8px;
     padding: 4px 1px;
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 0.1px;
   }
   .nav-item svg {
-    width: 19px;
-    height: 19px;
+    width: 22px;
+    height: 22px;
   }
   .nav-item.active {
     background: #242424;
@@ -2742,20 +2789,21 @@ main {
   }
   .main-shell {
     margin-left: 0;
-    margin-bottom: 80px;
+    margin-bottom: 0;
+    padding-bottom: 8px;
   }
   .topbar {
     height: 57px;
     padding: 0 20px;
   }
   .breadcrumb {
-    font-size: 10px;
+    font-size: 11px;
   }
   .breadcrumb span {
     padding: 0 8px;
   }
   .sync-status {
-    font-size: 8px;
+    font-size: 11px;
     max-width: 170px;
     white-space: nowrap;
     overflow: hidden;
@@ -2770,12 +2818,15 @@ main {
     color: #d3d3d3;
   }
   main {
-    padding: 27px 18px 10px;
+    padding: 27px 18px 24px;
   }
   .page-heading {
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 22px;
+  }
+  .page-heading > div {
+    min-width: 0;
   }
   .page-heading h1 {
     font-size: 26px;
@@ -2784,7 +2835,7 @@ main {
     line-height: 1.3;
   }
   .page-heading p {
-    font-size: 10px;
+    font-size: 13px;
     max-width: 290px;
     line-height: 1.7;
   }
@@ -2803,7 +2854,7 @@ main {
     height: 14px;
   }
   .eyebrow {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 1.3px;
   }
   .week-strip {
@@ -2818,7 +2869,7 @@ main {
     min-height: 60px;
     padding: 6px 3px;
     border-radius: 8px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .day-button strong {
     font-size: 13px;
@@ -2854,7 +2905,7 @@ main {
     font-size: 27px;
   }
   .hero-content p {
-    font-size: 10px;
+    font-size: 13px;
     line-height: 1.9;
     max-width: 210px;
     margin-bottom: 21px;
@@ -2902,7 +2953,7 @@ main {
     margin-bottom: 17px;
   }
   .section-heading h2 {
-    font-size: 14px;
+    font-size: 16px;
   }
   .checklist-row {
     padding: 17px 0;
@@ -2911,7 +2962,7 @@ main {
     font-size: 12px;
   }
   .checklist-row small {
-    font-size: 10px;
+    font-size: 12px;
   }
   .stats-grid {
     gap: 12px;
@@ -3399,6 +3450,160 @@ main {
 @media (max-width: 700px) {
   .recipe-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Mobile readability and touch-accessibility floor. */
+  .icon-btn {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .text-btn {
+    min-height: 44px;
+    padding-block: 10px;
+    font-size: 12px;
+  }
+  .primary,
+  .secondary,
+  .upload-button,
+  .prompt,
+  .tab-pills button,
+  .library-tabs button,
+  .plan-days button {
+    min-height: 44px;
+  }
+  :is(
+    .page-heading p,
+    .hero-content p,
+    .coach-welcome p,
+    .quick-capture p,
+    .panel > p,
+    .modal > p,
+    .notice,
+    .error,
+    .load-note,
+    .attribution
+  ) {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  small,
+  .small,
+  .field > small,
+  .meal-empty small,
+  .food-detail small,
+  .plan-exercise small,
+  .exercise-header p,
+  .exercise-header .small,
+  .coach-header .small,
+  .result-row small {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  :is(
+    .meal-empty strong,
+    .food-detail strong,
+    .food-calories,
+    .plan-exercise strong,
+    .result-row strong,
+    .measurement-row,
+    .upload-button
+  ) {
+    font-size: 12px;
+  }
+  .library-tabs button,
+  .tab-pills button,
+  .prompt,
+  .exercise-bottom > .text-btn,
+  .session-toolbar .text-btn,
+  .session-toolbar .primary,
+  .rest-bar > span,
+  .rest-bar > .secondary {
+    font-size: 11px;
+  }
+  :is(
+    .hero-footer > span:first-child,
+    .hero-footer > span:last-child,
+    .mini-stat > .row,
+    .plan-days button span,
+    .set-labels,
+    .previous,
+    .session-toolbar > .row > .muted,
+    .progress-stats .mini-stat > .row > span,
+    .progress-stats .mini-stat > .muted,
+    .photo-grid .progress-photo > .row,
+    .chart > .row,
+    .summary-stats span
+  ) {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .app-footer,
+  .app-footer > span:last-child {
+    color: #9a9a9a;
+    font-size: 10px;
+  }
+  .field > span,
+  .estimate-grid .field > span {
+    font-size: 12px;
+  }
+  .checkbox-label,
+  .exercise-bottom .checkbox-label {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  input[type="checkbox"],
+  input[type="radio"],
+  .exercise-bottom .checkbox-label input {
+    width: 20px;
+    height: 20px;
+  }
+  .set-row input {
+    height: 44px;
+    font-size: 16px;
+  }
+  .set-check {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .modal {
+    width: min(100% - 20px, 640px);
+    max-height: calc(100dvh - 20px);
+    padding-bottom: max(21px, env(safe-area-inset-bottom));
+  }
+  .toast {
+    bottom: calc(86px + env(safe-area-inset-bottom));
+  }
+  .rest-bar,
+  .sticky-save {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  html[data-theme="light"] .sidebar {
+    background: #fffffff7;
+    border-top-color: var(--border);
+  }
+  html[data-theme="light"] .nav-item {
+    color: #555561;
+  }
+  html[data-theme="light"] .nav-item.active {
+    background: #e9e9ef;
+    color: #1e1e26;
+  }
+}
+
+@media (forced-colors: active) {
+  button,
+  input,
+  select,
+  textarea,
+  .panel,
+  .modal,
+  .sidebar {
+    border: 1px solid CanvasText;
+  }
+  .nav-item.active {
+    outline: 2px solid Highlight;
   }
 }
 

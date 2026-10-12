@@ -110,7 +110,14 @@ export default function Nutrition({
               ? `${fmt(Math.abs(p.calories - total.calories))} kcal ${total.calories > p.calories ? "above budget" : "remaining"}`
               : "Set your calorie and macro targets in Settings."}
           </p>
-          <div className="track">
+          <div
+            className="track"
+            role="progressbar"
+            aria-label="Daily calorie budget used"
+            aria-valuemin={0}
+            aria-valuemax={p.calories || undefined}
+            aria-valuenow={Math.round(total.calories)}
+          >
             <span
               style={{
                 width: `${p.calories ? Math.min(100, (total.calories / p.calories) * 100) : 0}%`,

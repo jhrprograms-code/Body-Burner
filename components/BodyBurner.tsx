@@ -377,6 +377,9 @@ function Workspace({
   const props = { state, setState, notify: setToast };
   return (
     <div className="app-shell">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
       {authNotice && (
         <div className="toast" role="status">
           {authNotice}
@@ -453,7 +456,11 @@ function Workspace({
             >
               {light ? <Moon size={18} /> : <Sun size={18} />}
             </button>
-            <span className={`sync-status ${blocked ? "warning" : ""}`}>
+            <span
+              className={`sync-status ${blocked ? "warning" : ""}`}
+              role="status"
+              aria-live="polite"
+            >
               {status}
             </span>
             <button
@@ -473,7 +480,7 @@ function Workspace({
             </span>
           </div>
         </header>
-        <main>
+        <main id="main-content" tabIndex={-1}>
           {blocked && (
             <div className="error row between">
               <span>{status}</span>

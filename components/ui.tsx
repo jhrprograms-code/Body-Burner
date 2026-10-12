@@ -148,7 +148,14 @@ export function Meter({
           </span>
         </span>
       </div>
-      <div className="track">
+      <div
+        className="track"
+        role="progressbar"
+        aria-label={label}
+        aria-valuemin={0}
+        aria-valuemax={max}
+        aria-valuenow={Math.round(value)}
+      >
         <span style={{ width: `${pct}%` }} />
       </div>
     </div>

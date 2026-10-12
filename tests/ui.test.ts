@@ -7,7 +7,7 @@ import Nutrition, { FoodEditor } from "../components/Nutrition";
 import Progress from "../components/Progress";
 import Coach from "../components/Coach";
 import Settings from "../components/Settings";
-import { Modal } from "../components/ui";
+import { Meter, Modal } from "../components/ui";
 import { emptyState, dayKey, type Food } from "../lib/domain";
 
 const state = emptyState();
@@ -59,6 +59,19 @@ test("dialogs have an accessible name", () => {
   assert.match(html, /aria-labelledby="([^"]+)"/);
   const id = html.match(/aria-labelledby="([^"]+)"/)![1];
   assert.ok(html.includes(`<h2 id="${id}">Test dialog</h2>`));
+});
+test("nutrition meters expose their value to assistive technology", () => {
+  const html = renderToStaticMarkup(
+    createElement(Meter, {
+      label: "Protein",
+      value: 80,
+      max: 160,
+    }),
+  );
+  assert.match(html, /role="progressbar"/);
+  assert.match(html, /aria-label="Protein"/);
+  assert.match(html, /aria-valuenow="80"/);
+  assert.match(html, /aria-valuemax="160"/);
 });
 test("settings correctly describe workout pounds and movable recovery days", () => {
   const html = renderToStaticMarkup(
