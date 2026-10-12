@@ -19,7 +19,7 @@ import {
 } from "lucide-react";
 import { api } from "@/lib/supabase";
 import { compressImage } from "@/lib/store";
-import { commonFoods } from "@/data/common-foods";
+import { commonFoods, creatineFood } from "@/data/common-foods";
 import { recipes } from "@/data/recipes";
 import { foodIcon } from "@/lib/food-icons";
 import {
@@ -47,6 +47,7 @@ export default function Nutrition({
 }: StoreProps & { date: string; setDate: (s: string) => void }) {
   const [add, setAdd] = useState<MealName | null>(null);
   const [startScan, setStartScan] = useState(false);
+  const [quickFood, setQuickFood] = useState<Food | null>(null);
   const [editing, setEditing] = useState<FoodLog | null>(null);
   const foods = state.foods.filter((f) => f.date === date),
     total = totalFoods(foods),
@@ -98,6 +99,24 @@ export default function Nutrition({
           setAdd("Lunch");
         }}
       />
+      <section className="panel" aria-label="Quick supplement entry">
+        <span className="eyebrow">QUICK ADD</span>
+        <h2>Creatine · 5 g</h2>
+        <p className="muted small">
+          Plain creatine monohydrate is listed with zero calories and macros.
+          Check your product label if it contains other ingredients.
+        </p>
+        <button
+          className="secondary"
+          onClick={() => {
+            setQuickFood(creatineFood);
+            setAdd("Breakfast");
+          }}
+        >
+          <Plus size={17} />
+          Log creatine
+        </button>
+      </section>
       <section className="panel nutrition-summary legacy-nutrition-summary">
         <div className="budget-main">
           <span className="eyebrow">TODAY’S ENERGY</span>
@@ -274,9 +293,11 @@ export default function Nutrition({
           meal={add}
           date={date}
           initialMode={startScan ? "Photo / describe" : "Foods"}
+          initialFood={quickFood}
           onClose={() => {
             setAdd(null);
             setStartScan(false);
+            setQuickFood(null);
           }}
         />
       )}
@@ -367,11 +388,13 @@ function FoodModal({
   date,
   onClose,
   initialMode = "Foods",
+  initialFood = null,
 }: StoreProps & {
   meal: MealName;
   date: string;
   onClose: () => void;
   initialMode?: string;
+  initialFood?: Food | null;
 }) {
   const [mode, setMode] = useState(initialMode),
     [query, setQuery] = useState(""),
@@ -380,7 +403,7 @@ function FoodModal({
     [note, setNote] = useState(""),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
-    [selected, setSelected] = useState<Food | null>(null),
+    [selected, setSelected] = useState<Food | null>(initialFood),
     [scanner, setScanner] = useState(false),
     [barcode, setBarcode] = useState(""),
     [mealName, setMealName] = useState<MealName>(meal);

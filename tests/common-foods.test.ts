@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { commonFoods } from "../data/common-foods";
+import { commonFoods, creatineFood } from "../data/common-foods";
 import { foodIcon } from "../lib/food-icons";
 import { recipes } from "../data/recipes";
 
@@ -32,10 +32,20 @@ test("offline food library contains the reference foods with valid portions", ()
 });
 
 test("recognizable food icons replace the generic plate when possible", () => {
+  assert.equal(foodIcon("Creatine monohydrate, plain"), "🥄");
   assert.equal(foodIcon("Large boiled egg"), "🥚");
   assert.equal(foodIcon("Fresh banana"), "🍌");
   assert.equal(foodIcon("Grilled salmon"), "🐟");
   assert.equal(foodIcon("Unknown prepared dish"), "🍽️");
+});
+
+test("plain creatine is available as an editable 5 g zero-macro entry", () => {
+  assert.ok(commonFoods.includes(creatineFood));
+  assert.equal(creatineFood.grams, 5);
+  assert.equal(creatineFood.unit, "g");
+  for (const key of ["calories", "protein", "carbs", "fat"] as const) {
+    assert.equal(creatineFood[key], 0);
+  }
 });
 
 test("Afghan and international staples are available offline", () => {

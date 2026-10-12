@@ -26,6 +26,18 @@ const food = (
 
 // A compact offline library for everyday foods. Values are reference estimates;
 // users can adjust the serving or replace them with a package/database result.
+export const creatineFood = food(
+  "creatine-monohydrate",
+  "Creatine monohydrate, plain",
+  5,
+  0,
+  0,
+  0,
+  0,
+  "g",
+  "Unflavoured powder",
+);
+
 export const commonFoods: Food[] = [
   food("egg", "Egg", 1, 72, 6.3, 0.4, 4.8, "item"),
   food("boiled-egg", "Boiled egg", 1, 78, 6.3, 0.6, 5.3, "item"),
@@ -45,6 +57,7 @@ export const commonFoods: Food[] = [
   food("salmon", "Salmon, grilled", 120, 247, 26, 0, 15),
   food("dried-figs", "Dried figs", 40, 100, 1.3, 25.6, 0.4),
   food("whey", "Whey protein", 39, 150, 26, 6, 2, "g", "Generic powder"),
+  creatineFood,
   food("chia", "Chia seeds", 28, 138, 4.7, 11.9, 8.7),
   food("lettuce", "Green leaf lettuce, raw", 36, 5, 0.5, 1, 0.1),
   food("banana", "Banana", 118, 105, 1.3, 27, 0.4),

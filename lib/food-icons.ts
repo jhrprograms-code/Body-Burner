@@ -1,4 +1,5 @@
 const ICONS: Array<[RegExp, string]> = [
+  [/creatine/i, "🥄"],
   [/egg/i, "🥚"], [/banana/i, "🍌"], [/avocado/i, "🥑"],
   [/milk|whey|protein/i, "🥛"], [/oat|cereal|bran/i, "🥣"],
   [/sugar/i, "🧊"], [/pancake|waffle/i, "🥞"],
