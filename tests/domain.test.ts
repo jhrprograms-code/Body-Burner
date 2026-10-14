@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import {
   buildWeek,
   emptyState,
+  exerciseHistory,
   exercises,
   loadSuggestion,
   movePlanDay,
@@ -65,7 +66,27 @@ test("new lifter gets calibration instead of an invented weight", () =>
 test("full successful sets suggest a small increment without changing entered weight", () => {
   const x = loadSuggestion(sets());
   assert.equal(x.weight, "20");
+  assert.equal(x.suggestedWeight, "22");
   assert.match(x.text, /22 lb/);
+});
+test("exercise history includes every completed session in newest-first order", () => {
+  const first: Session = {
+    id: "first", date: "2026-10-01", name: "Push A", startedAt: 1,
+    finishedAt: 2, exercises: [sets()],
+  };
+  const second: Session = {
+    ...first, id: "second", date: "2026-10-08", startedAt: 3,
+    finishedAt: 4, exercises: [sets({ weight: "25" })],
+  };
+  const unfinished: Session = {
+    ...first, id: "unfinished", finishedAt: undefined,
+    exercises: [sets({ weight: "30" })],
+  };
+  assert.deepEqual(
+    exerciseHistory([second, unfinished, first], "E002").map((x) => x.session.id),
+    ["second", "first"],
+  );
+  assert.equal(exerciseHistory([first], "other").length, 0);
 });
 test("failure, unknown effort and incomplete sessions never trigger increase", () => {
   for (const s of [
@@ -74,7 +95,7 @@ test("failure, unknown effort and incomplete sessions never trigger increase", (
     sets({ reps: "8" }),
     sets({ done: false }),
   ])
-    assert.doesNotMatch(loadSuggestion(s).text, /Consider/);
+    assert.equal(loadSuggestion(s).suggestedWeight, null);
   const partial = sets();
   partial.sets[2].done = false;
   assert.doesNotMatch(loadSuggestion(partial).text, /Consider/);

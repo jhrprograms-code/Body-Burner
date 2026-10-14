@@ -24,6 +24,31 @@ test("all principal workspace screens render without errors for an empty journal
   ])
     assert.match(renderToStaticMarkup(element), /<h1/);
 });
+test("active training shows history and a load option from completed sets", () => {
+  const withTraining = emptyState();
+  const exercise = {
+    exerciseId: "E002", pain: false,
+    sets: [1, 2, 3].map((n) => ({
+      id: String(n), weight: "20", reps: "12", rir: "2", done: true,
+    })),
+  };
+  withTraining.sessions = [{
+    id: "history", date: "2026-10-01", name: "Push A", startedAt: 1,
+    finishedAt: 2, exercises: [exercise],
+  }];
+  withTraining.active = {
+    id: "active", date: dayKey(), name: "Push A", startedAt: Date.now(),
+    exercises: [{ ...exercise, sets: exercise.sets.map((set) => ({
+      ...set, reps: "", rir: "", done: false,
+    })) }],
+  };
+  const html = renderToStaticMarkup(
+    createElement(Training, { ...props, state: withTraining }),
+  );
+  assert.match(html, /View 1 previous workout/);
+  assert.match(html, /Use 22 lb/);
+  assert.match(html, /20 × 12/);
+});
 test("signed-out community screen explains privacy and offers sign in", () => {
   const html = renderToStaticMarkup(
     createElement(Social, { ...props, user: null, onLogin: () => {} }),

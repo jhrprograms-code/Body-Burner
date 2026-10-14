@@ -22,11 +22,11 @@ import {
 import {
   buildWeek,
   dayKey,
+  exerciseHistory,
   exerciseMuscleCategories,
   exercises,
   libraryExercises,
   fmt,
-  lastExercise,
   loadSuggestion,
   MUSCLE_CATEGORIES,
   movePlanDay,
@@ -58,6 +58,7 @@ export default function Training({ state, setState, notify }: StoreProps) {
     [library, setLibrary] = useState(false),
     [detail, setDetail] = useState<Exercise | null>(null),
     [summary, setSummary] = useState<Session | null>(null),
+    [historyExercise, setHistoryExercise] = useState<Exercise | null>(null),
     [moving, setMoving] = useState(false),
     [confirm, setConfirm] = useState<"finish" | "discard" | null>(null),
     [clock, setClock] = useState(Date.now());
@@ -174,7 +175,8 @@ export default function Training({ state, setState, notify }: StoreProps) {
           />
           {active.exercises.map((entry, index) => {
             const exercise = exercises.find((e) => e.id === entry.exerciseId)!;
-            const previous = lastExercise(state.sessions, entry.exerciseId),
+            const history = exerciseHistory(state.sessions, entry.exerciseId),
+              previous = history[0]?.exercise,
               suggestion = loadSuggestion(previous),
               timed = exercise.tracking !== "repetitions";
             return (
@@ -234,6 +236,43 @@ export default function Training({ state, setState, notify }: StoreProps) {
                     ? "Log duration in the unit shown. Use a comfortable pace."
                     : suggestion.text}
                 </p>
+                {history.length > 0 && (
+                  <div className="exercise-history-actions">
+                    <button
+                      className="text-btn"
+                      onClick={() => setHistoryExercise(exercise)}
+                    >
+                      View {history.length} previous{" "}
+                      {history.length === 1 ? "workout" : "workouts"}
+                    </button>
+                    {!timed && suggestion.suggestedWeight && !entry.pain && (
+                      <button
+                        className="secondary"
+                        disabled={
+                          entry.sets.some((set) => set.done) ||
+                          entry.sets.every(
+                            (set) => set.weight === suggestion.suggestedWeight,
+                          )
+                        }
+                        onClick={() =>
+                          updateExercise(index, (current) => ({
+                            ...current,
+                            sets: current.sets.map((set) => ({
+                              ...set,
+                              weight: suggestion.suggestedWeight!,
+                            })),
+                          }))
+                        }
+                      >
+                        {entry.sets.every(
+                          (set) => set.weight === suggestion.suggestedWeight,
+                        )
+                          ? `${suggestion.suggestedWeight} lb applied`
+                          : `Use ${suggestion.suggestedWeight} lb`}
+                      </button>
+                    )}
+                  </div>
+                )}
                 <div className="set-table">
                   <div className="set-row set-labels">
                     <span>SET</span>
@@ -757,6 +796,51 @@ export default function Training({ state, setState, notify }: StoreProps) {
           <p className="notice small">
             Use a comfortable range and load. These draft cues support learning;
             a qualified coach can check your technique in person.
+          </p>
+          {exerciseHistory(state.sessions, detail.id).length > 0 && (
+            <button
+              className="secondary full"
+              onClick={() => {
+                setHistoryExercise(detail);
+                setDetail(null);
+              }}
+            >
+              View your exercise history
+            </button>
+          )}
+        </Modal>
+      )}
+      {historyExercise && (
+        <Modal
+          title={`${historyExercise.name} history`}
+          onClose={() => setHistoryExercise(null)}
+        >
+          <p className="muted small">
+            Your completed sets from every saved workout, newest first.
+          </p>
+          <div className="exercise-history-list">
+            {exerciseHistory(state.sessions, historyExercise.id).map(
+              ({ session, exercise }, index) => (
+                <div className="history-detail" key={`${session.id}-${index}`}>
+                  <strong>{session.date} · {session.name}</strong>
+                  <p>
+                    {exercise.sets
+                      .filter((set) => set.done)
+                      .map((set) =>
+                        historyExercise.tracking === "repetitions"
+                          ? `${set.weight || "0"} lb × ${set.reps}`
+                          : `${set.reps} ${historyExercise.tracking === "minutes" ? "min" : "sec"}`,
+                      )
+                      .join(" · ")}
+                  </p>
+                  {exercise.pain && <small>Pain or discomfort recorded</small>}
+                </div>
+              ),
+            )}
+          </div>
+          <p className="muted small">
+            Suggested increases depend on completed reps, effort and comfort.
+            Keep the same equipment and weight convention when comparing sessions.
           </p>
         </Modal>
       )}

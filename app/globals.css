@@ -1794,6 +1794,21 @@ main:focus {
   border-radius: 9px;
   margin: 19px 0;
 }
+.exercise-history-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: -8px 0 18px;
+}
+.exercise-history-actions .secondary {
+  min-height: 44px;
+}
+.exercise-history-list {
+  max-height: min(60vh, 550px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
 .set-row {
   display: grid;
   grid-template-columns: 38px minmax(68px, 1.2fr) 1fr 1fr 1fr 44px;

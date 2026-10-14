@@ -426,11 +426,20 @@ export function buildWeek(p: Profile): PlanDay[] {
   }));
   return days;
 }
+export function exerciseHistory(sessions: Session[], id: string) {
+  return sessions
+    .filter((session) => session.finishedAt)
+    .flatMap((session) =>
+      session.exercises
+        .filter((exercise) =>
+          exercise.exerciseId === id && exercise.sets.some((set) => set.done),
+        )
+        .map((exercise) => ({ session, exercise })),
+    )
+    .sort((a, b) => (b.session.finishedAt || 0) - (a.session.finishedAt || 0));
+}
 export function lastExercise(sessions: Session[], id: string) {
-  return [...sessions]
-    .sort((a, b) => (b.finishedAt || 0) - (a.finishedAt || 0))
-    .flatMap((s) => s.exercises)
-    .find((e) => e.exerciseId === id && e.sets.some((s) => s.done));
+  return exerciseHistory(sessions, id)[0]?.exercise;
 }
 export function loadSuggestion(
   previous: WorkoutExercise | undefined,
@@ -439,6 +448,7 @@ export function loadSuggestion(
   if (!previous)
     return {
       weight: "",
+      suggestedWeight: null,
       text: "Choose a light starting load. Aim for 8–12 smooth reps, with 2–3 left in reserve.",
     };
   const done = previous.sets.filter((s) => s.done);
@@ -449,12 +459,14 @@ export function loadSuggestion(
   )
     return {
       weight: "",
+      suggestedWeight: null,
       text: "Log your working weight to get a progression suggestion.",
     };
   const load = weights[weights.length - 1];
   if (previous.pain)
     return {
       weight: String(load),
+      suggestedWeight: null,
       text: "Pain was reported. Pause this movement and review a comfortable alternative; no increase suggested.",
     };
   const increase =
@@ -469,13 +481,17 @@ export function loadSuggestion(
   if (increase && step <= 0)
     return {
       weight: String(load),
+      suggestedWeight: null,
       text: "All sets reached the upper range. Keep this load until a suitably small equipment increment is available; avoid a large jump.",
     };
   return {
     weight: String(load),
+    suggestedWeight: increase ? String(Math.round((load + step) * 100) / 100) : null,
     text: increase
       ? `All sets reached 12 reps with room to spare. Consider ${fmt(Math.round((load + step) * 100) / 100)} lb next time, if your equipment allows and form stays comfortable.`
-      : "Repeat the previous load. Build reps within 8–12 before considering an increase.",
+      : done.some((s) => s.rir === "")
+        ? "Repeat the previous load. Record reps in reserve (RIR) after each set so the app can suggest an increase safely."
+        : "Repeat the previous load. Build reps within 8–12 before considering an increase.",
   };
 }
 export function newExercise(
